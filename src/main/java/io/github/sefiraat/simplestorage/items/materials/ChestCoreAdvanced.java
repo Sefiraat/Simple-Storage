@@ -10,26 +10,25 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class ElectrumPlate extends SlimefunItem implements NotPlaceable {
+public class ChestCoreAdvanced extends SlimefunItem implements NotPlaceable {
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MATERIAL_ELECTRUM_PLATE",
-            Material.YELLOW_CARPET,
-            Messages.THEME_ITEM_CRAFTING + "Electrum Alloy Plate",
+            "MATERIAL_CHEST_CORE_ADVANCED",
+            Material.HEART_OF_THE_SEA,
+            Messages.THEME_ITEM_CRAFTING + "Advanced Chest Core",
             "",
-            Messages.THEME_PASSIVE + "A plate made out of Electrum used as",
-            Messages.THEME_PASSIVE + "a shell for basic storage components.",
+            Messages.THEME_PASSIVE + "Used as the core for an diamond chest.",
             "",
             Messages.THEME_ITEM_TYPEDESC + "Crafting Material"
     );
 
     public static final ItemStack[] RECIPE = new ItemStack[] {
-                DieBasic.STACK,    new SlimefunItemStack(Electrum.STACK, 4),   null,
-                null,              null,                                              null,
-                null,              null,                                              null
+            PewterPlate.STACK, PewterPlate.STACK, PewterPlate.STACK,
+            PewterPlate.STACK, GemShortite.STACK, PewterPlate.STACK,
+            PewterPlate.STACK, Thermocouple.STACK,PewterPlate.STACK
     };
 
-    public ElectrumPlate(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public ChestCoreAdvanced(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         register(plugin);
     }

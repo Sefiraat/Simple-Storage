@@ -10,26 +10,27 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class ElectrumPlate extends SlimefunItem implements NotPlaceable {
+public class PewterReinforced extends SlimefunItem implements NotPlaceable {
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MATERIAL_ELECTRUM_PLATE",
-            Material.YELLOW_CARPET,
-            Messages.THEME_ITEM_CRAFTING + "Electrum Alloy Plate",
+            "MATERIAL_REINFORCED_PEWTER",
+            Material.IRON_INGOT ,
+            Messages.THEME_ITEM_CRAFTING + "Hardened Pewter Alloy Ingot",
             "",
-            Messages.THEME_PASSIVE + "A plate made out of Electrum used as",
-            Messages.THEME_PASSIVE + "a shell for basic storage components.",
+            Messages.THEME_PASSIVE + "An alloy of Tin and Silver that is",
+            Messages.THEME_PASSIVE + "used for it's durability. This variant",
+            Messages.THEME_PASSIVE + "has been hardened with Antimony.",
             "",
             Messages.THEME_ITEM_TYPEDESC + "Crafting Material"
     );
 
     public static final ItemStack[] RECIPE = new ItemStack[] {
-                DieBasic.STACK,    new SlimefunItemStack(Electrum.STACK, 4),   null,
-                null,              null,                                              null,
-                null,              null,                                              null
+                Pewter.STACK,   AntimonyIngot.STACK, null,
+                null,           null,                null,
+                null,           null,                null
     };
 
-    public ElectrumPlate(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public PewterReinforced(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         register(plugin);
     }

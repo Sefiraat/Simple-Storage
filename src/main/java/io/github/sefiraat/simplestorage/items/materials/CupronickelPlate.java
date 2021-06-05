@@ -10,26 +10,26 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class ElectrumPlate extends SlimefunItem implements NotPlaceable {
+public class CupronickelPlate extends SlimefunItem implements NotPlaceable {
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MATERIAL_ELECTRUM_PLATE",
-            Material.YELLOW_CARPET,
-            Messages.THEME_ITEM_CRAFTING + "Electrum Alloy Plate",
+            "MATERIAL_CUPRONICKEL_PLATE",
+            Material.ORANGE_CARPET,
+            Messages.THEME_ITEM_CRAFTING + "Reinforced Cupronickel Alloy Plate",
             "",
-            Messages.THEME_PASSIVE + "A plate made out of Electrum used as",
-            Messages.THEME_PASSIVE + "a shell for basic storage components.",
+            Messages.THEME_PASSIVE + "A plate made out of Cupronickel used as",
+            Messages.THEME_PASSIVE + "a shell for intermediate storage components.",
             "",
             Messages.THEME_ITEM_TYPEDESC + "Crafting Material"
     );
 
     public static final ItemStack[] RECIPE = new ItemStack[] {
-                DieBasic.STACK,    new SlimefunItemStack(Electrum.STACK, 4),   null,
-                null,              null,                                              null,
-                null,              null,                                              null
+                DieReinforced.STACK, new SlimefunItemStack(CupronickelReinforced.STACK, 4), null,
+                null,                null,                                                          null,
+                null,                null,                                                          null
     };
 
-    public ElectrumPlate(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public CupronickelPlate(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         register(plugin);
     }

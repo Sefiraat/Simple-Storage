@@ -1,12 +1,14 @@
 package io.github.sefiraat.simplestorage;
 
 import io.github.sefiraat.simplestorage.configuration.ManagerConfiguration;
+import io.github.sefiraat.simplestorage.items.Blocks;
 import io.github.sefiraat.simplestorage.items.Machines;
 import io.github.sefiraat.simplestorage.items.SlimefunItemStacks;
 import io.github.sefiraat.simplestorage.runnables.ManagerRunnables;
 import io.github.sefiraat.simplestorage.slimefun.Categories;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 public class SimpleStorage extends JavaPlugin implements SlimefunAddon {
 
@@ -56,7 +58,7 @@ public class SimpleStorage extends JavaPlugin implements SlimefunAddon {
     }
 
     @Override
-    public JavaPlugin getJavaPlugin() {
+    public @NotNull JavaPlugin getJavaPlugin() {
         return this;
     }
 
@@ -64,6 +66,7 @@ public class SimpleStorage extends JavaPlugin implements SlimefunAddon {
         Categories.set(this);
         SlimefunItemStacks.set(this);
         Machines.set(this);
+        Blocks.set(this);
     }
 
 

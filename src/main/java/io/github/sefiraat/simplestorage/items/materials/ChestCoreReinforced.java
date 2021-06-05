@@ -10,26 +10,25 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class ElectrumPlate extends SlimefunItem implements NotPlaceable {
+public class ChestCoreReinforced extends SlimefunItem implements NotPlaceable {
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MATERIAL_ELECTRUM_PLATE",
-            Material.YELLOW_CARPET,
-            Messages.THEME_ITEM_CRAFTING + "Electrum Alloy Plate",
+            "MATERIAL_CHEST_CORE_REINFORCED",
+            Material.HEART_OF_THE_SEA,
+            Messages.THEME_ITEM_CRAFTING + "Reinforced Chest Core",
             "",
-            Messages.THEME_PASSIVE + "A plate made out of Electrum used as",
-            Messages.THEME_PASSIVE + "a shell for basic storage components.",
+            Messages.THEME_PASSIVE + "Used as the core for an gold chest.",
             "",
             Messages.THEME_ITEM_TYPEDESC + "Crafting Material"
     );
 
     public static final ItemStack[] RECIPE = new ItemStack[] {
-                DieBasic.STACK,    new SlimefunItemStack(Electrum.STACK, 4),   null,
-                null,              null,                                              null,
-                null,              null,                                              null
+            CupronickelPlate.STACK, CupronickelPlate.STACK, CupronickelPlate.STACK,
+            CupronickelPlate.STACK, GemProustite.STACK,     CupronickelPlate.STACK,
+            CupronickelPlate.STACK, Thermocouple.STACK,     CupronickelPlate.STACK
     };
 
-    public ElectrumPlate(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public ChestCoreReinforced(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         register(plugin);
     }

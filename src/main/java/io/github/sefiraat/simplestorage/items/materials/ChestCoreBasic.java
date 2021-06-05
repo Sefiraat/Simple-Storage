@@ -23,9 +23,9 @@ public class ChestCoreBasic extends SlimefunItem implements NotPlaceable {
     );
 
     public static final ItemStack[] RECIPE = new ItemStack[] {
-            Electrum.STACK, Electrum.STACK,      Electrum.STACK,
-            Electrum.STACK, Angelite.STACK,      Electrum.STACK,
-            Electrum.STACK, Thermocouple.STACK,  Electrum.STACK
+            ElectrumPlate.STACK, ElectrumPlate.STACK, ElectrumPlate.STACK,
+            ElectrumPlate.STACK, GemAngelite.STACK,   ElectrumPlate.STACK,
+            ElectrumPlate.STACK, Thermocouple.STACK,  ElectrumPlate.STACK
     };
 
     public ChestCoreBasic(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {

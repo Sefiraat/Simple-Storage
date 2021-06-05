@@ -17,22 +17,23 @@ import org.bukkit.block.Biome;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class Proustite extends SimpleSlimefunItem<ItemUseHandler> implements NotPlaceable, GEOResource {
+public class GemProustite extends SimpleSlimefunItem<ItemUseHandler> implements NotPlaceable, GEOResource {
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
             "MATERIAL_PROUSTITE",
             Skulls.ITEM_PROUSTITE,
             Messages.THEME_ITEM_CRAFTING + "Proustite Crystal",
             "",
-            Messages.THEME_PASSIVE + "Proustite crystals are a rare resource that",
-            Messages.THEME_PASSIVE + "are used for more advanced data transfer",
+            Messages.THEME_PASSIVE + "GemProustite crystals are a rare resource that",
+            Messages.THEME_PASSIVE + "are used for more advanced data transfer.",
+            Messages.THEME_PASSIVE + "Only found in the hottest locations.",
             "",
             Messages.THEME_ITEM_TYPEDESC + "Base Resource"
     );
 
     private final NamespacedKey key;
 
-    public Proustite(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public GemProustite(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         this.key = new NamespacedKey(SimpleStorage.getInstance(), "proustite_crystal");
         register();

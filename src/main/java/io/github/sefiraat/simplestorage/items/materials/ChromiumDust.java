@@ -11,29 +11,26 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class Zamak1 extends SlimefunItem implements NotPlaceable {
+public class ChromiumDust extends SlimefunItem implements NotPlaceable {
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MATERIAL_ZAMAK1",
-            Material.NETHERITE_INGOT,
-            Messages.THEME_ITEM_CRAFTING + "Zamak-1",
+            "MATERIAL_CHROMIUM_DUST",
+            Material.GUNPOWDER,
+            Messages.THEME_ITEM_CRAFTING + "Chromium Dust",
             "",
-            Messages.THEME_PASSIVE + "An alloy of Zinc, Aluminium and",
-            Messages.THEME_PASSIVE + "Copper. While this allow is not",
-            Messages.THEME_PASSIVE + "the strongest, it is useful for",
-            Messages.THEME_PASSIVE + "machine dies.",
+            Messages.THEME_PASSIVE + "A very rare metal. Needs to be worked.",
+            Messages.THEME_PASSIVE + "into ingots.",
             "",
             Messages.THEME_ITEM_TYPEDESC + "Crafting Material"
     );
 
     public static final ItemStack[] RECIPE = new ItemStack[] {
-                SlimefunItems.ZINC_INGOT,   SlimefunItems.ALUMINUM_DUST,    SlimefunItems.COPPER_DUST,
-                null,                       null,                           null,
-                null,                       null,                           null
+                ChromiteChunk.STACK,    null,   null,
+                null,                   null,   null,
+                null,                   null,   null
     };
 
-
-    public Zamak1(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public ChromiumDust(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         register(plugin);
     }

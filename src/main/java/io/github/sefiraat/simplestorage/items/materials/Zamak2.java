@@ -1,7 +1,6 @@
 package io.github.sefiraat.simplestorage.items.materials;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.statics.Materials;
 import io.github.sefiraat.simplestorage.statics.Messages;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -16,7 +15,7 @@ public class Zamak2 extends SlimefunItem implements NotPlaceable {
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
             "MATERIAL_ZAMAK2",
-            Material.IRON_INGOT,
+            Material.NETHERITE_INGOT,
             Messages.THEME_ITEM_CRAFTING + "Zamak-2",
             "",
             Messages.THEME_PASSIVE + "An alloy of Zinc, Aluminium and",

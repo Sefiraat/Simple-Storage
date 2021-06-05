@@ -15,6 +15,7 @@ public final class Messages {
     public static final ChatColor THEME_MAIN = ChatColor.of("#21588f");
     public static final ChatColor THEME_ITEM_CRAFTING = ChatColor.of("#dbcea9");
     public static final ChatColor THEME_ITEM_MACHINE = ChatColor.of("#3295a8");
+    public static final ChatColor THEME_ITEM_RARE_DROP = ChatColor.of("#bf307f");
     public static final ChatColor THEME_ITEM_TYPEDESC = ChatColor.of("#f0ea4f");
 
 

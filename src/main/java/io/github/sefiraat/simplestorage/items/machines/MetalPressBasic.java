@@ -3,9 +3,7 @@ package io.github.sefiraat.simplestorage.items.machines;
 import io.github.mooy1.infinitylib.recipes.RecipeMap;
 import io.github.mooy1.infinitylib.recipes.ShapedRecipe;
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.items.materials.DieBasic;
-import io.github.sefiraat.simplestorage.items.materials.Zamak1;
-import io.github.sefiraat.simplestorage.items.materials.Zamak3;
+import io.github.sefiraat.simplestorage.items.materials.*;
 import io.github.sefiraat.simplestorage.statics.Messages;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
@@ -17,12 +15,12 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class MetalPress extends AContainer implements RecipeDisplayItem {
+public class MetalPressBasic extends AContainer implements RecipeDisplayItem {
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MACHINE_METAL_PRESS",
+            "MACHINE_METAL_PRESS_BASIC",
             Material.STICKY_PISTON,
-            Messages.THEME_ITEM_MACHINE + "Metal Press",
+            Messages.THEME_ITEM_MACHINE + "Basic Metal Press",
             "",
             Messages.THEME_PASSIVE + "A mechanical metal press that can",
             Messages.THEME_PASSIVE + "create shaped metal plates from",
@@ -43,7 +41,7 @@ public class MetalPress extends AContainer implements RecipeDisplayItem {
     public static final int CAPACITY = 32768;
     public static final int CONSUMPTION = 8192;
 
-    public MetalPress(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public MetalPressBasic(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         setCapacity(CAPACITY);
         setEnergyConsumption(CONSUMPTION);
@@ -57,7 +55,7 @@ public class MetalPress extends AContainer implements RecipeDisplayItem {
 
     @Override
     protected void registerDefaultRecipes() {
-        addRecipe(20, Zamak1.STACK, DieBasic.STACK);
+        addRecipe(20, new SlimefunItemStack(Electrum.STACK, 4), ElectrumPlate.STACK);
     }
 
     @Override

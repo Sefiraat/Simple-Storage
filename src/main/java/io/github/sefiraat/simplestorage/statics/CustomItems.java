@@ -11,14 +11,14 @@ public final class CustomItems {
 
     public static CustomItem catSimpleStorageMaterials() {
         return new CustomItem(
-                SkullItem.fromBase64(Materials.CAT_MATERIALS),
-                Messages.THEME_MAIN + "Simple Storage Materials"
+                SkullItem.fromBase64(Skulls.CAT_MATERIALS),
+                Messages.THEME_MAIN + "Simple Storage Skulls"
         );
     }
 
     public static CustomItem catSimpleStorageMain() {
         return new CustomItem(
-                SkullItem.fromBase64(Materials.CAT_MAIN),
+                SkullItem.fromBase64(Skulls.CAT_MAIN),
                 Messages.THEME_MAIN + "Simple Storage"
         );
     }

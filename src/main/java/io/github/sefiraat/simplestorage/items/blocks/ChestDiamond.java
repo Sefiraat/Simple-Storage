@@ -2,8 +2,7 @@ package io.github.sefiraat.simplestorage.items.blocks;
 
 import io.github.mooy1.infinitylib.slimefun.AbstractTickingContainer;
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.items.materials.ChestCoreAdvanced;
-import io.github.sefiraat.simplestorage.items.materials.ChestCoreReinforced;
+import io.github.sefiraat.simplestorage.items.materials.diamond.ChestCoreAdvanced;
 import io.github.sefiraat.simplestorage.statics.Messages;
 import io.github.sefiraat.simplestorage.statics.Skulls;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -19,14 +18,14 @@ import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public final class ChestDiamond extends AbstractTickingContainer {
+public final class ChestDiamond extends SimpleChest {
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
             "BLOCK_CHEST_DIAMOND",
             Skulls.BLOCK_CHEST_DIAMOND,
-            Messages.THEME_ITEM_CRAFTING + "Diamond Chest",
+            Messages.THEME_ITEM_MACHINE + "Diamond Chest",
             "",
-            Messages.THEME_PASSIVE + "A chest with 192 item slots.",
+            Messages.THEME_PASSIVE + "A chest with 270 item slots.",
             "",
             Messages.THEME_ITEM_TYPEDESC + "Chest"
     );
@@ -38,22 +37,7 @@ public final class ChestDiamond extends AbstractTickingContainer {
     };
 
     public ChestDiamond(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(category, item, recipeType, recipe);
+        super(category, item, recipeType, recipe, 6);
         register(plugin);
-    }
-
-    @Override
-    protected void tick(@NotNull BlockMenu blockMenu, @NotNull Block block) {
-
-    }
-
-    @Override
-    protected void setupMenu(@NotNull BlockMenuPreset blockMenuPreset) {
-
-    }
-
-    @Override
-    protected int @NotNull [] getTransportSlots(@NotNull DirtyChestMenu dirtyChestMenu, @NotNull ItemTransportFlow itemTransportFlow, ItemStack itemStack) {
-        return new int[0];
     }
 }

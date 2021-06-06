@@ -14,7 +14,7 @@ public class RareDropEmerald {
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
             "MECHANIC_DROP_EMERALD",
-            Material.ANCIENT_DEBRIS,
+            Material.EMERALD_ORE,
             Messages.THEME_ITEM_RARE_DROP + "Rare Drop : Emerald",
             "",
             Messages.THEME_PASSIVE + "This item is a rare drop from",

@@ -1,8 +1,6 @@
-package io.github.sefiraat.simplestorage.items.materials.network;
+package io.github.sefiraat.simplestorage.items.materials;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.statics.Messages;
-import io.github.sefiraat.simplestorage.statics.Skulls;
 import io.github.thebusybiscuit.slimefun4.api.geo.GEOResource;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
@@ -15,25 +13,13 @@ import org.bukkit.block.Biome;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class GemQuartz extends UnplaceableBlock implements NotPlaceable, GEOResource {
-
-    public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MATERIAL_QUARTZGEM",
-            Skulls.ITEM_CLEAR_QUARTZ,
-            Messages.THEME_ITEM_CRAFTING + "Crystal Clear Quartz",
-            "",
-            Messages.THEME_PASSIVE + "This form of quartz is very rare",
-            Messages.THEME_PASSIVE + "and used for creating displays.",
-            Messages.THEME_PASSIVE + "Location unknown.",
-            "",
-            Messages.THEME_ITEM_TYPEDESC + "Base Resource"
-    );
+public class GemAngelite extends UnplaceableBlock implements NotPlaceable, GEOResource {
 
     private final NamespacedKey key;
 
-    public GemQuartz(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public GemAngelite(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
-        this.key = new NamespacedKey(SimpleStorage.inst(), "quartz_crystal");
+        this.key = new NamespacedKey(SimpleStorage.inst(), "angelite_crystal");
         register();
         register(plugin);
     }
@@ -43,22 +29,33 @@ public class GemQuartz extends UnplaceableBlock implements NotPlaceable, GEOReso
         switch (environment) {
             case NORMAL:
                 switch (biome) {
-                    case FLOWER_FOREST:
-                        return 2;
-                    case MUSHROOM_FIELDS:
-                    case MUSHROOM_FIELD_SHORE:
-                        return 4;
+                    case SNOWY_BEACH:
+                    case SNOWY_MOUNTAINS:
+                    case SNOWY_TAIGA:
+                    case SNOWY_TAIGA_HILLS:
+                    case SNOWY_TAIGA_MOUNTAINS:
+                    case SNOWY_TUNDRA:
+                    case COLD_OCEAN:
+                    case DEEP_COLD_OCEAN:
+                        return 25;
+                    case ICE_SPIKES:
+                    case FROZEN_OCEAN:
+                    case FROZEN_RIVER:
+                    case DEEP_FROZEN_OCEAN:
+                        return 40;
                     default:
-                        return 0;
+                        return 5;
                 }
-            default:
+            case NETHER:
                 return 0;
+            default:
+                return 15;
         }
     }
 
     @Override
     public int getMaxDeviation() {
-        return 1;
+        return 5;
     }
 
     @Override

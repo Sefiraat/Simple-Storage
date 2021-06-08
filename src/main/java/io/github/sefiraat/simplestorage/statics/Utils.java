@@ -12,12 +12,7 @@ import java.util.Random;
 public class Utils {
 
     public static int randInt(Random r, int min, int max) {
-        int randomNum = r.nextInt((max - min) + 1) + min;
-        return randomNum;
-    }
-
-    public static void debugMessage(String string) {
-        SimpleStorage.inst().getLogger().info(string);
+        return r.nextInt((max - min) + 1) + min;
     }
 
     public static ItemStack setGuiItem(ItemStack itemStack) {

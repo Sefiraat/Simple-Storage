@@ -1,19 +1,20 @@
 package io.github.sefiraat.simplestorage;
 
+import io.github.mooy1.infinitylib.AbstractAddon;
+import io.github.mooy1.infinitylib.bstats.bukkit.Metrics;
 import io.github.sefiraat.simplestorage.configuration.ManagerConfiguration;
 import io.github.sefiraat.simplestorage.items.Blocks;
 import io.github.sefiraat.simplestorage.items.Machines;
-import io.github.sefiraat.simplestorage.items.SlimefunItemStacks;
+import io.github.sefiraat.simplestorage.items.Materials;
 import io.github.sefiraat.simplestorage.listeners.ManagerListeners;
 import io.github.sefiraat.simplestorage.runnables.ManagerRunnables;
 import io.github.sefiraat.simplestorage.slimefun.Categories;
-import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import org.bukkit.plugin.java.JavaPlugin;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-public class SimpleStorage extends JavaPlugin implements SlimefunAddon {
+public class SimpleStorage extends AbstractAddon {
 
     private static SimpleStorage instance;
     public static SimpleStorage inst() {
@@ -41,7 +42,7 @@ public class SimpleStorage extends JavaPlugin implements SlimefunAddon {
     }
 
     @Override
-    public void onEnable() {
+    protected void enable() {
 
         instance = this;
 
@@ -61,24 +62,31 @@ public class SimpleStorage extends JavaPlugin implements SlimefunAddon {
     }
 
     @Override
-    public void onDisable() {
+    protected void disable() {
         saveConfig();
         managerConfiguration.saveAdditionalConfigs();
+        instance = null;
     }
 
     @Override
-    public String getBugTrackerURL() {
+    protected Metrics setupMetrics() {
+        return new Metrics(this,11622);
+    }
+
+    @Override
+    protected @NotNull String getGithubPath() {
+        return "Sefiraat/Simple-Storage/master";
+    }
+
+    @Override
+    public String getAutoUpdatePath() {
         return null;
     }
 
-    @Override
-    public @NotNull JavaPlugin getJavaPlugin() {
-        return this;
-    }
 
     private void setupSlimefun() {
         Categories.set(this);
-        SlimefunItemStacks.set(this);
+        Materials.set(this);
         Machines.set(this);
         Blocks.set(this);
     }

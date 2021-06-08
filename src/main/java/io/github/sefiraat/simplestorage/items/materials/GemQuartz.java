@@ -1,8 +1,6 @@
-package io.github.sefiraat.simplestorage.items.materials.gold;
+package io.github.sefiraat.simplestorage.items.materials;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.statics.Messages;
-import io.github.sefiraat.simplestorage.statics.Skulls;
 import io.github.thebusybiscuit.slimefun4.api.geo.GEOResource;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
@@ -15,25 +13,13 @@ import org.bukkit.block.Biome;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class GemProustite extends UnplaceableBlock implements NotPlaceable, GEOResource {
-
-    public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MATERIAL_PROUSTITE",
-            Skulls.ITEM_PROUSTITE,
-            Messages.THEME_ITEM_CRAFTING + "Proustite Crystal",
-            "",
-            Messages.THEME_PASSIVE + "Proustite crystals are a rare resource that",
-            Messages.THEME_PASSIVE + "are used for more advanced data transfer.",
-            Messages.THEME_PASSIVE + "Only found in the hottest locations.",
-            "",
-            Messages.THEME_ITEM_TYPEDESC + "Base Resource"
-    );
+public class GemQuartz extends UnplaceableBlock implements NotPlaceable, GEOResource {
 
     private final NamespacedKey key;
 
-    public GemProustite(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public GemQuartz(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
-        this.key = new NamespacedKey(SimpleStorage.inst(), "proustite_crystal");
+        this.key = new NamespacedKey(SimpleStorage.inst(), "quartz_crystal");
         register();
         register(plugin);
     }
@@ -41,8 +27,16 @@ public class GemProustite extends UnplaceableBlock implements NotPlaceable, GEOR
     @Override
     public int getDefaultSupply(@NotNull World.Environment environment, @NotNull Biome biome) {
         switch (environment) {
-            case NETHER:
-                return 2;
+            case NORMAL:
+                switch (biome) {
+                    case FLOWER_FOREST:
+                        return 2;
+                    case MUSHROOM_FIELDS:
+                    case MUSHROOM_FIELD_SHORE:
+                        return 4;
+                    default:
+                        return 0;
+                }
             default:
                 return 0;
         }
@@ -50,12 +44,12 @@ public class GemProustite extends UnplaceableBlock implements NotPlaceable, GEOR
 
     @Override
     public int getMaxDeviation() {
-        return 2;
+        return 1;
     }
 
     @Override
     public @NotNull String getName() {
-        return "Proustite Crystal";
+        return "Angelite Crystal";
     }
 
     @Override

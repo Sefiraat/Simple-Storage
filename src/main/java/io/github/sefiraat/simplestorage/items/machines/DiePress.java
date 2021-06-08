@@ -3,13 +3,7 @@ package io.github.sefiraat.simplestorage.items.machines;
 import io.github.mooy1.infinitylib.recipes.RecipeMap;
 import io.github.mooy1.infinitylib.recipes.ShapedRecipe;
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.items.materials.diamond.DieAdvanced;
-import io.github.sefiraat.simplestorage.items.materials.general_loop_one.Zamak1;
-import io.github.sefiraat.simplestorage.items.materials.general_loop_one.Zamak2;
-import io.github.sefiraat.simplestorage.items.materials.general_loop_one.Zamak3;
-import io.github.sefiraat.simplestorage.items.materials.gold.DieReinforced;
-import io.github.sefiraat.simplestorage.items.materials.iron.DieBasic;
-import io.github.sefiraat.simplestorage.statics.Messages;
+import io.github.sefiraat.simplestorage.items.SlimefunItemStacks;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -22,36 +16,18 @@ import org.jetbrains.annotations.NotNull;
 
 public class DiePress extends AContainer implements RecipeDisplayItem {
 
-    public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MACHINE_DIE_PRESS",
-            Material.PISTON,
-            Messages.THEME_ITEM_MACHINE + "Die Press",
-            "",
-            Messages.THEME_PASSIVE + "A mechanical die press that can",
-            Messages.THEME_PASSIVE + "create dies from certain metals.",
-            Messages.THEME_PASSIVE + "dies are used to shape other materials.",
-            "",
-            Messages.THEME_ITEM_TYPEDESC + "Machine"
-    );
-
-    public static final ItemStack[] RECIPE = new ItemStack[] {
-            Zamak1.STACK, new ItemStack(Material.PISTON), Zamak1.STACK,
-            Zamak1.STACK, null,                           Zamak1.STACK,
-            Zamak2.STACK, new ItemStack(Material.PISTON), Zamak2.STACK
-    };
-
     private static final RecipeMap<ItemStack> RECIPES = new RecipeMap<>(ShapedRecipe::new);
-    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "die-press"), STACK, RECIPES::put);
+    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "die-press"), SlimefunItemStacks.DIE_PRESS, RECIPES::put);
     public static final int SPEED = 1;
     public static final int CAPACITY = 16384;
     public static final int CONSUMPTION = 4096;
 
-    public DiePress(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public DiePress(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         setCapacity(CAPACITY);
         setEnergyConsumption(CONSUMPTION);
         setProcessingSpeed(SPEED);
-        register(plugin);
+        register(SimpleStorage.inst());
     }
 
     private void addRecipe(int seconds, ItemStack input, ItemStack output) {
@@ -60,9 +36,9 @@ public class DiePress extends AContainer implements RecipeDisplayItem {
 
     @Override
     protected void registerDefaultRecipes() {
-        addRecipe(20, Zamak1.STACK, DieBasic.STACK);
-        addRecipe(30, Zamak2.STACK, DieReinforced.STACK);
-        addRecipe(40, Zamak3.STACK, DieAdvanced.STACK);
+        addRecipe(20, SlimefunItemStacks.ZAMAK_1, SlimefunItemStacks.DIE_BASIC);
+        addRecipe(30, SlimefunItemStacks.ZAMAK_2, SlimefunItemStacks.DIE_REINFORCED);
+        addRecipe(40, SlimefunItemStacks.ZAMAK_3, SlimefunItemStacks.DIE_ADVANCED);
     }
 
     @Override

@@ -1,9 +1,9 @@
-package io.github.sefiraat.simplestorage.items.blocks;
+package io.github.sefiraat.simplestorage.items.chests;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.configuration.ManagerConfiguration;
-import io.github.sefiraat.simplestorage.statics.CustomItems;
-import io.github.sefiraat.simplestorage.statics.Messages;
+import io.github.sefiraat.simplestorage.statics.GuiItems;
+import io.github.sefiraat.simplestorage.statics.Theme;
 import io.github.sefiraat.simplestorage.statics.Skulls;
 import io.github.sefiraat.simplestorage.statics.Utils;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
@@ -18,7 +18,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.github.sefiraat.simplestorage.items.blocks.SimpleChest.SLOT_INPUT;
+import static io.github.sefiraat.simplestorage.items.chests.SimpleChest.SLOT_INPUT;
 
 public final class SimpleInventoryCache {
 
@@ -50,9 +50,9 @@ public final class SimpleInventoryCache {
             }
             blockMenu.replaceExistingItem(0, new CustomItem(
                     SkullItem.fromBase64(guiNumbers.get(skullID)),
-                    Messages.THEME_GUI_HEAD + "Info",
+                    Theme.GUI_HEAD + "Info",
                     "",
-                    Messages.THEME_CLICK_INFO + "Page number : " + page
+                    Theme.CLICK_INFO + "Page number : " + page
             ));
             return false;
         });
@@ -67,9 +67,9 @@ public final class SimpleInventoryCache {
             }
             blockMenu.replaceExistingItem(0, new CustomItem(
                     SkullItem.fromBase64(guiNumbers.get(skullID)),
-                    Messages.THEME_GUI_HEAD + "Info",
+                    Theme.GUI_HEAD + "Info",
                     "",
-                    Messages.THEME_CLICK_INFO + "Page number : " + page
+                    Theme.CLICK_INFO + "Page number : " + page
             ));
             return false;
         });
@@ -159,19 +159,19 @@ public final class SimpleInventoryCache {
             // Check for removing GUI icons from Master
             String close = BlockStorage.getLocationInfo(blockMenu.getBlock().getLocation(),"simpleclose");
             if (close != null && close.equals("n")) {
-                blockMenu.replaceExistingItem(8, CustomItems.menuBackground());
+                blockMenu.replaceExistingItem(8, GuiItems.menuBackground());
                 blockMenu.addMenuCloseHandler(player -> {
                 });
             }
             String rename = BlockStorage.getLocationInfo(blockMenu.getBlock().getLocation(),"simplerename");
             if (rename != null && rename.equals("n")) {
-                blockMenu.replaceExistingItem(7, CustomItems.menuBackground());
+                blockMenu.replaceExistingItem(7, GuiItems.menuBackground());
                 blockMenu.addMenuCloseHandler(player -> {
                 });
             }
             String setblock = BlockStorage.getLocationInfo(blockMenu.getBlock().getLocation(),"simplesetblock");
             if (rename != null && rename.equals("n")) {
-                blockMenu.replaceExistingItem(6, CustomItems.menuBackground());
+                blockMenu.replaceExistingItem(6, GuiItems.menuBackground());
                 blockMenu.addMenuCloseHandler(player -> {
                 });
             }
@@ -181,7 +181,7 @@ public final class SimpleInventoryCache {
                 int listSlotNo = ((page - 1) * 45) + (i + 1);
                 ItemStack itemStack = items.get(listSlotNo);
                 if (itemStack == null) {
-                    blockMenu.replaceExistingItem(slotNo, CustomItems.menuChestDummy());
+                    blockMenu.replaceExistingItem(slotNo, GuiItems.menuChestDummy());
                     blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> false);
                 } else {
                     ItemStack guiVersion = Utils.setGuiItem(itemStack.clone());
@@ -190,7 +190,7 @@ public final class SimpleInventoryCache {
                         if (!clickAction.isRightClicked()) {
                             if (player.getItemOnCursor().getType() == Material.AIR) {
                                 player.setItemOnCursor(itemStack.clone());
-                                blockMenu.replaceExistingItem(slotNo, CustomItems.menuChestDummy());
+                                blockMenu.replaceExistingItem(slotNo, GuiItems.menuChestDummy());
                                 blockMenu.addMenuClickHandler(slotNo, (player2, i2, itemStack2, clickAction2) -> false);
                                 ManagerConfiguration.setChestSlotItem(chestID, listSlotNo, null);
                                 return false;

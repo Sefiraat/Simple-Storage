@@ -7,30 +7,16 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public final class CustomItems {
+public final class GuiItems {
 
-    private CustomItems() {
+    private GuiItems() {
         throw new IllegalStateException("Utility class");
-    }
-
-    public static CustomItem catSimpleStorageMaterials() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.CAT_MATERIALS),
-                Messages.THEME_MAIN + "Simple Storage Materials"
-        );
-    }
-
-    public static CustomItem catSimpleStorageMain() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.CAT_MAIN),
-                Messages.THEME_MAIN + "Simple Storage"
-        );
     }
 
     public static CustomItem menuBackground() {
         return new CustomItem(
                 Material.GRAY_STAINED_GLASS_PANE,
-                Messages.THEME_PASSIVE + "Simple!",
+                Theme.PASSIVE + "Simple!",
                 ""
         );
     }
@@ -38,7 +24,7 @@ public final class CustomItems {
     public static CustomItem menuInfo() {
         return new CustomItem(
                 SkullItem.fromBase64(Skulls.GUI_NO1),
-                Messages.THEME_GUI_HEAD + "Info",
+                Theme.GUI_HEAD + "Info",
                 "",
                 "Page number : 1"
         );
@@ -47,56 +33,56 @@ public final class CustomItems {
     public static CustomItem menuChestPageBack() {
         return new CustomItem(
                 SkullItem.fromBase64(Skulls.GUI_BACK),
-                Messages.THEME_GUI_HEAD + "Back",
+                Theme.GUI_HEAD + "Back",
                 "",
-                Messages.THEME_CLICK_INFO + "Click to navigate back a page."
+                Theme.CLICK_INFO + "Click to navigate back a page."
         );
     }
 
     public static CustomItem menuChestPageForward() {
         return new CustomItem(
                 SkullItem.fromBase64(Skulls.GUI_FORWARD),
-                Messages.THEME_GUI_HEAD + "Forward",
+                Theme.GUI_HEAD + "Forward",
                 "",
-                Messages.THEME_CLICK_INFO + "Click to navigate forward a page."
+                Theme.CLICK_INFO + "Click to navigate forward a page."
         );
     }
 
     public static CustomItem menuChestDummy() {
         return new CustomItem(
                 Material.LIGHT_GRAY_STAINED_GLASS_PANE,
-                Messages.THEME_PASSIVE + "No item here"
+                Theme.PASSIVE + "No item here"
         );
     }
 
     public static CustomItem menuMasterDummy() {
         return new CustomItem(
                 Material.LIGHT_GRAY_STAINED_GLASS_PANE,
-                Messages.THEME_PASSIVE + "No inventory here"
+                Theme.PASSIVE + "No inventory here"
         );
     }
 
     public static CustomItem menuClose() {
         return new CustomItem(
                 SkullItem.fromBase64(Skulls.GUI_CLOSE),
-                Messages.THEME_GUI_HEAD + "Close"
+                Theme.GUI_HEAD + "Close"
         );
     }
 
     public static CustomItem menuRenameCell() {
         return new CustomItem(
                 SkullItem.fromBase64(Skulls.GUI_RENAME_CELL),
-                Messages.THEME_GUI_HEAD + "Rename Cell"
+                Theme.GUI_HEAD + "Rename Cell"
         );
     }
 
     public static CustomItem menuSetMaterial() {
         return new CustomItem(
                 SkullItem.fromBase64(Skulls.GUI_SET_ICON),
-                Messages.THEME_GUI_HEAD + "Set Icon",
+                Theme.GUI_HEAD + "Set Icon",
                 "",
-                Messages.THEME_ITEM_TYPEDESC + "Click this with an item on your",
-                Messages.THEME_ITEM_TYPEDESC + "mouse to set the icon for this inventory"
+                Theme.ITEM_TYPEDESC + "Click this with an item on your",
+                Theme.ITEM_TYPEDESC + "mouse to set the icon for this inventory"
         );
     }
 
@@ -112,9 +98,9 @@ public final class CustomItems {
         }
         return new CustomItem(
                 i,
-                Messages.THEME_GUI_HEAD + name,
+                Theme.GUI_HEAD + name,
                 "",
-                Messages.THEME_ITEM_TYPEDESC + "Cell number: " + number
+                Theme.ITEM_TYPEDESC + "Cell number: " + number
         );
     }
 

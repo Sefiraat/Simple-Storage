@@ -9,13 +9,11 @@ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 
 public final class Machines {
 
-
-
     public static void set(SimpleStorage plugin) {
 
-        new DiePress(plugin, Categories.SIMPLE_STORAGE_MAIN, DiePress.STACK, RecipeType.ENHANCED_CRAFTING_TABLE, DiePress.RECIPE);
-        new MetalPressBasic(plugin, Categories.SIMPLE_STORAGE_MAIN, MetalPressBasic.STACK, RecipeType.ENHANCED_CRAFTING_TABLE, MetalPressBasic.RECIPE);
-        new Enderator(plugin, Categories.SIMPLE_STORAGE_MAIN, Enderator.STACK, RecipeType.ENHANCED_CRAFTING_TABLE, Enderator.RECIPE);
+        new DiePress(Categories.MAIN, SlimefunItemStacks.DIE_PRESS, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItemRecipes.DIE_PRESS);
+        new MetalPressBasic(Categories.MAIN, SlimefunItemStacks.METAL_PRESS_BASIC, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItemRecipes.METAL_PRESS_BASIC);
+        new Enderator(Categories.MAIN, SlimefunItemStacks.ENDERATOR, RecipeType.ENHANCED_CRAFTING_TABLE, SlimefunItemRecipes.ENDERATOR);
 
     }
 

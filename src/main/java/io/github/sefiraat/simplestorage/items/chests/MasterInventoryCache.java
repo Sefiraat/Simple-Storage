@@ -1,8 +1,7 @@
-package io.github.sefiraat.simplestorage.items.blocks;
+package io.github.sefiraat.simplestorage.items.chests;
 
-import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.statics.CustomItems;
-import io.github.sefiraat.simplestorage.statics.Messages;
+import io.github.sefiraat.simplestorage.statics.GuiItems;
+import io.github.sefiraat.simplestorage.statics.Theme;
 import io.github.sefiraat.simplestorage.statics.Skulls;
 import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
@@ -43,9 +42,9 @@ public final class MasterInventoryCache {
             }
             blockMenu.replaceExistingItem(0, new CustomItem(
                     SkullItem.fromBase64(guiNumbers.get(skullID)),
-                    Messages.THEME_GUI_HEAD + "Info",
+                    Theme.GUI_HEAD + "Info",
                     "",
-                    Messages.THEME_CLICK_INFO + "Page number : " + page
+                    Theme.CLICK_INFO + "Page number : " + page
             ));
             return false;
         });
@@ -60,9 +59,9 @@ public final class MasterInventoryCache {
             }
             blockMenu.replaceExistingItem(0, new CustomItem(
                     SkullItem.fromBase64(guiNumbers.get(skullID)),
-                    Messages.THEME_GUI_HEAD + "Info",
+                    Theme.GUI_HEAD + "Info",
                     "",
-                    Messages.THEME_CLICK_INFO + "Page number : " + page
+                    Theme.CLICK_INFO + "Page number : " + page
             ));
             return false;
         });
@@ -138,7 +137,7 @@ public final class MasterInventoryCache {
                         material = Material.valueOf(BlockStorage.getLocationInfo(block.getLocation(), "cellmaterial"));
                     }
                     // Set item and add handler
-                    blockMenu.replaceExistingItem(slotNo, CustomItems.menuCell(listSlotNo, name, material));
+                    blockMenu.replaceExistingItem(slotNo, GuiItems.menuCell(listSlotNo, name, material));
                     blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> {
 
                         BlockMenu blockMenu = BlockStorage.getInventory(block);
@@ -146,7 +145,7 @@ public final class MasterInventoryCache {
                         // region CLOSE
                         // Add Close item to drilled down inventory - set block storage to show items added (for removing later)
                         BlockStorage.addBlockInfo(block, "simpleclose", "y");
-                        blockMenu.replaceExistingItem(8, CustomItems.menuClose());
+                        blockMenu.replaceExistingItem(8, GuiItems.menuClose());
                         blockMenu.addMenuClickHandler(8, (player2, i2, itemStack2, clickAction2) -> {
                             // Go back to main menu, set flags to N for removal
                             BlockMenu blockMenu1 = this.blockMenu;
@@ -161,7 +160,7 @@ public final class MasterInventoryCache {
                         // region RENAME
                         // Add Rename item to drilled down inventory - set block storage to show items added (for removing later)
                         BlockStorage.addBlockInfo(block, "simplerename", "y");
-                        blockMenu.replaceExistingItem(7, CustomItems.menuRenameCell());
+                        blockMenu.replaceExistingItem(7, GuiItems.menuRenameCell());
                         blockMenu.addMenuClickHandler(7, (player2, i2, itemStack2, clickAction2) -> {
                             // Prepare for item name in chat, flag rename item for removal
                             player2.closeInventory();
@@ -178,7 +177,7 @@ public final class MasterInventoryCache {
                         // region SETMATERIAL
                         // Add SetMaterial item to drilled down inventory - set block storage to show items added (for removing later)
                         BlockStorage.addBlockInfo(block, "simplesetblock", "y");
-                        blockMenu.replaceExistingItem(6, CustomItems.menuSetMaterial());
+                        blockMenu.replaceExistingItem(6, GuiItems.menuSetMaterial());
                         blockMenu.addMenuClickHandler(6, (player2, i2, itemStack2, clickAction2) -> {
                             Material m = player2.getItemOnCursor().getType();
                             if (m != Material.AIR) {
@@ -206,7 +205,7 @@ public final class MasterInventoryCache {
 
                     });
                 } else {
-                    blockMenu.replaceExistingItem(slotNo, CustomItems.menuMasterDummy());
+                    blockMenu.replaceExistingItem(slotNo, GuiItems.menuMasterDummy());
                     blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> false);
                 }
             }

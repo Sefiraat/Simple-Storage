@@ -3,12 +3,7 @@ package io.github.sefiraat.simplestorage.items.machines;
 import io.github.mooy1.infinitylib.recipes.RecipeMap;
 import io.github.mooy1.infinitylib.recipes.ShapedRecipe;
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.items.blocks.ChestDiamond;
-import io.github.sefiraat.simplestorage.items.blocks.InventoryCell;
-import io.github.sefiraat.simplestorage.items.materials.diamond.GemShortite;
-import io.github.sefiraat.simplestorage.items.materials.diamond.PewterReinforced;
-import io.github.sefiraat.simplestorage.items.materials.gold.CupronickelReinforced;
-import io.github.sefiraat.simplestorage.statics.Messages;
+import io.github.sefiraat.simplestorage.items.SlimefunItemStacks;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -21,41 +16,23 @@ import org.jetbrains.annotations.NotNull;
 
 public class Enderator extends AContainer implements RecipeDisplayItem {
 
-    public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MACHINE_ENDERATOR",
-            Material.RESPAWN_ANCHOR,
-            Messages.THEME_ITEM_MACHINE + "Enderator",
-            "",
-            Messages.THEME_PASSIVE + "Utilises Ender Pearls to twist the",
-            Messages.THEME_PASSIVE + "very fabric of an object into a more",
-            Messages.THEME_PASSIVE + "condensed point in space.",
-            "",
-            Messages.THEME_ITEM_TYPEDESC + "Machine"
-    );
-
-    public static final ItemStack[] RECIPE = new ItemStack[] {
-            PewterReinforced.STACK,      new ItemStack(Material.END_CRYSTAL), PewterReinforced.STACK,
-            CupronickelReinforced.STACK, null,                                CupronickelReinforced.STACK,
-            CupronickelReinforced.STACK, GemShortite.STACK,                   CupronickelReinforced.STACK
-    };
-
     private static final RecipeMap<ItemStack> RECIPES = new RecipeMap<>(ShapedRecipe::new);
-    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "enderator"), STACK, RECIPES::put);
+    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "enderator"), SlimefunItemStacks.ENDERATOR, RECIPES::put);
     public static final int SPEED = 1;
     public static final int CAPACITY = 131072;
     public static final int CONSUMPTION = 32768;
 
-    public Enderator(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public Enderator(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         setCapacity(CAPACITY);
         setEnergyConsumption(CONSUMPTION);
         setProcessingSpeed(SPEED);
-        register(plugin);
+        register(SimpleStorage.inst());
     }
 
     @Override
     protected void registerDefaultRecipes() {
-        registerRecipe(300, new ItemStack[]{ChestDiamond.STACK, new ItemStack(Material.ENDER_PEARL, 16)}, new ItemStack[]{InventoryCell.STACK});
+        registerRecipe(300, new ItemStack[]{SlimefunItemStacks.CHEST_DIAMOND, new ItemStack(Material.ENDER_PEARL, 16)}, new ItemStack[]{SlimefunItemStacks.INVENTORY_CELL});
     }
 
     @Override

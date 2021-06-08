@@ -1,6 +1,7 @@
 package io.github.sefiraat.simplestorage.items;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
+import io.github.sefiraat.simplestorage.items.materials.network.CommunicationBlock;
 import io.github.sefiraat.simplestorage.items.machines.DiePress;
 import io.github.sefiraat.simplestorage.items.machines.MetalPressBasic;
 import io.github.sefiraat.simplestorage.items.materials.diamond.*;
@@ -16,6 +17,8 @@ import io.github.sefiraat.simplestorage.slimefun.Categories;
 import io.github.sefiraat.simplestorage.statics.Messages;
 import io.github.sefiraat.simplestorage.statics.Skulls;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.inventory.ItemStack;
 
@@ -81,8 +84,20 @@ public final class SlimefunItemStacks {
         new ChestCoreBasic(plugin, Categories.SIMPLE_STORAGE_MATERIALS, ChestCoreBasic.STACK, RecipeType.ENHANCED_CRAFTING_TABLE, ChestCoreBasic.RECIPE);
         new ChestCoreReinforced(plugin, Categories.SIMPLE_STORAGE_MATERIALS, ChestCoreReinforced.STACK, RecipeType.ENHANCED_CRAFTING_TABLE, ChestCoreReinforced.RECIPE);
         new ChestCoreAdvanced(plugin, Categories.SIMPLE_STORAGE_MATERIALS, ChestCoreAdvanced.STACK, RecipeType.ENHANCED_CRAFTING_TABLE, ChestCoreAdvanced.RECIPE);
+        new CommunicationBlock(plugin, Categories.SIMPLE_STORAGE_MATERIALS, CommunicationBlock.STACK, RecipeType.ENHANCED_CRAFTING_TABLE, CommunicationBlock.RECIPE);
         new DisplayPanel(plugin, Categories.SIMPLE_STORAGE_MATERIALS, DisplayPanel.STACK, RecipeType.ENHANCED_CRAFTING_TABLE, DisplayPanel.RECIPE);
 
+        AContainer heatedPressureChamber = (AContainer) SlimefunItem.getByID("HEATED_PRESSURE_CHAMBER");
+        heatedPressureChamber.registerRecipe(60, new ItemStack[]{Cupronickel.STACK, BastnaesiteIngot.STACK}, new ItemStack[]{CupronickelReinforced.STACK});
+        heatedPressureChamber.registerRecipe(100, new ItemStack[]{Pewter.STACK, AntimonyIngot.STACK}, new ItemStack[]{PewterReinforced.STACK});
+        heatedPressureChamber.registerRecipe(150, new ItemStack[]{PewterPlate.STACK, NickelSuperalloyPlate.STACK}, new ItemStack[]{CombinedPlate.STACK});
+        heatedPressureChamber.registerRecipe(30, new ItemStack[]{Nisil.STACK, Nicrosil.STACK}, new ItemStack[]{Thermocouple.STACK});
+
+        AContainer heatedPressureChamber2 = (AContainer) SlimefunItem.getByID("HEATED_PRESSURE_CHAMBER_2");
+        heatedPressureChamber2.registerRecipe(60, new ItemStack[]{Cupronickel.STACK, BastnaesiteIngot.STACK}, new ItemStack[]{CupronickelReinforced.STACK});
+        heatedPressureChamber2.registerRecipe(100, new ItemStack[]{Pewter.STACK, AntimonyIngot.STACK}, new ItemStack[]{PewterReinforced.STACK});
+        heatedPressureChamber2.registerRecipe(150, new ItemStack[]{PewterPlate.STACK, NickelSuperalloyPlate.STACK}, new ItemStack[]{CombinedPlate.STACK});
+        heatedPressureChamber2.registerRecipe(30, new ItemStack[]{Nisil.STACK, Nicrosil.STACK}, new ItemStack[]{Thermocouple.STACK});
     }
 
 }

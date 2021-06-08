@@ -74,6 +74,8 @@ public final class SimpleInventoryCache {
             return false;
         });
 
+        blockMenu.addMenuClickHandler(SimpleChest.SLOT_INFO, ((player, i, itemStack, clickAction) -> false));
+
     }
 
     private void setupGuiNumbers() {

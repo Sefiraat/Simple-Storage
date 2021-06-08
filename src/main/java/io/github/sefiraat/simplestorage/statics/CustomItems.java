@@ -16,7 +16,7 @@ public final class CustomItems {
     public static CustomItem catSimpleStorageMaterials() {
         return new CustomItem(
                 SkullItem.fromBase64(Skulls.CAT_MATERIALS),
-                Messages.THEME_MAIN + "Simple Storage Skulls"
+                Messages.THEME_MAIN + "Simple Storage Materials"
         );
     }
 

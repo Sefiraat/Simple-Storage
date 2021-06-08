@@ -53,10 +53,6 @@ public class Enderator extends AContainer implements RecipeDisplayItem {
         register(plugin);
     }
 
-    private void addRecipe(int seconds, ItemStack input, ItemStack output) {
-        registerRecipe(seconds, new ItemStack[] { input }, new ItemStack[] { output });
-    }
-
     @Override
     protected void registerDefaultRecipes() {
         registerRecipe(300, new ItemStack[]{ChestDiamond.STACK, new ItemStack(Material.ENDER_PEARL, 16)}, new ItemStack[]{InventoryCell.STACK});

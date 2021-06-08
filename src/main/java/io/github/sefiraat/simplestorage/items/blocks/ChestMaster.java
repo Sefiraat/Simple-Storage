@@ -2,6 +2,7 @@ package io.github.sefiraat.simplestorage.items.blocks;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.items.materials.network.CombinedPlate;
+import io.github.sefiraat.simplestorage.items.materials.network.CommunicationBlock;
 import io.github.sefiraat.simplestorage.items.materials.network.DisplayPanel;
 import io.github.sefiraat.simplestorage.statics.Messages;
 import io.github.sefiraat.simplestorage.statics.Skulls;

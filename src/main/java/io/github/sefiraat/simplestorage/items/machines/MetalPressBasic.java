@@ -3,11 +3,13 @@ package io.github.sefiraat.simplestorage.items.machines;
 import io.github.mooy1.infinitylib.recipes.RecipeMap;
 import io.github.mooy1.infinitylib.recipes.ShapedRecipe;
 import io.github.sefiraat.simplestorage.SimpleStorage;
+import io.github.sefiraat.simplestorage.items.materials.diamond.DieAdvanced;
 import io.github.sefiraat.simplestorage.items.materials.diamond.PewterPlate;
 import io.github.sefiraat.simplestorage.items.materials.diamond.PewterReinforced;
 import io.github.sefiraat.simplestorage.items.materials.general_loop_one.Zamak3;
 import io.github.sefiraat.simplestorage.items.materials.gold.CupronickelPlate;
 import io.github.sefiraat.simplestorage.items.materials.gold.CupronickelReinforced;
+import io.github.sefiraat.simplestorage.items.materials.gold.DieReinforced;
 import io.github.sefiraat.simplestorage.items.materials.iron.DieBasic;
 import io.github.sefiraat.simplestorage.items.materials.iron.Electrum;
 import io.github.sefiraat.simplestorage.items.materials.iron.ElectrumPlate;
@@ -58,16 +60,12 @@ public class MetalPressBasic extends AContainer implements RecipeDisplayItem {
         register(plugin);
     }
 
-    private void addRecipe(int seconds, ItemStack input, ItemStack output) {
-        registerRecipe(seconds, new ItemStack[] { input }, new ItemStack[] { output });
-    }
-
     @Override
     protected void registerDefaultRecipes() {
-        addRecipe(20, new SlimefunItemStack(Electrum.STACK, 4), ElectrumPlate.STACK);
-        addRecipe(40, new SlimefunItemStack(CupronickelReinforced.STACK, 4), CupronickelPlate.STACK);
-        addRecipe(60, new SlimefunItemStack(PewterReinforced.STACK, 4), PewterPlate.STACK);
-        addRecipe(120, new SlimefunItemStack(NickelSuperalloy.STACK, 4), NickelSuperalloyPlate.STACK);
+        registerRecipe(20, new ItemStack[]{DieBasic.STACK, new SlimefunItemStack(Electrum.STACK, 4)}, new ItemStack[]{ElectrumPlate.STACK});
+        registerRecipe(40, new ItemStack[]{DieReinforced.STACK, new SlimefunItemStack(CupronickelReinforced.STACK, 4)}, new ItemStack[]{CupronickelPlate.STACK});
+        registerRecipe(60, new ItemStack[]{DieAdvanced.STACK, new SlimefunItemStack(PewterReinforced.STACK, 4)}, new ItemStack[]{PewterPlate.STACK});
+        registerRecipe(120, new ItemStack[]{DieAdvanced.STACK, new SlimefunItemStack(NickelSuperalloy.STACK, 4)}, new ItemStack[]{NickelSuperalloyPlate.STACK});
     }
 
     @Override

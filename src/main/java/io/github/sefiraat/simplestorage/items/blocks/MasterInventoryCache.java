@@ -94,14 +94,9 @@ public final class MasterInventoryCache {
     }
 
     public void updateItems() {
-        getChests();
-        pages = (int) Math.ceil(cells.size() / 45.0);
-    }
-
-    public void getChests() {
         cells.clear();
         getBlocks(blockMenu.getBlock(),4);
-        SimpleStorage.inst().getLogger().info(""+ cells.size());
+        pages = (int) Math.ceil(cells.size() / 45.0);
     }
 
     public void getBlocks(Block block, int size) {

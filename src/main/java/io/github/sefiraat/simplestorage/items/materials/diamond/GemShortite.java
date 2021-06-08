@@ -33,7 +33,7 @@ public class GemShortite extends UnplaceableBlock implements NotPlaceable, GEORe
 
     public GemShortite(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
-        this.key = new NamespacedKey(SimpleStorage.getInstance(), "shortite_crystal");
+        this.key = new NamespacedKey(SimpleStorage.inst(), "shortite_crystal");
         register();
         register(plugin);
     }

@@ -5,13 +5,13 @@ import io.github.sefiraat.simplestorage.configuration.ManagerConfiguration;
 import io.github.sefiraat.simplestorage.statics.CustomItems;
 import io.github.sefiraat.simplestorage.statics.Messages;
 import io.github.sefiraat.simplestorage.statics.Skulls;
+import io.github.sefiraat.simplestorage.statics.Utils;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 
@@ -20,7 +20,7 @@ import java.util.Map;
 
 import static io.github.sefiraat.simplestorage.items.blocks.SimpleChest.SLOT_INPUT;
 
-public final class InventoryCache {
+public final class SimpleInventoryCache {
 
     private final SimpleChest chest;
     private final BlockMenu blockMenu;
@@ -32,7 +32,7 @@ public final class InventoryCache {
     private Map<Integer, String> guiNumbers = new HashMap<>();
     private Map<Integer, ItemStack> items = new HashMap<>();
 
-    public InventoryCache(SimpleChest simpleChest, BlockMenu blockMenu, int pages, int chestID) {
+    public SimpleInventoryCache(SimpleChest simpleChest, BlockMenu blockMenu, int pages, int chestID) {
         this.chest = simpleChest;
         this.blockMenu = blockMenu;
         this.pages = pages;
@@ -102,13 +102,9 @@ public final class InventoryCache {
 
     public void updateItems() {
         items.clear();
-        ConfigurationSection section = SimpleStorage.getInstance().getManagerConfiguration().getChestConfig().getConfigurationSection("CHESTS." + chestID);
+        ConfigurationSection section = SimpleStorage.inst().getManagerConfiguration().getChestConfig().getConfigurationSection("CHESTS." + chestID);
         for (int i = 1; i <= (pages * 45); i++) {
             ItemStack itemStack = section.getItemStack("SLOT-" + i);
-            if (itemStack != null) {
-            } else {
-
-            }
             items.put(i, itemStack);
         }
     }
@@ -116,7 +112,6 @@ public final class InventoryCache {
     public void input() {
         ItemStack input = blockMenu.getItemInSlot(SLOT_INPUT);
         if (input == null) {
-
             return;
         }
         // Check matching first
@@ -158,6 +153,27 @@ public final class InventoryCache {
 
     public void updateView() {
         if (blockMenu.hasViewer()) {
+
+            // Check for removing GUI icons from Master
+            String close = BlockStorage.getLocationInfo(blockMenu.getBlock().getLocation(),"simpleclose");
+            if (close != null && close.equals("n")) {
+                blockMenu.replaceExistingItem(8, CustomItems.menuBackground());
+                blockMenu.addMenuCloseHandler(player -> {
+                });
+            }
+            String rename = BlockStorage.getLocationInfo(blockMenu.getBlock().getLocation(),"simplerename");
+            if (rename != null && rename.equals("n")) {
+                blockMenu.replaceExistingItem(7, CustomItems.menuBackground());
+                blockMenu.addMenuCloseHandler(player -> {
+                });
+            }
+            String setblock = BlockStorage.getLocationInfo(blockMenu.getBlock().getLocation(),"simplesetblock");
+            if (rename != null && rename.equals("n")) {
+                blockMenu.replaceExistingItem(6, CustomItems.menuBackground());
+                blockMenu.addMenuCloseHandler(player -> {
+                });
+            }
+
             for (int i = 0; i < 45 ; i++) {
                 int slotNo = i + 9;
                 int listSlotNo = ((page - 1) * 45) + (i + 1);
@@ -166,7 +182,8 @@ public final class InventoryCache {
                     blockMenu.replaceExistingItem(slotNo, CustomItems.menuChestDummy());
                     blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> false);
                 } else {
-                    blockMenu.replaceExistingItem(slotNo, itemStack);
+                    ItemStack guiVersion = Utils.setGuiItem(itemStack.clone());
+                    blockMenu.replaceExistingItem(slotNo, guiVersion);
                     blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> {
                         if (!clickAction.isRightClicked()) {
                             if (player.getItemOnCursor().getType() == Material.AIR) {
@@ -184,7 +201,7 @@ public final class InventoryCache {
         }
     }
 
-    public void process(Block block) {
+    public void process() {
         updateItems();
         input();
         updateView();
@@ -197,7 +214,7 @@ public final class InventoryCache {
     }
 
     public void dropItems(Location location) {
-        ConfigurationSection section = SimpleStorage.getInstance().getManagerConfiguration().getChestConfig().getConfigurationSection("CHESTS." + chestID);
+        ConfigurationSection section = SimpleStorage.inst().getManagerConfiguration().getChestConfig().getConfigurationSection("CHESTS." + chestID);
         for (String s : section.getKeys(false)) {
             if (!s.equals("PLACED")) {
                 ItemStack itemStack = section.getItemStack(s);

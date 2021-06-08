@@ -10,21 +10,21 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
-public class RareDropRedstone {
+public class RareDropLapis {
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MECHANIC_DROP_REDSTONE",
-            Material.REDSTONE_ORE,
-            Messages.THEME_ITEM_RARE_DROP + "Rare Drop: Redstone",
+            "MECHANIC_DROP_LAPIS",
+            Material.LAPIS_ORE,
+            Messages.THEME_ITEM_RARE_DROP + "Rare Drop: Lapis",
             "",
             Messages.THEME_PASSIVE + "This item is a rare drop from",
-            Messages.THEME_PASSIVE + "redstone ore. The block actually needs",
+            Messages.THEME_PASSIVE + "Lapis. The block actually needs",
             Messages.THEME_PASSIVE + "to break, no Silk Touch.",
             "",
             Messages.THEME_ITEM_TYPEDESC + "Drop"
     );
 
     private static final RecipeMap<ItemStack> RECIPES = new RecipeMap<>(ShapedRecipe::new);
-    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "drop-redstone"), STACK, RECIPES::put);
+    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "drop-lapis"), STACK, RECIPES::put);
 
 }

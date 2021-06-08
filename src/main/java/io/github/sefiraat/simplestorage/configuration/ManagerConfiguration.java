@@ -5,7 +5,6 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
@@ -80,7 +79,7 @@ public class ManagerConfiguration {
     }
 
     public static Integer getNextChestID() {
-        FileConfiguration c = SimpleStorage.getInstance().getManagerConfiguration().chestConfig;
+        FileConfiguration c = SimpleStorage.inst().getManagerConfiguration().chestConfig;
         ConfigurationSection section = c.getConfigurationSection("CHESTS");
         int nextValue = 1;
         if (section != null) {
@@ -96,22 +95,22 @@ public class ManagerConfiguration {
     }
 
     public static void removeChestID(int id) {
-        FileConfiguration c = SimpleStorage.getInstance().getManagerConfiguration().chestConfig;
+        FileConfiguration c = SimpleStorage.inst().getManagerConfiguration().chestConfig;
         c.set("CHESTS." + id, null);
     }
 
     public static void setupChest(Integer id) {
-        FileConfiguration c = SimpleStorage.getInstance().getManagerConfiguration().getChestConfig();
+        FileConfiguration c = SimpleStorage.inst().getManagerConfiguration().getChestConfig();
         c.set("CHESTS." + id + ".PLACED", true);
     }
 
     public static void setChestSlotItem(int id, int slot, ItemStack itemStack) {
-        FileConfiguration c = SimpleStorage.getInstance().getManagerConfiguration().getChestConfig();
+        FileConfiguration c = SimpleStorage.inst().getManagerConfiguration().getChestConfig();
         c.set("CHESTS." + id + ".SLOT-" + slot, itemStack);
     }
 
     public static ItemStack getChestSlotItem(int id, int slot, ItemStack itemStack) {
-        FileConfiguration c = SimpleStorage.getInstance().getManagerConfiguration().getChestConfig();
+        FileConfiguration c = SimpleStorage.inst().getManagerConfiguration().getChestConfig();
         return c.getItemStack("CHESTS." + id + ".SLOT-" + slot, itemStack);
     }
 

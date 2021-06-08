@@ -33,7 +33,7 @@ public class GemProustite extends UnplaceableBlock implements NotPlaceable, GEOR
 
     public GemProustite(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
-        this.key = new NamespacedKey(SimpleStorage.getInstance(), "proustite_crystal");
+        this.key = new NamespacedKey(SimpleStorage.inst(), "proustite_crystal");
         register();
         register(plugin);
     }

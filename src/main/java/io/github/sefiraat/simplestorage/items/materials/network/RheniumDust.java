@@ -1,7 +1,6 @@
-package io.github.sefiraat.simplestorage.items.materials.general_loop_one;
+package io.github.sefiraat.simplestorage.items.materials.network;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.items.SlimefunItemStacks;
 import io.github.sefiraat.simplestorage.statics.Messages;
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
@@ -11,12 +10,12 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class ChromiumDust extends SlimefunItem implements NotPlaceable {
+public class RheniumDust extends SlimefunItem implements NotPlaceable {
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MATERIAL_CHROMIUM_DUST",
+            "MATERIAL_RHENIUM_DUST",
             Material.GUNPOWDER,
-            Messages.THEME_ITEM_CRAFTING + "Chromium Dust",
+            Messages.THEME_ITEM_CRAFTING + "Rhenium Dust",
             "",
             Messages.THEME_PASSIVE + "A very rare metal. Needs to be worked.",
             Messages.THEME_PASSIVE + "into ingots.",
@@ -25,12 +24,12 @@ public class ChromiumDust extends SlimefunItem implements NotPlaceable {
     );
 
     public static final ItemStack[] RECIPE = new ItemStack[] {
-                SlimefunItemStacks.MATERIAL_CHROMITE_CHUNK,    null,   null,
+                RheniumChunk.STACK,     null,   null,
                 null,                   null,   null,
                 null,                   null,   null
     };
 
-    public ChromiumDust(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public RheniumDust(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         register(plugin);
     }

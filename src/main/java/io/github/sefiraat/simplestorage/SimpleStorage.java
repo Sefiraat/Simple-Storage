@@ -16,7 +16,7 @@ import java.util.Random;
 public class SimpleStorage extends JavaPlugin implements SlimefunAddon {
 
     private static SimpleStorage instance;
-    public static SimpleStorage getInstance() {
+    public static SimpleStorage inst() {
         return instance;
     }
 

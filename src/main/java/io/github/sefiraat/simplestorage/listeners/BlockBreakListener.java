@@ -1,9 +1,10 @@
 package io.github.sefiraat.simplestorage.listeners;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
+import io.github.sefiraat.simplestorage.items.SlimefunItemStacks;
 import io.github.sefiraat.simplestorage.items.materials.diamond.AntimonyChunk;
-import io.github.sefiraat.simplestorage.items.materials.general_loop_one.ChromiteChunk;
 import io.github.sefiraat.simplestorage.items.materials.gold.BastnaesiteChunk;
+import io.github.sefiraat.simplestorage.items.materials.network.RheniumChunk;
 import io.github.sefiraat.simplestorage.statics.Utils;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
@@ -15,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
 public class BlockBreakListener implements Listener {
 
     public BlockBreakListener() {
-        SimpleStorage.getInstance().getServer().getPluginManager().registerEvents(this, SimpleStorage.getInstance());
+        SimpleStorage.inst().getServer().getPluginManager().registerEvents(this, SimpleStorage.inst());
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
@@ -33,32 +34,39 @@ public class BlockBreakListener implements Listener {
                     case EMERALD_ORE:
                         triggerEmerald(event);
                         break;
+                    case LAPIS_ORE:
+                        triggerLapis(event);
+                        break;
                 }
             }
         }
     }
 
     private void triggerRedstone(BlockBreakEvent event) {
-        int randomInt = Utils.randInt(SimpleStorage.getInstance().getRandom(), 1, 100);
-        event.getPlayer().sendMessage("" + randomInt);
-        if (randomInt > 70) {
-            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), ChromiteChunk.STACK.clone());
+        int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
+        if (randomInt > 60) {
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), SlimefunItemStacks.MATERIAL_CHROMITE_CHUNK.clone());
         }
     }
 
     private void triggerDiamond(BlockBreakEvent event) {
-        int randomInt = Utils.randInt(SimpleStorage.getInstance().getRandom(), 1, 100);
-        event.getPlayer().sendMessage("" + randomInt);
-        if (randomInt > 80) {
+        int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
+        if (randomInt > 65) {
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), BastnaesiteChunk.STACK.clone());
         }
     }
 
     private void triggerEmerald(BlockBreakEvent event) {
-        int randomInt = Utils.randInt(SimpleStorage.getInstance().getRandom(), 1, 100);
-        event.getPlayer().sendMessage("" + randomInt);
-        if (randomInt > 90) {
+        int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
+        if (randomInt > 70) {
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), AntimonyChunk.STACK.clone());
+        }
+    }
+
+    private void triggerLapis(BlockBreakEvent event) {
+        int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
+        if (randomInt > 75) {
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), RheniumChunk.STACK.clone());
         }
     }
 

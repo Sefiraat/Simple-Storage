@@ -3,8 +3,11 @@ package io.github.sefiraat.simplestorage.items.machines;
 import io.github.mooy1.infinitylib.recipes.RecipeMap;
 import io.github.mooy1.infinitylib.recipes.ShapedRecipe;
 import io.github.sefiraat.simplestorage.SimpleStorage;
+import io.github.sefiraat.simplestorage.items.materials.diamond.DieAdvanced;
 import io.github.sefiraat.simplestorage.items.materials.general_loop_one.Zamak1;
 import io.github.sefiraat.simplestorage.items.materials.general_loop_one.Zamak2;
+import io.github.sefiraat.simplestorage.items.materials.general_loop_one.Zamak3;
+import io.github.sefiraat.simplestorage.items.materials.gold.DieReinforced;
 import io.github.sefiraat.simplestorage.items.materials.iron.DieBasic;
 import io.github.sefiraat.simplestorage.statics.Messages;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
@@ -38,7 +41,7 @@ public class DiePress extends AContainer implements RecipeDisplayItem {
     };
 
     private static final RecipeMap<ItemStack> RECIPES = new RecipeMap<>(ShapedRecipe::new);
-    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.getInstance(), "die-press"), STACK, RECIPES::put);
+    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "die-press"), STACK, RECIPES::put);
     public static final int SPEED = 1;
     public static final int CAPACITY = 16384;
     public static final int CONSUMPTION = 4096;
@@ -58,6 +61,8 @@ public class DiePress extends AContainer implements RecipeDisplayItem {
     @Override
     protected void registerDefaultRecipes() {
         addRecipe(20, Zamak1.STACK, DieBasic.STACK);
+        addRecipe(30, Zamak2.STACK, DieReinforced.STACK);
+        addRecipe(40, Zamak3.STACK, DieAdvanced.STACK);
     }
 
     @Override

@@ -15,7 +15,7 @@ public class RareDropEmerald {
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
             "MECHANIC_DROP_EMERALD",
             Material.EMERALD_ORE,
-            Messages.THEME_ITEM_RARE_DROP + "Rare Drop : Emerald",
+            Messages.THEME_ITEM_RARE_DROP + "Rare Drop: Emerald",
             "",
             Messages.THEME_PASSIVE + "This item is a rare drop from",
             Messages.THEME_PASSIVE + "emerald. The block actually needs",
@@ -25,6 +25,6 @@ public class RareDropEmerald {
     );
 
     private static final RecipeMap<ItemStack> RECIPES = new RecipeMap<>(ShapedRecipe::new);
-    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.getInstance(), "drop-emerald"), STACK, RECIPES::put);
+    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "drop-emerald"), STACK, RECIPES::put);
 
 }

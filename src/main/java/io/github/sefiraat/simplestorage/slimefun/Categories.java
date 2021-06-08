@@ -11,8 +11,8 @@ public final class Categories {
         throw new IllegalStateException("Utility class");
     }
 
-    public static final Category SIMPLE_STORAGE_MATERIALS = new Category(new NamespacedKey(SimpleStorage.getInstance(), "simple-storage-materials"), CustomItems.catSimpleStorageMaterials());
-    public static final Category SIMPLE_STORAGE_MAIN = new Category(new NamespacedKey(SimpleStorage.getInstance(), "simple-storage-main"), CustomItems.catSimpleStorageMain());
+    public static final Category SIMPLE_STORAGE_MATERIALS = new Category(new NamespacedKey(SimpleStorage.inst(), "simple-storage-materials"), CustomItems.catSimpleStorageMaterials());
+    public static final Category SIMPLE_STORAGE_MAIN = new Category(new NamespacedKey(SimpleStorage.inst(), "simple-storage-main"), CustomItems.catSimpleStorageMain());
 
     public static void set(SimpleStorage plugin) {
         SIMPLE_STORAGE_MATERIALS.register(plugin);

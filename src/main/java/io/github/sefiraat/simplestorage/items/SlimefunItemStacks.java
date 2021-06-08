@@ -16,6 +16,7 @@ import io.github.sefiraat.simplestorage.items.other.RareDropRedstone;
 import io.github.sefiraat.simplestorage.slimefun.Categories;
 import io.github.sefiraat.simplestorage.statics.Messages;
 import io.github.sefiraat.simplestorage.statics.Skulls;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
@@ -87,13 +88,13 @@ public final class SlimefunItemStacks {
         new CommunicationBlock(plugin, Categories.SIMPLE_STORAGE_MATERIALS, CommunicationBlock.STACK, RecipeType.ENHANCED_CRAFTING_TABLE, CommunicationBlock.RECIPE);
         new DisplayPanel(plugin, Categories.SIMPLE_STORAGE_MATERIALS, DisplayPanel.STACK, RecipeType.ENHANCED_CRAFTING_TABLE, DisplayPanel.RECIPE);
 
-        AContainer heatedPressureChamber = (AContainer) SlimefunItem.getByID("HEATED_PRESSURE_CHAMBER");
+        AContainer heatedPressureChamber = (AContainer) SlimefunItems.HEATED_PRESSURE_CHAMBER.getItem();
         heatedPressureChamber.registerRecipe(60, new ItemStack[]{Cupronickel.STACK, BastnaesiteIngot.STACK}, new ItemStack[]{CupronickelReinforced.STACK});
         heatedPressureChamber.registerRecipe(100, new ItemStack[]{Pewter.STACK, AntimonyIngot.STACK}, new ItemStack[]{PewterReinforced.STACK});
         heatedPressureChamber.registerRecipe(150, new ItemStack[]{PewterPlate.STACK, NickelSuperalloyPlate.STACK}, new ItemStack[]{CombinedPlate.STACK});
         heatedPressureChamber.registerRecipe(30, new ItemStack[]{Nisil.STACK, Nicrosil.STACK}, new ItemStack[]{Thermocouple.STACK});
 
-        AContainer heatedPressureChamber2 = (AContainer) SlimefunItem.getByID("HEATED_PRESSURE_CHAMBER_2");
+        AContainer heatedPressureChamber2 = (AContainer) SlimefunItems.HEATED_PRESSURE_CHAMBER_2.getItem();
         heatedPressureChamber2.registerRecipe(60, new ItemStack[]{Cupronickel.STACK, BastnaesiteIngot.STACK}, new ItemStack[]{CupronickelReinforced.STACK});
         heatedPressureChamber2.registerRecipe(100, new ItemStack[]{Pewter.STACK, AntimonyIngot.STACK}, new ItemStack[]{PewterReinforced.STACK});
         heatedPressureChamber2.registerRecipe(150, new ItemStack[]{PewterPlate.STACK, NickelSuperalloyPlate.STACK}, new ItemStack[]{CombinedPlate.STACK});

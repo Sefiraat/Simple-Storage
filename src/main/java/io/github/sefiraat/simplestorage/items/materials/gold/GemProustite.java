@@ -22,7 +22,7 @@ public class GemProustite extends UnplaceableBlock implements NotPlaceable, GEOR
             Skulls.ITEM_PROUSTITE,
             Messages.THEME_ITEM_CRAFTING + "Proustite Crystal",
             "",
-            Messages.THEME_PASSIVE + "GemProustite crystals are a rare resource that",
+            Messages.THEME_PASSIVE + "Proustite crystals are a rare resource that",
             Messages.THEME_PASSIVE + "are used for more advanced data transfer.",
             Messages.THEME_PASSIVE + "Only found in the hottest locations.",
             "",

@@ -10,25 +10,25 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
-public final class RareDropDiamond {
+public final class RareDropCoal {
 
-    private RareDropDiamond() {
+    private RareDropCoal() {
         throw new IllegalStateException("Utility class");
     }
 
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
-            "MECHANIC_DROP_DIAMOND",
-            Material.DIAMOND_ORE,
-            Theme.ITEM_RARE_DROP + "Rare Drop: Diamond",
+            "MECHANIC_DROP_COAL",
+            Material.COAL_ORE,
+            Theme.ITEM_RARE_DROP + "Rare Drop: Coal",
             "",
             Theme.PASSIVE + "This item is a rare drop from",
-            Theme.PASSIVE + "diamond ore. The block actually needs",
+            Theme.PASSIVE + "coal ore. The block actually needs",
             Theme.PASSIVE + "to break, no Silk Touch.",
             "",
             Theme.LORE_TYPE_DROP
     );
 
     private static final RecipeMap<ItemStack> RECIPES = new RecipeMap<>(ShapedRecipe::new);
-    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "drop-diamond"), STACK, RECIPES::put);
+    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "drop-coal"), STACK, RECIPES::put);
 
 }

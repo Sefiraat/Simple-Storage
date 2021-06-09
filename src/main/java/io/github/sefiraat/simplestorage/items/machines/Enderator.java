@@ -32,7 +32,11 @@ public final class Enderator extends AContainer implements RecipeDisplayItem {
 
     @Override
     protected void registerDefaultRecipes() {
-        registerRecipe(300, new ItemStack[]{SlimefunItemStacks.CHEST_DIAMOND, new ItemStack(Material.ENDER_PEARL, 16)}, new ItemStack[]{SlimefunItemStacks.INVENTORY_CELL});
+        registerRecipe(300, SlimefunItemStacks.CHEST_DIAMOND, SlimefunItemStacks.INVENTORY_CELL);
+        registerRecipe(5, new SlimefunItemStack(SlimefunItemStacks.CHUNK_CHROMITE, 2), SlimefunItemStacks.CHUNK_BASTNAESITE);
+        registerRecipe(5, new SlimefunItemStack(SlimefunItemStacks.CHUNK_BASTNAESITE, 2), SlimefunItemStacks.CHUNK_ANTIMONY);
+        registerRecipe(5, new SlimefunItemStack(SlimefunItemStacks.CHUNK_ANTIMONY, 2), SlimefunItemStacks.RHENIUM_CHUNK);
+        registerRecipe(5, new SlimefunItemStack(SlimefunItemStacks.RHENIUM_CHUNK, 2), SlimefunItemStacks.CHUNK_CHROMITE);
     }
 
     @Override

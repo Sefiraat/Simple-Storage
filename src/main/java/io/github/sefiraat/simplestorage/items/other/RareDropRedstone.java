@@ -22,7 +22,7 @@ public final class RareDropRedstone {
             Theme.ITEM_RARE_DROP + "Rare Drop: Redstone",
             "",
             Theme.PASSIVE + "This item is a rare drop from",
-            Theme.PASSIVE + "redstone ore. The block actually needs",
+            Theme.PASSIVE + "Redstone ore. The block actually needs",
             Theme.PASSIVE + "to break, no Silk Touch.",
             "",
             Theme.LORE_TYPE_DROP

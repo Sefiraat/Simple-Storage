@@ -7,10 +7,10 @@ import io.github.sefiraat.simplestorage.items.materials.GemAngelite;
 import io.github.sefiraat.simplestorage.items.materials.GemProustite;
 import io.github.sefiraat.simplestorage.items.materials.GemQuartz;
 import io.github.sefiraat.simplestorage.items.materials.GemShortite;
-import io.github.sefiraat.simplestorage.items.other.RareDropDiamond;
-import io.github.sefiraat.simplestorage.items.other.RareDropEmerald;
+import io.github.sefiraat.simplestorage.items.other.RareDropQuartz;
 import io.github.sefiraat.simplestorage.items.other.RareDropLapis;
 import io.github.sefiraat.simplestorage.items.other.RareDropRedstone;
+import io.github.sefiraat.simplestorage.items.other.RareDropCoal;
 import io.github.sefiraat.simplestorage.slimefun.Categories;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
@@ -32,10 +32,10 @@ public final class Materials {
         new GemShortite(p, Categories.MAT, SlimefunItemStacks.SHORTITE, RecipeType.GEO_MINER, new ItemStack[9]);
         new GemQuartz(p, Categories.MAT, SlimefunItemStacks.CLEARQUARTZ, RecipeType.GEO_MINER, new ItemStack[9]);
 
-        new UnplaceableBlock(Categories.MAT, SlimefunItemStacks.CHUNK_CHROMITE, RareDropRedstone.TYPE, new ItemStack[9]).register(p);
-        new UnplaceableBlock(Categories.MAT, SlimefunItemStacks.CHUNK_BASTNAESITE, RareDropDiamond.TYPE, new ItemStack[9]).register(p);
-        new UnplaceableBlock(Categories.MAT, SlimefunItemStacks.CHUNK_ANTIMONY, RareDropEmerald.TYPE, new ItemStack[9]).register(p);
-        new UnplaceableBlock(Categories.MAT, SlimefunItemStacks.RHENIUM_CHUNK, RareDropLapis.TYPE, new ItemStack[9]).register(p);
+        new UnplaceableBlock(Categories.MAT, SlimefunItemStacks.CHUNK_CHROMITE, RareDropCoal.TYPE, new ItemStack[9]).register(p);
+        new UnplaceableBlock(Categories.MAT, SlimefunItemStacks.CHUNK_BASTNAESITE, RareDropQuartz.TYPE, new ItemStack[9]).register(p);
+        new UnplaceableBlock(Categories.MAT, SlimefunItemStacks.CHUNK_ANTIMONY, RareDropLapis.TYPE, new ItemStack[9]).register(p);
+        new UnplaceableBlock(Categories.MAT, SlimefunItemStacks.RHENIUM_CHUNK, RareDropRedstone.TYPE, new ItemStack[9]).register(p);
 
         new SlimefunItem(Categories.MAT, SlimefunItemStacks.CHROMIUM_DUST, RecipeType.ORE_CRUSHER, SlimefunItemRecipes.CHROMIUM_DUST).register(p);
         new SlimefunItem(Categories.MAT, SlimefunItemStacks.BASTNAESITE_DUST, RecipeType.ORE_CRUSHER, SlimefunItemRecipes.BASTNAESITE_DUST).register(p);

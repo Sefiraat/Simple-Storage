@@ -22,17 +22,17 @@ public class BlockBreakListener implements Listener {
             ItemStack itemStack = event.getPlayer().getInventory().getItemInMainHand();
             if (!itemStack.containsEnchantment(Enchantment.SILK_TOUCH)) {
                 switch (event.getBlock().getType()) {
+                    case COAL_ORE:
+                        coal(event);
+                        break;
+                    case NETHER_QUARTZ_ORE:
+                        quartz(event);
+                        break;
                     case REDSTONE_ORE:
-                        triggerRedstone(event);
-                        break;
-                    case DIAMOND_ORE:
-                        triggerDiamond(event);
-                        break;
-                    case EMERALD_ORE:
-                        triggerEmerald(event);
+                        redstone(event);
                         break;
                     case LAPIS_ORE:
-                        triggerLapis(event);
+                        lapis(event);
                         break;
                     default:
                         break;
@@ -41,31 +41,43 @@ public class BlockBreakListener implements Listener {
         }
     }
 
-    private void triggerRedstone(BlockBreakEvent event) {
-        int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
-        if (randomInt > 60) {
-            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), SlimefunItemStacks.CHUNK_CHROMITE.clone());
-        }
-    }
-
-    private void triggerDiamond(BlockBreakEvent event) {
-        int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
-        if (randomInt > 65) {
-            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), SlimefunItemStacks.CHUNK_BASTNAESITE.clone());
-        }
-    }
-
-    private void triggerEmerald(BlockBreakEvent event) {
+    private void coal(BlockBreakEvent event) {
         int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
         if (randomInt > 70) {
-            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), SlimefunItemStacks.CHUNK_ANTIMONY.clone());
+            int dropAmt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 3);
+            ItemStack dropStack = SlimefunItemStacks.CHUNK_CHROMITE.clone();
+            dropStack.setAmount(dropAmt);
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), dropStack);
         }
     }
 
-    private void triggerLapis(BlockBreakEvent event) {
+    private void quartz(BlockBreakEvent event) {
         int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
-        if (randomInt > 75) {
-            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), SlimefunItemStacks.RHENIUM_CHUNK.clone());
+        if (randomInt > 70) {
+            int dropAmt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 3);
+            ItemStack dropStack = SlimefunItemStacks.CHUNK_BASTNAESITE.clone();
+            dropStack.setAmount(dropAmt);
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), dropStack);
+        }
+    }
+
+    private void redstone(BlockBreakEvent event) {
+        int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
+        if (randomInt > 70) {
+            int dropAmt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 3);
+            ItemStack dropStack = SlimefunItemStacks.RHENIUM_CHUNK.clone();
+            dropStack.setAmount(dropAmt);
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), dropStack);
+        }
+    }
+
+    private void lapis(BlockBreakEvent event) {
+        int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
+        if (randomInt > 70) {
+            int dropAmt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 2);
+            ItemStack dropStack = SlimefunItemStacks.CHUNK_ANTIMONY.clone();
+            dropStack.setAmount(dropAmt);
+            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), dropStack);
         }
     }
 

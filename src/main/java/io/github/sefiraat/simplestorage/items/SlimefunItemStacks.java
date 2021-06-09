@@ -1,11 +1,20 @@
 package io.github.sefiraat.simplestorage.items;
 
-import io.github.sefiraat.simplestorage.statics.Theme;
+import io.github.mooy1.infinitylib.presets.LorePreset;
+import io.github.sefiraat.simplestorage.SimpleStorage;
+import io.github.sefiraat.simplestorage.items.machines.DiePress;
+import io.github.sefiraat.simplestorage.items.machines.Enderator;
+import io.github.sefiraat.simplestorage.items.machines.MetalPressBasic;
 import io.github.sefiraat.simplestorage.statics.Skulls;
+import io.github.sefiraat.simplestorage.statics.Theme;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 
 public final class SlimefunItemStacks {
+
+    private SlimefunItemStacks() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static final SlimefunItemStack ANGELITE = new SlimefunItemStack(
             "MATERIAL_ANGELITE",
@@ -16,7 +25,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "are used for simple data transfer.",
             Theme.PASSIVE + "More plentiful in colder climates.",
             "",
-            Theme.ITEM_TYPEDESC + "Base Resource"
+            Theme.LORE_TYPE_BASE
     );
 
     public static final SlimefunItemStack PROUSTITE = new SlimefunItemStack(
@@ -28,7 +37,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "are used for more advanced data transfer.",
             Theme.PASSIVE + "Only found in the hottest locations.",
             "",
-            Theme.ITEM_TYPEDESC + "Base Resource"
+            Theme.LORE_TYPE_BASE
     );
 
     public static final SlimefunItemStack SHORTITE = new SlimefunItemStack(
@@ -40,7 +49,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "are used for the most advanced data transfers.",
             Theme.PASSIVE + "Locations unknown.",
             "",
-            Theme.ITEM_TYPEDESC + "Base Resource"
+            Theme.LORE_TYPE_BASE
     );
 
     public static final SlimefunItemStack CLEARQUARTZ = new SlimefunItemStack(
@@ -52,7 +61,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "and used for creating displays.",
             Theme.PASSIVE + "Location unknown.",
             "",
-            Theme.ITEM_TYPEDESC + "Base Resource"
+            Theme.LORE_TYPE_BASE
     );
 
     public static final SlimefunItemStack CHUNK_CHROMITE = new SlimefunItemStack(
@@ -63,7 +72,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A very rare ore. Can be processed",
             Theme.PASSIVE + "into Chromium.",
             "",
-            Theme.ITEM_TYPEDESC + "Base Resource"
+            Theme.LORE_TYPE_BASE
     );
 
     public static final SlimefunItemStack CHUNK_BASTNAESITE = new SlimefunItemStack(
@@ -74,7 +83,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A very rare ore. Can be processed",
             Theme.PASSIVE + "into Cerium.",
             "",
-            Theme.ITEM_TYPEDESC + "Base Resource"
+            Theme.LORE_TYPE_BASE
     );
 
     public static final SlimefunItemStack CHUNK_ANTIMONY = new SlimefunItemStack(
@@ -85,7 +94,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A very rare metal. Can be processed",
             Theme.PASSIVE + "into Antimony.",
             "",
-            Theme.ITEM_TYPEDESC + "Base Resource"
+            Theme.LORE_TYPE_BASE
     );
 
     public static final SlimefunItemStack RHENIUM_CHUNK = new SlimefunItemStack(
@@ -96,7 +105,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A very rare metal. Can be processed",
             Theme.PASSIVE + "into Rhenium.",
             "",
-            Theme.ITEM_TYPEDESC + "Base Resource"
+            Theme.LORE_TYPE_BASE
     );
 
     public static final SlimefunItemStack CHROMIUM_DUST = new SlimefunItemStack(
@@ -107,7 +116,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A very rare metal. Needs to be worked.",
             Theme.PASSIVE + "into ingots.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack BASTNAESITE_DUST = new SlimefunItemStack(
@@ -118,7 +127,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A very rare ore. Needs to be worked.",
             Theme.PASSIVE + "into ingots.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack ANTIMONY_DUST = new SlimefunItemStack(
@@ -129,7 +138,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A very rare metal. Needs to be worked.",
             Theme.PASSIVE + "into ingots.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack RHENIUM_DUST = new SlimefunItemStack(
@@ -140,7 +149,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A very rare metal. Needs to be worked.",
             Theme.PASSIVE + "into ingots.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack CHROMIUM_INGOT = new SlimefunItemStack(
@@ -151,7 +160,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A very rare metal. Used in making",
             Theme.PASSIVE + "alloys.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack BASTNAESITE_INGOT = new SlimefunItemStack(
@@ -162,7 +171,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A very rare metal. Used in making",
             Theme.PASSIVE + "reinforced alloys.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack ANTIMONY_INGOT = new SlimefunItemStack(
@@ -173,7 +182,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A very rare metal. Used in making",
             Theme.PASSIVE + "advanced alloys.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack RHENIUM_INGOT = new SlimefunItemStack(
@@ -184,7 +193,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "An incredibly rare metal. Used in making",
             Theme.PASSIVE + "the very advanced alloys.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack ELECTRUM_INGOT = new SlimefunItemStack(
@@ -196,7 +205,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "basically useless, but we might find",
             Theme.PASSIVE + "some use for it?",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack CUPRONICKEL_INGOT = new SlimefunItemStack(
@@ -208,7 +217,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "used for it's strength and ability to",
             Theme.PASSIVE + "withstand high pressures.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack PEWTER_INGOT = new SlimefunItemStack(
@@ -219,7 +228,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "An alloy of Tin and Silver that is",
             Theme.PASSIVE + "used for it's durability.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack NICKEL_SUPER_INGOT = new SlimefunItemStack(
@@ -231,7 +240,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "used for it's extreme temperature",
             Theme.PASSIVE + "resistance.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack ZAMAK_1 = new SlimefunItemStack(
@@ -244,7 +253,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "the strongest, it is useful for",
             Theme.PASSIVE + "machine dies.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack ZAMAK_2 = new SlimefunItemStack(
@@ -258,7 +267,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "strength making it capable of acting",
             Theme.PASSIVE + "as a die for more metals",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack ZAMAK_3 = new SlimefunItemStack(
@@ -270,7 +279,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "Copper. Zamak-3 is infused with",
             Theme.PASSIVE + "Magnesium for stability",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack NISIL = new SlimefunItemStack(
@@ -281,7 +290,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "An alloy of Nickel and Silicon.",
             Theme.PASSIVE + "Forms part of a thermocouple.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack NICROSIL = new SlimefunItemStack(
@@ -292,7 +301,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "An alloy of Nickel, Silicon and",
             Theme.PASSIVE + "Chromium. Forms part of a thermocouple.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack CUPRONICKEL_REINFORCED = new SlimefunItemStack(
@@ -305,7 +314,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "withstand high pressures. This variant",
             Theme.PASSIVE + "has been reinforced with Carium.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack PEWTER_REINFORCED = new SlimefunItemStack(
@@ -317,7 +326,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "used for it's durability. This variant",
             Theme.PASSIVE + "has been hardened with Antimony.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack ELECTRUM_PLATE = new SlimefunItemStack(
@@ -328,7 +337,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A plate made out of Electrum used as",
             Theme.PASSIVE + "a shell for basic storage components.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack CUPRONICKEL_PLATE = new SlimefunItemStack(
@@ -339,7 +348,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A plate made out of Cupronickel used as",
             Theme.PASSIVE + "a shell for intermediate storage components.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack PEWTER_PLATE = new SlimefunItemStack(
@@ -350,7 +359,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A plate made out of Pewter used as",
             Theme.PASSIVE + "a shell for advanced storage components.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack NICKEL_SUPERALLOY_PLATE = new SlimefunItemStack(
@@ -361,7 +370,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A plate made out of Nickel and Rhenium",
             Theme.PASSIVE + "a shell for advanced storage components.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack COMBINED_PLATE = new SlimefunItemStack(
@@ -372,7 +381,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A plate made out of Nickel and Rhenium",
             Theme.PASSIVE + "layered with pewter.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack DIE_BASIC = new SlimefunItemStack(
@@ -384,7 +393,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "Can be used to create rudimentary",
             Theme.PASSIVE + "injected shells.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack DIE_REINFORCED = new SlimefunItemStack(
@@ -396,7 +405,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "Can be used to create intermediate",
             Theme.PASSIVE + "injected shells.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack DIE_ADVANCED = new SlimefunItemStack(
@@ -408,7 +417,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "Can be used to create top-tier",
             Theme.PASSIVE + "injected shells.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack THERMOCOUPLE = new SlimefunItemStack(
@@ -418,7 +427,7 @@ public final class SlimefunItemStacks {
             "",
             Theme.PASSIVE + "Used to test heat transfer",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack CHEST_CORE_BASIC = new SlimefunItemStack(
@@ -428,7 +437,7 @@ public final class SlimefunItemStacks {
             "",
             Theme.PASSIVE + "Used as the core for an iron chest.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack CHEST_CORE_REINFORCED = new SlimefunItemStack(
@@ -438,7 +447,7 @@ public final class SlimefunItemStacks {
             "",
             Theme.PASSIVE + "Used as the core for an gold chest.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack CHEST_CORE_ADVANCED = new SlimefunItemStack(
@@ -448,7 +457,7 @@ public final class SlimefunItemStacks {
             "",
             Theme.PASSIVE + "Used as the core for an diamond chest.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack COMMUNICATION_BLOCK = new SlimefunItemStack(
@@ -459,7 +468,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "Allows the networking of various",
             Theme.PASSIVE + "inventories to the Master.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack DISPLAY_PANEL = new SlimefunItemStack(
@@ -470,7 +479,7 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "A display panel. Used to craft the",
             Theme.PASSIVE + "Chest Master.",
             "",
-            Theme.ITEM_TYPEDESC + "Crafting Material"
+            Theme.LORE_TYPE_CRAFT
     );
 
     public static final SlimefunItemStack DIE_PRESS = new SlimefunItemStack(
@@ -482,7 +491,9 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "create dies from certain metals.",
             Theme.PASSIVE + "dies are used to shape other materials.",
             "",
-            Theme.ITEM_TYPEDESC + "Machine"
+            LorePreset.energyPerSecond(DiePress.CONSUMPTION),
+            "",
+            Theme.LORE_TYPE_MACHINE
     );
     public static final SlimefunItemStack METAL_PRESS_BASIC = new SlimefunItemStack(
             "MACHINE_METAL_PRESS_BASIC",
@@ -493,7 +504,9 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "create shaped metal plates from",
             Theme.PASSIVE + "basic dies and soft alloys.",
             "",
-            Theme.ITEM_TYPEDESC + "Machine"
+            LorePreset.energyPerSecond(MetalPressBasic.CONSUMPTION),
+            "",
+            Theme.LORE_TYPE_MACHINE
     );
     public static final SlimefunItemStack ENDERATOR = new SlimefunItemStack(
             "MACHINE_ENDERATOR",
@@ -504,7 +517,9 @@ public final class SlimefunItemStacks {
             Theme.PASSIVE + "very fabric of an object into a more",
             Theme.PASSIVE + "condensed point in space.",
             "",
-            Theme.ITEM_TYPEDESC + "Machine"
+            LorePreset.energyPerSecond(Enderator.CONSUMPTION),
+            "",
+            Theme.LORE_TYPE_MACHINE
     );
     public static final SlimefunItemStack CHEST_IRON = new SlimefunItemStack(
             "BLOCK_CHEST_IRON",
@@ -513,7 +528,7 @@ public final class SlimefunItemStacks {
             "",
             Theme.PASSIVE + "A chest with 90 item slots.",
             "",
-            Theme.ITEM_TYPEDESC + "Chest"
+            Theme.LORE_TYPE_CHEST
     );
     public static final SlimefunItemStack CHEST_GOLD = new SlimefunItemStack(
             "BLOCK_CHEST_GOLD",
@@ -522,7 +537,7 @@ public final class SlimefunItemStacks {
             "",
             Theme.PASSIVE + "A chest with 180 item slots.",
             "",
-            Theme.ITEM_TYPEDESC + "Chest"
+            Theme.LORE_TYPE_CHEST
     );
     public static final SlimefunItemStack CHEST_DIAMOND = new SlimefunItemStack(
             "BLOCK_CHEST_DIAMOND",
@@ -531,7 +546,7 @@ public final class SlimefunItemStacks {
             "",
             Theme.PASSIVE + "A chest with 270 item slots.",
             "",
-            Theme.ITEM_TYPEDESC + "Chest"
+            Theme.LORE_TYPE_CHEST
     );
     public static final SlimefunItemStack INVENTORY_CELL = new SlimefunItemStack(
             "BLOCK_CELL_BASIC",
@@ -540,20 +555,19 @@ public final class SlimefunItemStacks {
             "",
             Theme.PASSIVE + "A inventory cell with 270 item slots.",
             "",
-            Theme.ITEM_TYPEDESC + "Inventory Cell"
+            Theme.LORE_TYPE_CHEST
     );
-    public static final SlimefunItemStack CHEST_MASTER = new SlimefunItemStack(
-            "BLOCK_CHEST_MASTER",
+    public static final SlimefunItemStack CHEST_NETWORK = new SlimefunItemStack(
+            "BLOCK_CHEST_NETWORK",
             Skulls.BLOCK_CHEST_MASTER,
-            Theme.ITEM_MACHINE + "Chest Network Master",
+            Theme.ITEM_MACHINE + "Network Chest",
             "",
-            Theme.PASSIVE + "This block can access all Inventory",
+            Theme.PASSIVE + "This chest can access all Inventory",
             Theme.PASSIVE + "Cells within range.",
             "",
-            Theme.PASSIVE + "Cells must be within 4 blocks.",
-            Theme.PASSIVE + "of the master in any direction",
-            Theme.PASSIVE + "except down.",
+            Theme.PASSIVE + "Cells must be within " + Theme.ITEM_TYPEDESC + SimpleStorage.inst().getManagerConfiguration().getVals().getNetworkRange() + Theme.PASSIVE + " blocks.",
+            Theme.PASSIVE + "of the Network Chest in any direction",
             "",
-            Theme.ITEM_TYPEDESC + "Chest"
+            Theme.LORE_TYPE_CHEST
     );
 }

@@ -20,7 +20,12 @@ public final class Theme {
     public static final ChatColor ITEM_MACHINE = ChatColor.of("#3295a8");
     public static final ChatColor ITEM_RARE_DROP = ChatColor.of("#bf307f");
     public static final ChatColor ITEM_TYPEDESC = ChatColor.of("#f0ea4f");
-    public static final ChatColor GUI_HEAD = ChatColor.of("#175724");
+    public static final ChatColor GUI_HEAD = ChatColor.of("#03fcdf");
     public static final ChatColor CLICK_INFO = ChatColor.of("#e4ed32");
 
+    public static final String LORE_TYPE_BASE = ITEM_TYPEDESC + "Base Resource";
+    public static final String LORE_TYPE_CRAFT = ITEM_TYPEDESC + "Crafting Material";
+    public static final String LORE_TYPE_MACHINE = ITEM_TYPEDESC + "Machine";
+    public static final String LORE_TYPE_CHEST = ITEM_TYPEDESC + "Chest";
+    public static final String LORE_TYPE_DROP = ITEM_TYPEDESC + "Drop";
 }

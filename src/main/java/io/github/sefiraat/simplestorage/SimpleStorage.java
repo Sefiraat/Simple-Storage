@@ -9,7 +9,6 @@ import io.github.sefiraat.simplestorage.items.Materials;
 import io.github.sefiraat.simplestorage.listeners.ManagerListeners;
 import io.github.sefiraat.simplestorage.runnables.ManagerRunnables;
 import io.github.sefiraat.simplestorage.slimefun.Categories;
-
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
@@ -87,7 +86,7 @@ public class SimpleStorage extends AbstractAddon {
     private void setupSlimefun() {
         Categories.set(this);
         Materials.set(this);
-        Machines.set(this);
+        Machines.set();
         Blocks.set(this);
     }
 

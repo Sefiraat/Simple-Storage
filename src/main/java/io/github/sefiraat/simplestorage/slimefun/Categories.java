@@ -1,10 +1,10 @@
 package io.github.sefiraat.simplestorage.slimefun;
 
-import io.github.mooy1.infinitylib.AbstractAddon;
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.statics.Skulls;
 import io.github.sefiraat.simplestorage.statics.Theme;
-import me.mrCookieSlime.Slimefun.Objects.Category;
+import io.github.thebusybiscuit.slimefun4.core.categories.MultiCategory;
+import io.github.thebusybiscuit.slimefun4.core.categories.SubCategory;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import org.bukkit.NamespacedKey;
@@ -15,26 +15,42 @@ public final class Categories {
         throw new IllegalStateException("Utility class");
     }
 
+    public static CustomItem catSimpleStorageMain() {
+        return new CustomItem(
+                SkullItem.fromBase64(Skulls.CAT_CORE),
+                Theme.MAIN + "Simple Storage"
+        );
+    }
     public static CustomItem catSimpleStorageMaterials() {
         return new CustomItem(
                 SkullItem.fromBase64(Skulls.CAT_MATERIALS),
                 Theme.MAIN + "Simple Storage Materials"
         );
     }
-
-    public static CustomItem catSimpleStorageMain() {
+    public static CustomItem catSimpleStorageMachines() {
         return new CustomItem(
-                SkullItem.fromBase64(Skulls.CAT_MAIN),
-                Theme.MAIN + "Simple Storage"
+                SkullItem.fromBase64(Skulls.CAT_MACHINES),
+                Theme.MAIN + "Simple Storage Machines"
+        );
+    }
+    public static CustomItem catSimpleStorageChests() {
+        return new CustomItem(
+                SkullItem.fromBase64(Skulls.CAT_CHESTS),
+                Theme.MAIN + "Simple Storage Chests/Cells"
         );
     }
 
-    public static final Category MAT = new Category(new NamespacedKey(SimpleStorage.inst(), "simple-storage-materials"), catSimpleStorageMaterials());
-    public static final Category MAIN = new Category(new NamespacedKey(SimpleStorage.inst(), "simple-storage-main"), catSimpleStorageMain());
 
-    public static void set(SimpleStorage plugin) {
-        MAT.register(plugin);
-        MAIN.register(plugin);
+    public static final MultiCategory CORE = new MultiCategory(new NamespacedKey(SimpleStorage.inst(), "simple-storage"), catSimpleStorageMain());
+    public static final SubCategory MAT = new SubCategory(new NamespacedKey(SimpleStorage.inst(), "simple-storage-materials"), CORE, catSimpleStorageMaterials());
+    public static final SubCategory MCN = new SubCategory(new NamespacedKey(SimpleStorage.inst(), "simple-storage-machines"), CORE, catSimpleStorageMachines());
+    public static final SubCategory CHT = new SubCategory(new NamespacedKey(SimpleStorage.inst(), "simple-storage-chests"), CORE, catSimpleStorageChests());
+
+    public static void set(SimpleStorage p) {
+        CORE.register(p);
+        MAT.register(p);
+        MCN.register(p);
+        CHT.register(p);
     }
 
 }

@@ -2,7 +2,7 @@ package io.github.sefiraat.simplestorage.items.chests;
 
 import io.github.mooy1.infinitylib.slimefun.AbstractContainer;
 import io.github.sefiraat.simplestorage.configuration.ManagerConfiguration;
-import io.github.sefiraat.simplestorage.statics.GuiItems;
+import io.github.sefiraat.simplestorage.statics.Utils;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -17,7 +17,6 @@ import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -59,11 +58,7 @@ public class SimpleChest extends AbstractContainer {
 
     @Override
     protected void setupMenu(@NotNull BlockMenuPreset blockMenuPreset) {
-        blockMenuPreset.setSize(54);
-        blockMenuPreset.drawBackground(GuiItems.menuBackground(), BACKGROUND_SLOTS);
-        blockMenuPreset.addItem(SLOT_BACK, GuiItems.menuChestPageBack());
-        blockMenuPreset.addItem(SLOT_FORWARD, GuiItems.menuChestPageForward());
-        blockMenuPreset.addItem(SLOT_INFO, GuiItems.menuInfo());
+        Utils.setUpChestMenu(blockMenuPreset, BACKGROUND_SLOTS, SLOT_BACK, SLOT_FORWARD, SLOT_INFO);
     }
 
     @Override
@@ -88,18 +83,12 @@ public class SimpleChest extends AbstractContainer {
         super.onNewInstance(menu, b);
         String foundID = BlockStorage.getLocationInfo(b.getLocation(),"simple-chest-id");
         if (foundID != null) {
-            inventoryCaches.put(b.getLocation(), new SimpleInventoryCache(this, menu, pages, Integer.parseInt(foundID)));
+            inventoryCaches.put(b.getLocation(), new SimpleInventoryCache(menu, pages, Integer.parseInt(foundID)));
         } else {
             int chestID = ManagerConfiguration.getNextChestID();
             BlockStorage.addBlockInfo(b, "simple-chest-id", String.valueOf(chestID));
             ManagerConfiguration.setupChest(chestID);
-            inventoryCaches.put(b.getLocation(), new SimpleInventoryCache(this, menu, pages, chestID));
+            inventoryCaches.put(b.getLocation(), new SimpleInventoryCache(menu, pages, chestID));
         }
     }
-
-    @Override
-    protected void onPlace(@NotNull BlockPlaceEvent e, @NotNull Block b) {
-        super.onPlace(e, b);
-    }
-
 }

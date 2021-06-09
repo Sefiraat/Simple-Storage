@@ -12,19 +12,22 @@ import java.io.IOException;
 
 public class ManagerConfiguration {
 
+    public static final String CHESTS = "CHESTS";
+    public static final String PLACED = "PLACED";
+    public static final String SLOT = "SLOT-";
+
     private final SimpleStorage plugin;
 
-    private final ConfigStrings strings;
     private final ConfigBooleans bools;
+    private final ConfigVal vals;
+
     private File chestConfigFile;
     private FileConfiguration chestConfig;
 
-    public ConfigStrings getStrings() {
-        return strings;
-    }
     public ConfigBooleans getBools() {
         return bools;
     }
+    public ConfigVal getVals() { return vals; }
     public File getChestConfigFile() {
         return chestConfigFile;
     }
@@ -33,12 +36,9 @@ public class ManagerConfiguration {
     }
 
     public ManagerConfiguration(SimpleStorage plugin) {
-
         this.plugin = plugin;
-
-        strings = new ConfigStrings(plugin);
         bools = new ConfigBooleans(plugin);
-
+        vals = new ConfigVal(plugin);
         sortConfigs();
     }
 
@@ -80,7 +80,7 @@ public class ManagerConfiguration {
 
     public static Integer getNextChestID() {
         FileConfiguration c = SimpleStorage.inst().getManagerConfiguration().chestConfig;
-        ConfigurationSection section = c.getConfigurationSection("CHESTS");
+        ConfigurationSection section = c.getConfigurationSection(CHESTS);
         int nextValue = 1;
         if (section != null) {
             for (String key : section.getKeys(false)) {
@@ -96,22 +96,22 @@ public class ManagerConfiguration {
 
     public static void removeChestID(int id) {
         FileConfiguration c = SimpleStorage.inst().getManagerConfiguration().chestConfig;
-        c.set("CHESTS." + id, null);
+        c.set(CHESTS + "." + id, null);
     }
 
     public static void setupChest(Integer id) {
         FileConfiguration c = SimpleStorage.inst().getManagerConfiguration().getChestConfig();
-        c.set("CHESTS." + id + ".PLACED", true);
+        c.set(CHESTS + "." + id + "." + PLACED, true);
     }
 
     public static void setChestSlotItem(int id, int slot, ItemStack itemStack) {
         FileConfiguration c = SimpleStorage.inst().getManagerConfiguration().getChestConfig();
-        c.set("CHESTS." + id + ".SLOT-" + slot, itemStack);
+        c.set(CHESTS + "." + id + "." + SLOT + slot, itemStack);
     }
 
     public static ItemStack getChestSlotItem(int id, int slot, ItemStack itemStack) {
         FileConfiguration c = SimpleStorage.inst().getManagerConfiguration().getChestConfig();
-        return c.getItemStack("CHESTS." + id + ".SLOT-" + slot, itemStack);
+        return c.getItemStack(CHESTS + "." + id + "." + SLOT + slot, itemStack);
     }
 
 }

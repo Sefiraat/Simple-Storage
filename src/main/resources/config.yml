@@ -1,2 +1,8 @@
-OPTIONS:
-  AUTO-UPDATE: true
+# network-range             How far inventory cells need to be from the Master to be seen by a network chest.
+#                           Try to keep this setting low if you are experiencing performance issues.
+# ticks-between-checks      How many ticks (Slimefun ticks) between inventory cell checks. Increase this number if
+#                           you're experiencing performance issues. Too high and inventories may become sluggish
+options:
+  auto-update: true
+  network-range: 5
+  ticks-between-checks: 2

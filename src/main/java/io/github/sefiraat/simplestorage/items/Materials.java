@@ -3,10 +3,10 @@ package io.github.sefiraat.simplestorage.items;
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.items.machines.DiePress;
 import io.github.sefiraat.simplestorage.items.machines.MetalPressBasic;
-import io.github.sefiraat.simplestorage.items.materials.GemShortite;
-import io.github.sefiraat.simplestorage.items.materials.GemProustite;
 import io.github.sefiraat.simplestorage.items.materials.GemAngelite;
+import io.github.sefiraat.simplestorage.items.materials.GemProustite;
 import io.github.sefiraat.simplestorage.items.materials.GemQuartz;
+import io.github.sefiraat.simplestorage.items.materials.GemShortite;
 import io.github.sefiraat.simplestorage.items.other.RareDropDiamond;
 import io.github.sefiraat.simplestorage.items.other.RareDropEmerald;
 import io.github.sefiraat.simplestorage.items.other.RareDropLapis;
@@ -19,7 +19,11 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import org.bukkit.inventory.ItemStack;
 
-public class Materials {
+public final class Materials {
+
+    private Materials() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static void set(SimpleStorage p) {
 

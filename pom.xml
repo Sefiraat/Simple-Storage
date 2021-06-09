@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.sefiraat.simplestorage</groupId>
     <artifactId>SimpleStorage</artifactId>
-    <version>1.0.0</version>
+    <version>MODIFIED</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

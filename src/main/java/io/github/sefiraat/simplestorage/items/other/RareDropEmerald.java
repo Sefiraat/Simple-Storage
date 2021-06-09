@@ -12,6 +12,10 @@ import org.bukkit.inventory.ItemStack;
 
 public class RareDropEmerald {
 
+    private RareDropEmerald() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static final SlimefunItemStack STACK = new SlimefunItemStack(
             "MECHANIC_DROP_EMERALD",
             Material.EMERALD_ORE,
@@ -21,7 +25,7 @@ public class RareDropEmerald {
             Theme.PASSIVE + "emerald. The block actually needs",
             Theme.PASSIVE + "to break, no Silk Touch.",
             "",
-            Theme.ITEM_TYPEDESC + "Drop"
+            Theme.LORE_TYPE_DROP
     );
 
     private static final RecipeMap<ItemStack> RECIPES = new RecipeMap<>(ShapedRecipe::new);

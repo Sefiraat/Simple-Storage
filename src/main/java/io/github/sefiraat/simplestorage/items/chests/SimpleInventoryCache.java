@@ -3,16 +3,14 @@ package io.github.sefiraat.simplestorage.items.chests;
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.configuration.ManagerConfiguration;
 import io.github.sefiraat.simplestorage.statics.GuiItems;
-import io.github.sefiraat.simplestorage.statics.Theme;
-import io.github.sefiraat.simplestorage.statics.Skulls;
 import io.github.sefiraat.simplestorage.statics.Utils;
+import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -20,93 +18,23 @@ import java.util.Map;
 
 import static io.github.sefiraat.simplestorage.items.chests.SimpleChest.SLOT_INPUT;
 
-public final class SimpleInventoryCache {
+public final class SimpleInventoryCache extends AbstractCache {
 
-    private final SimpleChest chest;
-    private final BlockMenu blockMenu;
-    private final int pages;
     private final int chestID;
-
-    private int page = 1;
-
-    private Map<Integer, String> guiNumbers = new HashMap<>();
     private Map<Integer, ItemStack> items = new HashMap<>();
 
-    public SimpleInventoryCache(SimpleChest simpleChest, BlockMenu blockMenu, int pages, int chestID) {
-        this.chest = simpleChest;
-        this.blockMenu = blockMenu;
+    public SimpleInventoryCache(BlockMenu blockMenu, int pages, int chestID) {
+        super(blockMenu);
+
         this.pages = pages;
         this.chestID = chestID;
-
-        setupGuiNumbers();
-
-        blockMenu.addMenuClickHandler(SimpleChest.SLOT_BACK, (player, i, itemStack, clickAction) -> {
-            if (page > 1) {
-                page-= 1;
-            }
-            int skullID = page;
-            if (page > 20) {
-                skullID = 21;
-            }
-            blockMenu.replaceExistingItem(0, new CustomItem(
-                    SkullItem.fromBase64(guiNumbers.get(skullID)),
-                    Theme.GUI_HEAD + "Info",
-                    "",
-                    Theme.CLICK_INFO + "Page number : " + page
-            ));
-            return false;
-        });
-
-        blockMenu.addMenuClickHandler(SimpleChest.SLOT_FORWARD, (player, i, itemStack, clickAction) -> {
-            if (page < pages) {
-                page+= 1;
-            }
-            int skullID = page;
-            if (page > 20) {
-                skullID = 21;
-            }
-            blockMenu.replaceExistingItem(0, new CustomItem(
-                    SkullItem.fromBase64(guiNumbers.get(skullID)),
-                    Theme.GUI_HEAD + "Info",
-                    "",
-                    Theme.CLICK_INFO + "Page number : " + page
-            ));
-            return false;
-        });
-
-        blockMenu.addMenuClickHandler(SimpleChest.SLOT_INFO, ((player, i, itemStack, clickAction) -> false));
-
-    }
-
-    private void setupGuiNumbers() {
-        guiNumbers.put(1, Skulls.GUI_NO1);
-        guiNumbers.put(2, Skulls.GUI_NO2);
-        guiNumbers.put(3, Skulls.GUI_NO3);
-        guiNumbers.put(4, Skulls.GUI_NO4);
-        guiNumbers.put(5, Skulls.GUI_NO5);
-        guiNumbers.put(6, Skulls.GUI_NO6);
-        guiNumbers.put(7, Skulls.GUI_NO7);
-        guiNumbers.put(8, Skulls.GUI_NO8);
-        guiNumbers.put(9, Skulls.GUI_NO9);
-        guiNumbers.put(10, Skulls.GUI_NO10);
-        guiNumbers.put(11, Skulls.GUI_NO11);
-        guiNumbers.put(12, Skulls.GUI_NO12);
-        guiNumbers.put(13, Skulls.GUI_NO13);
-        guiNumbers.put(14, Skulls.GUI_NO14);
-        guiNumbers.put(15, Skulls.GUI_NO15);
-        guiNumbers.put(16, Skulls.GUI_NO16);
-        guiNumbers.put(17, Skulls.GUI_NO17);
-        guiNumbers.put(18, Skulls.GUI_NO18);
-        guiNumbers.put(19, Skulls.GUI_NO19);
-        guiNumbers.put(20, Skulls.GUI_NO20);
-        guiNumbers.put(21, Skulls.GUI_NOPLUS);
     }
 
     public void updateItems() {
         items.clear();
-        ConfigurationSection section = SimpleStorage.inst().getManagerConfiguration().getChestConfig().getConfigurationSection("CHESTS." + chestID);
+        ConfigurationSection section = SimpleStorage.inst().getManagerConfiguration().getChestConfig().getConfigurationSection(ManagerConfiguration.CHESTS + "." + chestID);
         for (int i = 1; i <= (pages * 45); i++) {
-            ItemStack itemStack = section.getItemStack("SLOT-" + i);
+            ItemStack itemStack = section.getItemStack(ManagerConfiguration.SLOT + i);
             items.put(i, itemStack);
         }
     }
@@ -118,10 +46,8 @@ public final class SimpleInventoryCache {
         }
         // Check matching first
         for (Map.Entry<Integer, ItemStack> entry : items.entrySet()) {
-            if (entry.getValue() != null) {
-                if (inputOverSaved(entry, input)) {
-                    return;
-                }
+            if (entry.getValue() != null && inputOverSaved(entry, input)) {
+                return;
             }
         }
         // Then slot into next free slot, if available
@@ -153,6 +79,33 @@ public final class SimpleInventoryCache {
         return false;
     }
 
+    public void process() {
+        updateItems();
+        input();
+        updateView();
+    }
+
+    public void kill(Location location) {
+        dropItems(location);
+        ManagerConfiguration.removeChestID(chestID);
+        BlockStorage.clearBlockInfo(location);
+    }
+
+    public void dropItems(Location location) {
+        ConfigurationSection section = SimpleStorage.inst().getManagerConfiguration().getChestConfig().getConfigurationSection(ManagerConfiguration.CHESTS + "." + chestID);
+        for (String s : section.getKeys(false)) {
+            if (!s.equals(ManagerConfiguration.PLACED)) {
+                ItemStack itemStack = section.getItemStack(s);
+                if (itemStack != null) {
+                    location.getWorld().dropItemNaturally(location,itemStack);
+                }
+            }
+        }
+        if (blockMenu.getItemInSlot(SLOT_INPUT) != null) {
+            location.getWorld().dropItemNaturally(location, blockMenu.getItemInSlot(SLOT_INPUT).clone());
+        }
+    }
+
     public void updateView() {
         if (blockMenu.hasViewer()) {
 
@@ -170,7 +123,7 @@ public final class SimpleInventoryCache {
                 });
             }
             String setblock = BlockStorage.getLocationInfo(blockMenu.getBlock().getLocation(),"simplesetblock");
-            if (rename != null && rename.equals("n")) {
+            if (setblock != null && setblock.equals("n")) {
                 blockMenu.replaceExistingItem(6, GuiItems.menuBackground());
                 blockMenu.addMenuCloseHandler(player -> {
                 });
@@ -186,49 +139,54 @@ public final class SimpleInventoryCache {
                 } else {
                     ItemStack guiVersion = Utils.setGuiItem(itemStack.clone());
                     blockMenu.replaceExistingItem(slotNo, guiVersion);
-                    blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> {
-                        if (!clickAction.isRightClicked()) {
-                            if (player.getItemOnCursor().getType() == Material.AIR) {
-                                player.setItemOnCursor(itemStack.clone());
-                                blockMenu.replaceExistingItem(slotNo, GuiItems.menuChestDummy());
-                                blockMenu.addMenuClickHandler(slotNo, (player2, i2, itemStack2, clickAction2) -> false);
-                                ManagerConfiguration.setChestSlotItem(chestID, listSlotNo, null);
-                                return false;
-                            }
-                        }
-                        return false;
-                    });
+                    blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> guiClickItem(player, slotNo, listSlotNo, itemStack, clickAction));
                 }
             }
         }
     }
 
-    public void process() {
-        updateItems();
-        input();
-        updateView();
-    }
-
-    public void kill(Location location) {
-        dropItems(location);
-        ManagerConfiguration.removeChestID(chestID);
-        BlockStorage.clearBlockInfo(location);
-    }
-
-    public void dropItems(Location location) {
-        ConfigurationSection section = SimpleStorage.inst().getManagerConfiguration().getChestConfig().getConfigurationSection("CHESTS." + chestID);
-        for (String s : section.getKeys(false)) {
-            if (!s.equals("PLACED")) {
-                ItemStack itemStack = section.getItemStack(s);
-                if (itemStack != null) {
-                    location.getWorld().dropItemNaturally(location,itemStack);
-                }
+    private boolean guiClickItem(Player player, int slotNo, int listSlotNo, ItemStack itemStack, ClickAction clickAction) {
+        if (player.getItemOnCursor().getType() == Material.AIR) {
+            if (clickAction.isRightClicked()) {
+                guiRightClick(player, slotNo, listSlotNo, itemStack);
+            } else if (clickAction.isShiftClicked()) {
+                guiShiftClick(player, slotNo, listSlotNo, itemStack);
+            } else {
+                guiLeftClick(player, slotNo, listSlotNo, itemStack);
             }
         }
-        if (blockMenu.getItemInSlot(SLOT_INPUT) != null) {
-            location.getWorld().dropItemNaturally(location, blockMenu.getItemInSlot(SLOT_INPUT).clone());
+        return false;
+    }
+
+    private void guiRightClick(Player player, int slotNo, int listSlotNo, ItemStack itemStack) {
+        ItemStack cursorStack = itemStack.clone();
+        cursorStack.setAmount((int) Math.ceil(cursorStack.getAmount() / 2.0));
+        itemStack.setAmount(itemStack.getAmount() - cursorStack.getAmount());
+        player.setItemOnCursor(cursorStack);
+        if (itemStack.getAmount() > 0) {
+            blockMenu.replaceExistingItem(slotNo, Utils.setGuiItem(itemStack.clone()));
+            ManagerConfiguration.setChestSlotItem(chestID, listSlotNo, itemStack);
+        } else {
+            blockMenu.replaceExistingItem(slotNo, GuiItems.menuChestDummy());
+            blockMenu.addMenuClickHandler(slotNo, (player2, i2, itemStack2, clickAction2) -> false);
+            ManagerConfiguration.setChestSlotItem(chestID, listSlotNo, null);
         }
     }
 
+    private void guiShiftClick(Player player, int slotNo, int listSlotNo, ItemStack itemStack) {
+        if (player.getInventory().firstEmpty() != -1) {
+            player.getInventory().addItem(itemStack.clone());
+            blockMenu.replaceExistingItem(slotNo, GuiItems.menuChestDummy());
+            blockMenu.addMenuClickHandler(slotNo, (player2, i2, itemStack2, clickAction2) -> false);
+            ManagerConfiguration.setChestSlotItem(chestID, listSlotNo, null);
+        }
+    }
+
+    private void guiLeftClick(Player player, int slotNo, int listSlotNo, ItemStack itemStack) {
+        player.setItemOnCursor(itemStack.clone());
+        blockMenu.replaceExistingItem(slotNo, GuiItems.menuChestDummy());
+        blockMenu.addMenuClickHandler(slotNo, (player2, i2, itemStack2, clickAction2) -> false);
+        ManagerConfiguration.setChestSlotItem(chestID, listSlotNo, null);
+    }
 
 }

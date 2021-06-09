@@ -34,6 +34,8 @@ public class BlockBreakListener implements Listener {
                     case LAPIS_ORE:
                         triggerLapis(event);
                         break;
+                    default:
+                        break;
                 }
             }
         }

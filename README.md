@@ -1,20 +1,11 @@
-# Slimefun4 Addon
-This is an example Repository for a generic Slimefun4 Addon.
-In the top left is a button "Use this template", click this to create your own Addon for Slimefun4 using this basic template.
+![](https://github.com/Sefiraat/Simple-Storage/blob/master/Images/logo/logo_large.png?raw=true)
 
-## How to create your own addon.
-This is a template repository that you can use to create your own Slimefun4 Addon.<br>
-We have also written an extensive step-by-step tutorial which you can find here:<br>
-https://github.com/Slimefun/Slimefun4/wiki/Developer-Guide
+Simple Storage is a Slimefun4 addon that adds new mass storage blocks;
 
-## Changing some important things
-Navigate to `src/main/java` and rename the package and the .java File to your liking.<br>
-Suggestion: "me.yourname.yourproject" (all lower case) and "ProjectName.java"<br>
-Example: "me.thebusybiscuit.cooladdon" and "CoolAddon.java"
-
-Navigate to `src/main/resources/plugin.yml` and change the "author" and "main" attributes.
-You may also want to change the description to something meaningful.
-
-Navigate to `pom.xml` and change the group id to "me.%Your name%" and change the artifact id to the name of your Project.
-
-After that you are good to go, you can now start developing your own Addon for Slimefun4.
+|Image |Block |Description |
+|:---|:---|:---|
+|![](https://github.com/Sefiraat/Simple-Storage/blob/master/Images/wiki/items/chest_iron.png?raw=true)|**Iron Chest** | A 2 page chest with 45 slots per page |
+|![](https://github.com/Sefiraat/Simple-Storage/blob/master/Images/wiki/items/chest_gold.png?raw=true)|**Gold Chest** | A 4 page chest with 45 slots per page |
+|![](https://github.com/Sefiraat/Simple-Storage/blob/master/Images/wiki/items/chest_diamond.png?raw=true)|**Diamond Chest** | A 6 page chest with 45 slots per page |
+|![](https://github.com/Sefiraat/Simple-Storage/blob/master/Images/wiki/items/inventory_cell_basic.png?raw=true)|**Inventory Cell** | A 6 page inventory with 45 slots per page can be accessed by a network chest |
+|![](https://github.com/Sefiraat/Simple-Storage/blob/master/Images/wiki/items/chest_master.png?raw=true)|**Network Chest** | This block can access all Inventory Cells within a 5 block range (configurable) in a single inventory |

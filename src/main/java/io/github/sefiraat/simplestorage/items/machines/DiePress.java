@@ -16,8 +16,8 @@ import org.jetbrains.annotations.NotNull;
 
 public final class DiePress extends AContainer implements RecipeDisplayItem {
 
-    private static final RecipeMap<ItemStack> RECIPES = new RecipeMap<>(ShapedRecipe::new);
-    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "die-press"), SlimefunItemStacks.DIE_PRESS, RECIPES::put);
+    private static final RecipeMap<ItemStack> RECIPE_MAP = new RecipeMap<>(ShapedRecipe::new);
+    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "die-press"), SlimefunItemStacks.DIE_PRESS, RECIPE_MAP::put);
     public static final int SPEED = 1;
     public static final int CAPACITY = 16384;
     public static final int CONSUMPTION = 4096;

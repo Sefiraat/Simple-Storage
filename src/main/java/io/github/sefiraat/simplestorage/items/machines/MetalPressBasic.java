@@ -16,8 +16,8 @@ import org.jetbrains.annotations.NotNull;
 
 public final class MetalPressBasic extends AContainer implements RecipeDisplayItem {
 
-    private static final RecipeMap<ItemStack> RECIPES = new RecipeMap<>(ShapedRecipe::new);
-    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "metal-press"), SlimefunItemStacks.METAL_PRESS_BASIC, RECIPES::put);
+    private static final RecipeMap<ItemStack> RECIPE_MAP = new RecipeMap<>(ShapedRecipe::new);
+    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "metal-press"), SlimefunItemStacks.METAL_PRESS_BASIC, RECIPE_MAP::put);
     public static final int SPEED = 1;
     public static final int CAPACITY = 32768;
     public static final int CONSUMPTION = 8192;

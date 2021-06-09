@@ -16,8 +16,8 @@ import org.jetbrains.annotations.NotNull;
 
 public final class Enderator extends AContainer implements RecipeDisplayItem {
 
-    private static final RecipeMap<ItemStack> RECIPES = new RecipeMap<>(ShapedRecipe::new);
-    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "enderator"), SlimefunItemStacks.ENDERATOR, RECIPES::put);
+    private static final RecipeMap<ItemStack> RECIPE_MAP = new RecipeMap<>(ShapedRecipe::new);
+    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "enderator"), SlimefunItemStacks.ENDERATOR, RECIPE_MAP::put);
     public static final int SPEED = 1;
     public static final int CAPACITY = 131072;
     public static final int CONSUMPTION = 32768;

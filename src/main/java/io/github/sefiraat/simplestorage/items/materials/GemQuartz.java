@@ -10,7 +10,7 @@ import org.bukkit.block.Biome;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class GemQuartz extends AbstractGem {
+public final class GemQuartz extends AbstractGem {
 
     private final NamespacedKey key;
 

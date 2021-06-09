@@ -10,7 +10,7 @@ import org.bukkit.block.Biome;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class GemShortite extends AbstractGem {
+public final class GemShortite extends AbstractGem {
 
     private final NamespacedKey key;
 

@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SimpleChest extends AbstractContainer {
+public final class SimpleChest extends AbstractContainer {
 
     static final int SLOT_INFO = 0;
     static final int SLOT_BACK = 1;

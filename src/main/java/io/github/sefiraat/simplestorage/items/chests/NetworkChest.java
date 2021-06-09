@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NetworkChest extends AbstractContainer {
+public final class NetworkChest extends AbstractContainer {
 
     static final int SLOT_INFO = 0;
     static final int SLOT_BACK = 1;

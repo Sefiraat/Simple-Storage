@@ -14,7 +14,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class MetalPressBasic extends AContainer implements RecipeDisplayItem {
+public final class MetalPressBasic extends AContainer implements RecipeDisplayItem {
 
     private static final RecipeMap<ItemStack> RECIPES = new RecipeMap<>(ShapedRecipe::new);
     public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "metal-press"), SlimefunItemStacks.METAL_PRESS_BASIC, RECIPES::put);

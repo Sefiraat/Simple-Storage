@@ -10,7 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
-public class RareDropDiamond {
+public final class RareDropDiamond {
 
     private RareDropDiamond() {
         throw new IllegalStateException("Utility class");

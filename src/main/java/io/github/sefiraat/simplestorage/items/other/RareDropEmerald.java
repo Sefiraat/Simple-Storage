@@ -10,7 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
-public class RareDropEmerald {
+public final class RareDropEmerald {
 
     private RareDropEmerald() {
         throw new IllegalStateException("Utility class");

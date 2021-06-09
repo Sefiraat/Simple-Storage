@@ -14,7 +14,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class Enderator extends AContainer implements RecipeDisplayItem {
+public final class Enderator extends AContainer implements RecipeDisplayItem {
 
     private static final RecipeMap<ItemStack> RECIPES = new RecipeMap<>(ShapedRecipe::new);
     public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "enderator"), SlimefunItemStacks.ENDERATOR, RECIPES::put);

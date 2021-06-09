@@ -10,7 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
-public class RareDropLapis {
+public final class RareDropLapis {
 
     private RareDropLapis() {
         throw new IllegalStateException("Utility class");

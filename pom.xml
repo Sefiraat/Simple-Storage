@@ -48,7 +48,7 @@
                     </relocation>
                     <relocation>
                         <pattern>org.bstats</pattern>
-                        <shadedPattern>io.github.sefiraat.equivalencytech.bstats</shadedPattern>
+                        <shadedPattern>io.github.sefiraat.simplestorage.bstats</shadedPattern>
                     </relocation>
                 </relocations>
                 <filters>

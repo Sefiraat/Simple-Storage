@@ -2,8 +2,7 @@ package io.github.sefiraat.simplestorage.items.chests;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.configuration.ManagerConfiguration;
-import io.github.sefiraat.simplestorage.statics.GuiItems;
-import io.github.sefiraat.simplestorage.statics.Utils;
+import io.github.sefiraat.simplestorage.utils.Utils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;

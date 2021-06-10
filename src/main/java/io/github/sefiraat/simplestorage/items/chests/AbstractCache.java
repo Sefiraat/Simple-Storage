@@ -1,7 +1,7 @@
 package io.github.sefiraat.simplestorage.items.chests;
 
-import io.github.sefiraat.simplestorage.statics.Theme;
-import io.github.sefiraat.simplestorage.statics.Utils;
+import io.github.sefiraat.simplestorage.items.Skulls;
+import io.github.sefiraat.simplestorage.utils.Theme;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
@@ -19,7 +19,7 @@ public abstract class AbstractCache {
 
         this.blockMenu = blockMenu;
 
-        guiNumbers = Utils.infoSkulls();
+        guiNumbers = Skulls.infoSkulls();
 
         blockMenu.addMenuClickHandler(NetworkChest.SLOT_BACK, (player, i, itemStack, clickAction) -> {
             if (page > 1) {

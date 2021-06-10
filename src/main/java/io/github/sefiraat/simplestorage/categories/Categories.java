@@ -1,8 +1,8 @@
-package io.github.sefiraat.simplestorage.slimefun;
+package io.github.sefiraat.simplestorage.categories;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.statics.Skulls;
-import io.github.sefiraat.simplestorage.statics.Theme;
+import io.github.sefiraat.simplestorage.items.Skulls;
+import io.github.sefiraat.simplestorage.utils.Theme;
 import io.github.thebusybiscuit.slimefun4.core.categories.MultiCategory;
 import io.github.thebusybiscuit.slimefun4.core.categories.SubCategory;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;

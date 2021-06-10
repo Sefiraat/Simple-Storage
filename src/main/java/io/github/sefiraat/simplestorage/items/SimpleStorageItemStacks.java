@@ -2,17 +2,17 @@ package io.github.sefiraat.simplestorage.items;
 
 import io.github.mooy1.infinitylib.presets.LorePreset;
 import io.github.sefiraat.simplestorage.SimpleStorage;
+import io.github.sefiraat.simplestorage.items.Skulls;
 import io.github.sefiraat.simplestorage.items.machines.DiePress;
 import io.github.sefiraat.simplestorage.items.machines.Enderator;
 import io.github.sefiraat.simplestorage.items.machines.MetalPressBasic;
-import io.github.sefiraat.simplestorage.statics.Skulls;
-import io.github.sefiraat.simplestorage.statics.Theme;
+import io.github.sefiraat.simplestorage.utils.Theme;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 
-public final class SlimefunItemStacks {
+public final class SimpleStorageItemStacks {
 
-    private SlimefunItemStacks() {
+    private SimpleStorageItemStacks() {
         throw new IllegalStateException("Utility class");
     }
 

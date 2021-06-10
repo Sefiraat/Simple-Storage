@@ -1,8 +1,8 @@
 package io.github.sefiraat.simplestorage.listeners;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.items.SlimefunItemStacks;
-import io.github.sefiraat.simplestorage.statics.Utils;
+import io.github.sefiraat.simplestorage.items.SimpleStorageItemStacks;
+import io.github.sefiraat.simplestorage.utils.Utils;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -45,7 +45,7 @@ public class BlockBreakListener implements Listener {
         int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
         if (randomInt > 70) {
             int dropAmt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 3);
-            ItemStack dropStack = SlimefunItemStacks.CHUNK_CHROMITE.clone();
+            ItemStack dropStack = SimpleStorageItemStacks.CHUNK_CHROMITE.clone();
             dropStack.setAmount(dropAmt);
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), dropStack);
         }
@@ -55,7 +55,7 @@ public class BlockBreakListener implements Listener {
         int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
         if (randomInt > 70) {
             int dropAmt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 3);
-            ItemStack dropStack = SlimefunItemStacks.CHUNK_BASTNAESITE.clone();
+            ItemStack dropStack = SimpleStorageItemStacks.CHUNK_BASTNAESITE.clone();
             dropStack.setAmount(dropAmt);
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), dropStack);
         }
@@ -65,7 +65,7 @@ public class BlockBreakListener implements Listener {
         int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
         if (randomInt > 70) {
             int dropAmt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 3);
-            ItemStack dropStack = SlimefunItemStacks.RHENIUM_CHUNK.clone();
+            ItemStack dropStack = SimpleStorageItemStacks.RHENIUM_CHUNK.clone();
             dropStack.setAmount(dropAmt);
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), dropStack);
         }
@@ -75,7 +75,7 @@ public class BlockBreakListener implements Listener {
         int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
         if (randomInt > 70) {
             int dropAmt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 2);
-            ItemStack dropStack = SlimefunItemStacks.CHUNK_ANTIMONY.clone();
+            ItemStack dropStack = SimpleStorageItemStacks.CHUNK_ANTIMONY.clone();
             dropStack.setAmount(dropAmt);
             event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), dropStack);
         }

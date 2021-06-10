@@ -1,5 +1,7 @@
-package io.github.sefiraat.simplestorage.statics;
+package io.github.sefiraat.simplestorage.items.chests;
 
+import io.github.sefiraat.simplestorage.items.Skulls;
+import io.github.sefiraat.simplestorage.utils.Theme;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import org.bukkit.ChatColor;
@@ -100,7 +102,10 @@ public final class GuiItems {
                 i,
                 Theme.GUI_HEAD + name,
                 "",
-                Theme.ITEM_TYPEDESC + "Cell number: " + number
+                Theme.ITEM_TYPEDESC + "Cell number: " + number,
+                "",
+                Theme.CLICK_INFO + "Left click to open inventory",
+                Theme.CLICK_INFO + "Right click to highlight inventory"
         );
     }
 

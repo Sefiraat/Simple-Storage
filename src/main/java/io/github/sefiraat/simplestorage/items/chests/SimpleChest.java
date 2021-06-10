@@ -2,7 +2,7 @@ package io.github.sefiraat.simplestorage.items.chests;
 
 import io.github.mooy1.infinitylib.slimefun.AbstractContainer;
 import io.github.sefiraat.simplestorage.configuration.ManagerConfiguration;
-import io.github.sefiraat.simplestorage.statics.Utils;
+import io.github.sefiraat.simplestorage.utils.Utils;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;

@@ -1,4 +1,7 @@
-package io.github.sefiraat.simplestorage.statics;
+package io.github.sefiraat.simplestorage.items;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public final class Skulls {
 
@@ -53,4 +56,30 @@ public final class Skulls {
     public static final String GUI_NO19 = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWY0ZGUxMjgyZmJlMzg0OTc1ZDkxYzdlYzRlMmRmMmZmMTdjOWRhNDY0MmJiNGFlMzZhZjQ1NDFhNDk4N2IxNiJ9fX0=";
     public static final String GUI_NO20 = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjdiMjlhMWJiMjViMmFkOGZmM2E3YTM4MjI4MTg5Yzk0NjFmNDU3YTRkYTk4ZGFlMjkzODRjNWMyNWQ4NSJ9fX0=";
     public static final String GUI_NOPLUS = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWEyZDg5MWM2YWU5ZjZiYWEwNDBkNzM2YWI4NGQ0ODM0NGJiNmI3MGQ3ZjFhMjgwZGQxMmNiYWM0ZDc3NyJ9fX0=";
+
+    public static Map<Integer, String> infoSkulls() {
+        Map<Integer, String> m = new HashMap<>();
+        m.put(1, GUI_NO1);
+        m.put(2, GUI_NO2);
+        m.put(3, GUI_NO3);
+        m.put(4, GUI_NO4);
+        m.put(5, GUI_NO5);
+        m.put(6, GUI_NO6);
+        m.put(7, GUI_NO7);
+        m.put(8, GUI_NO8);
+        m.put(9, GUI_NO9);
+        m.put(10, GUI_NO10);
+        m.put(11, GUI_NO11);
+        m.put(12, GUI_NO12);
+        m.put(13, GUI_NO13);
+        m.put(14, GUI_NO14);
+        m.put(15, GUI_NO15);
+        m.put(16, GUI_NO16);
+        m.put(17, GUI_NO17);
+        m.put(18, GUI_NO18);
+        m.put(19, GUI_NO19);
+        m.put(20, GUI_NO20);
+        m.put(21, GUI_NOPLUS);
+        return m;
+    }
 }

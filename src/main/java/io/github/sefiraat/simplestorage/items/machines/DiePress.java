@@ -3,7 +3,7 @@ package io.github.sefiraat.simplestorage.items.machines;
 import io.github.mooy1.infinitylib.recipes.RecipeMap;
 import io.github.mooy1.infinitylib.recipes.ShapedRecipe;
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.items.SlimefunItemStacks;
+import io.github.sefiraat.simplestorage.items.SimpleStorageItemStacks;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 public final class DiePress extends AContainer implements RecipeDisplayItem {
 
     private static final RecipeMap<ItemStack> RECIPE_MAP = new RecipeMap<>(ShapedRecipe::new);
-    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "die-press"), SlimefunItemStacks.DIE_PRESS, RECIPE_MAP::put);
+    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "die-press"), SimpleStorageItemStacks.DIE_PRESS, RECIPE_MAP::put);
     public static final int SPEED = 1;
     public static final int CAPACITY = 16384;
     public static final int CONSUMPTION = 4096;
@@ -36,9 +36,9 @@ public final class DiePress extends AContainer implements RecipeDisplayItem {
 
     @Override
     protected void registerDefaultRecipes() {
-        addRecipe(20, SlimefunItemStacks.ZAMAK_1, SlimefunItemStacks.DIE_BASIC);
-        addRecipe(30, SlimefunItemStacks.ZAMAK_2, SlimefunItemStacks.DIE_REINFORCED);
-        addRecipe(40, SlimefunItemStacks.ZAMAK_3, SlimefunItemStacks.DIE_ADVANCED);
+        addRecipe(20, SimpleStorageItemStacks.ZAMAK_1, SimpleStorageItemStacks.DIE_BASIC);
+        addRecipe(30, SimpleStorageItemStacks.ZAMAK_2, SimpleStorageItemStacks.DIE_REINFORCED);
+        addRecipe(40, SimpleStorageItemStacks.ZAMAK_3, SimpleStorageItemStacks.DIE_ADVANCED);
     }
 
     @Override

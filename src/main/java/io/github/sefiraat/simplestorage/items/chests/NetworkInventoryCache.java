@@ -1,14 +1,18 @@
 package io.github.sefiraat.simplestorage.items.chests;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.items.SlimefunItemStacks;
-import io.github.sefiraat.simplestorage.statics.GuiItems;
-import io.github.sefiraat.simplestorage.statics.Theme;
+import io.github.sefiraat.simplestorage.items.SimpleStorageItemStacks;
+import io.github.sefiraat.simplestorage.runnables.RunnableHighlight;
+import io.github.sefiraat.simplestorage.runnables.RunnableSave;
+import io.github.sefiraat.simplestorage.utils.Theme;
 import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
+import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
@@ -25,11 +29,9 @@ public final class NetworkInventoryCache extends AbstractCache {
     }
 
     public void updateInventories() {
-        if (validTick()) {
-            inventories.clear();
-            getInventories(blockMenu.getBlock(), SimpleStorage.inst().getManagerConfiguration().getVals().getNetworkRange());
-            pages = (int) Math.ceil(inventories.size() / 45.0);
-        }
+        inventories.clear();
+        getInventories(blockMenu.getBlock(), SimpleStorage.inst().getManagerConfiguration().getVals().getNetworkRange());
+        pages = (int) Math.ceil(inventories.size() / 45.0);
     }
 
     public void getInventories(Block block, int size) {
@@ -49,7 +51,7 @@ public final class NetworkInventoryCache extends AbstractCache {
 
     public boolean isCell(Block b) {
         String s = BlockStorage.getLocationInfo(b.getLocation(), "id");
-        return s != null && s.equals(SlimefunItemStacks.INVENTORY_CELL.getItemId());
+        return s != null && s.equals(SimpleStorageItemStacks.INVENTORY_CELL.getItemId());
     }
 
     private boolean validTick() {
@@ -100,11 +102,21 @@ public final class NetworkInventoryCache extends AbstractCache {
         }
         // Set item and add handler
         blockMenu.replaceExistingItem(slotNo, GuiItems.menuCell(listSlotNo, name, material));
-        blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> guiItemClick(block, player));
+        blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> guiItemClick(block, player, clickAction));
 
     }
 
-    private boolean guiItemClick(Block block, Player player) {
+    private boolean guiItemClick(Block block, Player player, ClickAction clickAction) {
+        if (clickAction.isRightClicked()) {
+            new RunnableHighlight(block.getLocation().clone().add(0.5, 0.5, 0.5)).runTaskTimer(SimpleStorage.inst(), 0, 40L);
+            player.closeInventory();
+            return false;
+        } else {
+            return guiItemLeftClick(block, player);
+        }
+    }
+
+    private boolean guiItemLeftClick(Block block, Player player) {
 
         BlockMenu blockMenu = BlockStorage.getInventory(block);
 

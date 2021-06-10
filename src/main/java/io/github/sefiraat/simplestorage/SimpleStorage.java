@@ -8,7 +8,7 @@ import io.github.sefiraat.simplestorage.items.Machines;
 import io.github.sefiraat.simplestorage.items.Materials;
 import io.github.sefiraat.simplestorage.listeners.ManagerListeners;
 import io.github.sefiraat.simplestorage.runnables.ManagerRunnables;
-import io.github.sefiraat.simplestorage.slimefun.Categories;
+import io.github.sefiraat.simplestorage.categories.Categories;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;

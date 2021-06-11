@@ -7,7 +7,8 @@ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 public abstract class AbstractGem extends UnplaceableBlock implements NotPlaceable, GEOResource {
 
@@ -26,7 +27,7 @@ public abstract class AbstractGem extends UnplaceableBlock implements NotPlaceab
     }
 
     @Override
-    public @NotNull String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 

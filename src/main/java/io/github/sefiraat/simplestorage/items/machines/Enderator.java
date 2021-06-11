@@ -12,7 +12,8 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 public final class Enderator extends AContainer implements RecipeDisplayItem {
 
@@ -46,7 +47,8 @@ public final class Enderator extends AContainer implements RecipeDisplayItem {
     }
 
     @Override
-    public @NotNull String getMachineIdentifier() {
+    @Nonnull
+    public String getMachineIdentifier() {
         return "ENDERATOR";
     }
 

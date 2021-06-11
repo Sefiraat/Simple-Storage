@@ -8,7 +8,8 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 public final class GemAngelite extends AbstractGem {
 
@@ -22,7 +23,7 @@ public final class GemAngelite extends AbstractGem {
     }
 
     @Override
-    public int getDefaultSupply(@NotNull World.Environment environment, @NotNull Biome biome) {
+    public int getDefaultSupply(@Nonnull World.Environment environment, @Nonnull Biome biome) {
         switch (environment) {
             case NORMAL:
                 switch (biome) {
@@ -50,7 +51,7 @@ public final class GemAngelite extends AbstractGem {
         }
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public NamespacedKey getKey() {
         return key;

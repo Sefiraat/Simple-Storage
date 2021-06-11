@@ -8,7 +8,8 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 public final class GemQuartz extends AbstractGem {
 
@@ -22,7 +23,7 @@ public final class GemQuartz extends AbstractGem {
     }
 
     @Override
-    public int getDefaultSupply(@NotNull World.Environment environment, @NotNull Biome biome) {
+    public int getDefaultSupply(@Nonnull World.Environment environment, @Nonnull Biome biome) {
         if (environment == World.Environment.NORMAL) {
             switch (biome) {
                 case FLOWER_FOREST:
@@ -37,7 +38,7 @@ public final class GemQuartz extends AbstractGem {
         return 0;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public NamespacedKey getKey() {
         return key;

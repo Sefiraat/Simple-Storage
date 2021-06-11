@@ -2,15 +2,15 @@ package io.github.sefiraat.simplestorage;
 
 import io.github.mooy1.infinitylib.AbstractAddon;
 import io.github.mooy1.infinitylib.bstats.bukkit.Metrics;
+import io.github.sefiraat.simplestorage.categories.Categories;
 import io.github.sefiraat.simplestorage.configuration.ManagerConfiguration;
 import io.github.sefiraat.simplestorage.items.Blocks;
 import io.github.sefiraat.simplestorage.items.Machines;
 import io.github.sefiraat.simplestorage.items.Materials;
 import io.github.sefiraat.simplestorage.listeners.ManagerListeners;
 import io.github.sefiraat.simplestorage.runnables.ManagerRunnables;
-import io.github.sefiraat.simplestorage.categories.Categories;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 
 public class SimpleStorage extends AbstractAddon {
@@ -73,7 +73,8 @@ public class SimpleStorage extends AbstractAddon {
     }
 
     @Override
-    protected @NotNull String getGithubPath() {
+    protected @Nonnull
+    String getGithubPath() {
         return "Sefiraat/Simple-Storage/master";
     }
 

@@ -2,7 +2,6 @@ package io.github.sefiraat.simplestorage.items;
 
 import io.github.mooy1.infinitylib.presets.LorePreset;
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import io.github.sefiraat.simplestorage.items.Skulls;
 import io.github.sefiraat.simplestorage.items.machines.DiePress;
 import io.github.sefiraat.simplestorage.items.machines.Enderator;
 import io.github.sefiraat.simplestorage.items.machines.MetalPressBasic;

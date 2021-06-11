@@ -12,7 +12,8 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 public final class DiePress extends AContainer implements RecipeDisplayItem {
 
@@ -48,7 +49,7 @@ public final class DiePress extends AContainer implements RecipeDisplayItem {
     }
 
     @Override
-    public @NotNull String getMachineIdentifier() {
+    public @Nonnull String getMachineIdentifier() {
         return "DIE_PRESS";
     }
 

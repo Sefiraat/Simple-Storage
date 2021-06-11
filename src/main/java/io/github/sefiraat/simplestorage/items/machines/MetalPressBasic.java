@@ -12,7 +12,8 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 public final class MetalPressBasic extends AContainer implements RecipeDisplayItem {
 
@@ -45,7 +46,7 @@ public final class MetalPressBasic extends AContainer implements RecipeDisplayIt
     }
 
     @Override
-    public @NotNull String getMachineIdentifier() {
+    public @Nonnull String getMachineIdentifier() {
         return "METAL_PRESS";
     }
 

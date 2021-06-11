@@ -16,8 +16,8 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,17 +50,17 @@ public final class NetworkChest extends AbstractContainer {
     }
 
     @Override
-    protected void setupMenu(@NotNull BlockMenuPreset blockMenuPreset) {
+    protected void setupMenu(@Nonnull BlockMenuPreset blockMenuPreset) {
         Utils.setUpChestMenu(blockMenuPreset, BACKGROUND_SLOTS, SLOT_BACK, SLOT_FORWARD, SLOT_INFO);
     }
 
     @Override
-    protected int @NotNull [] getTransportSlots(@NotNull DirtyChestMenu dirtyChestMenu, @NotNull ItemTransportFlow itemTransportFlow, ItemStack itemStack) {
+    protected int[] getTransportSlots(@Nonnull DirtyChestMenu dirtyChestMenu, @Nonnull ItemTransportFlow itemTransportFlow, ItemStack itemStack) {
         return new int[0];
     }
 
     @Override
-    protected void onBreak(@NotNull BlockBreakEvent event, @NotNull BlockMenu blockMenu, @NotNull Location location) {
+    protected void onBreak(@Nonnull BlockBreakEvent event, @Nonnull BlockMenu blockMenu, @Nonnull Location location) {
         super.onBreak(event, blockMenu, location);
         NetworkInventoryCache networkInventoryCache = inventoryCaches.remove(location);
         if (networkInventoryCache != null) {
@@ -69,7 +69,7 @@ public final class NetworkChest extends AbstractContainer {
     }
 
     @Override
-    protected void onNewInstance(@NotNull BlockMenu menu, @NotNull Block b) {
+    protected void onNewInstance(@Nonnull BlockMenu menu, @Nonnull Block b) {
         super.onNewInstance(menu, b);
         inventoryCaches.put(b.getLocation(), new NetworkInventoryCache(menu));
     }

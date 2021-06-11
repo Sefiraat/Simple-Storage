@@ -1,6 +1,5 @@
 package io.github.sefiraat.simplestorage.runnables;
 
-import io.github.sefiraat.simplestorage.SimpleStorage;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Particle;

@@ -216,4 +216,9 @@ public final class SimpleStorageRecipes {
             SimpleStorageItemStacks.COMBINED_PLATE, SimpleStorageItemStacks.CHEST_DIAMOND,        SimpleStorageItemStacks.COMBINED_PLATE,
             SimpleStorageItemStacks.COMBINED_PLATE, SimpleStorageItemStacks.COMMUNICATION_BLOCK,  SimpleStorageItemStacks.COMBINED_PLATE
     };
+    protected static final ItemStack[] AUGMENT_BARREL = new ItemStack[] {
+            new ItemStack(Material.OAK_PLANKS), SimpleStorageItemStacks.COMBINED_PLATE,         new ItemStack(Material.OAK_PLANKS),
+            new ItemStack(Material.OAK_PLANKS), SimpleStorageItemStacks.PROUSTITE,              new ItemStack(Material.OAK_PLANKS),
+            new ItemStack(Material.OAK_PLANKS), SimpleStorageItemStacks.COMMUNICATION_BLOCK,    new ItemStack(Material.OAK_PLANKS)
+    };
 }

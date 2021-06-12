@@ -26,10 +26,12 @@ public final class Theme {
     public static final ChatColor ITEM_RARE_DROP = ChatColor.of("#bf307f");
     public static final ChatColor ITEM_BASE = ChatColor.of("#9e9e9e");
     public static final ChatColor ITEM_CHEST = ChatColor.of("#b89b1c");
+    public static final ChatColor ITEM_AUGMENT = ChatColor.of("#873dff");
 
     public static final String LORE_TYPE_CRAFT = ITEM_TYPEDESC + "Crafting Material";
     public static final String LORE_TYPE_MACHINE = ITEM_TYPEDESC + "Machine";
     public static final String LORE_TYPE_DROP = ITEM_TYPEDESC + "Drop";
     public static final String LORE_TYPE_BASE = ITEM_TYPEDESC + "Base Resource";
     public static final String LORE_TYPE_CHEST = ITEM_TYPEDESC + "Chest";
+    public static final String LORE_TYPE_AUGMENT = ITEM_TYPEDESC + "Augment";
 }

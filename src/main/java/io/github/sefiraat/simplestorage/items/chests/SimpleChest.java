@@ -77,6 +77,7 @@ public final class SimpleChest extends AbstractContainer {
         if (simpleInventoryCache != null) {
             simpleInventoryCache.kill(location);
         }
+        blockMenu.dropItems(location, SLOT_INPUT);
     }
 
     @Override

@@ -85,6 +85,7 @@ public class NetworkElement {
     public enum NetworkElementType {
         INVENTORY_CELL,
         INFINITY_BARREL,
+        FLUFFY_BARREL,
         NONE
     }
 
@@ -92,6 +93,7 @@ public class NetworkElement {
         switch (type) {
             case INVENTORY_CELL: return Theme.MAIN + "Simple Storage Cell";
             case INFINITY_BARREL: return ChatColor.AQUA + "Infinity Storage Unit";
+            case FLUFFY_BARREL: return ChatColor.GOLD + "Fluffy Barrel";
         }
         return "Uh oh, something went a bit wrong...";
     }

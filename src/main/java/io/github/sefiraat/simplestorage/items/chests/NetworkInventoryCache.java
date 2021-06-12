@@ -1,5 +1,6 @@
 package io.github.sefiraat.simplestorage.items.chests;
 
+import io.github.mooy1.infinitylib.items.StackUtils;
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.items.SimpleStorageItemStacks;
 import io.github.sefiraat.simplestorage.items.Skulls;
@@ -9,7 +10,6 @@ import io.github.sefiraat.simplestorage.items.chests.network.RemovalSet;
 import io.github.sefiraat.simplestorage.runnables.RunnableHighlight;
 import io.github.sefiraat.simplestorage.utils.Theme;
 import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu.MenuClickHandler;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
@@ -38,7 +38,7 @@ public final class NetworkInventoryCache extends AbstractCache {
         pages = (int) Math.ceil(inventories.size() / 45.0);
     }
 
-    public void getInventories(Block block, int size) {
+    public void getInventories(@Nonnull Block block, int size) {
         int i = 0;
         for(int x = block.getLocation().getBlockX() - size; x <= block.getLocation().getBlockX() + size; x++) {
             for(int y = block.getLocation().getBlockY() - size; y <= block.getLocation().getBlockY() + size; y++) {
@@ -55,28 +55,63 @@ public final class NetworkInventoryCache extends AbstractCache {
     }
 
     @Nullable
-    public NetworkElement getNetworkElement(Block block) {
+    private NetworkElement getNetworkElement(@Nonnull Block block) {
         String s = BlockStorage.getLocationInfo(block.getLocation(), "id");
         if (s != null) {
             if (SimpleStorageItemStacks.INVENTORY_CELL.getItemId().equals(s)) { // Mine here - default regardless so who cares
-                NetworkElement networkElement = new NetworkElement(block, 8, 7, 6);
-                networkElement.setSkullTexture(Skulls.BLOCK_CELL_BASIC);
-                networkElement.setType(NetworkElementType.INVENTORY_CELL);
-                return networkElement;
-            } else if (NetworkInventoryCache.ACCEPTED_BASIC_INFINITY.contains(s)) { // Infinity (No skulls)
-                NetworkElement networkElement = new NetworkElement(block, 8, 1, 0);
-                networkElement.setMaterial(block.getType());
-                networkElement.setType(NetworkElementType.INFINITY_BARREL);
-                String storedAmount = BlockStorage.getLocationInfo(block.getLocation(), "stored");
-                if (storedAmount != null) {
-                    networkElement.setBarrelAmount(Integer.parseInt(storedAmount));
-                } else {
-                    networkElement.setBarrelAmount(0);
-                }
-                return networkElement;
+                return getNetworkCell(block);
+            } else {
+                return checkBarrels(block, s);
             }
         }
         return null;
+    }
+
+    @Nullable
+    private NetworkElement checkBarrels(Block block, String s) {
+        if (hasUpgradeBarrel()) {
+            if (NetworkInventoryCache.ACCEPTED_BASIC_INFINITY.contains(s)) { // Infinity (No skulls)
+                return getNetworkBarrel(block, new int[]{8, 7, 6}, NetworkElementType.INFINITY_BARREL);
+            } else if (NetworkInventoryCache.ACCEPTED_BASIC_FLUFFY.contains(s)) { // Fluffy Barrels
+                return getNetworkBarrel(block, new int[]{8, 7, 6}, NetworkElementType.FLUFFY_BARREL);
+            }
+        }
+        return null;
+    }
+
+    @Nonnull
+    private NetworkElement getNetworkCell(Block block) {
+        NetworkElement networkElement = new NetworkElement(block, 8, 7, 6);
+        networkElement.setSkullTexture(Skulls.BLOCK_CELL_BASIC);
+        networkElement.setType(NetworkElementType.INVENTORY_CELL);
+        return networkElement;
+    }
+
+    @Nonnull
+    private NetworkElement getNetworkBarrel(Block block, int[] slots, NetworkElementType type) {
+        NetworkElement networkElement = new NetworkElement(block, slots[0], slots[1], slots[2]);
+        networkElement.setMaterial(block.getType());
+        networkElement.setType(type);
+        String storedAmount = BlockStorage.getLocationInfo(block.getLocation(), "stored");
+        if (storedAmount != null) {
+            networkElement.setBarrelAmount(Integer.parseInt(storedAmount));
+        } else {
+            networkElement.setBarrelAmount(0);
+        }
+        return networkElement;
+    }
+
+    private boolean hasUpgradeBarrel() {
+        for (int i : NetworkChest.AUGMENT_SLOTS) {
+            ItemStack itemStack = blockMenu.getItemInSlot(i);
+            if (itemStack != null) {
+                String id = StackUtils.getID(itemStack);
+                if (id != null && id.equals(SimpleStorageItemStacks.UPGRADE_BARREL.getItemId())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private boolean validTick() {
@@ -228,7 +263,15 @@ public final class NetworkInventoryCache extends AbstractCache {
             "INFINITY_STORAGE"
     ));
 
-    public static final List<String> ACCEPTED_SKULL_INFINITY = new ArrayList<>(Collections.emptyList());
+    public static final List<String> ACCEPTED_BASIC_FLUFFY = new ArrayList<>(Arrays.asList(
+            "SMALL_FLUFFY_BARREL",
+            "MEDIUM_FLUFFY_BARREL",
+            "BIG_FLUFFY_BARREL",
+            "LARGE_FLUFFY_BARREL",
+            "MASSIVE_FLUFFY_BARREL",
+            "BOTTOMLESS_FLUFFY_BARREL"
+    ));
+
 
 
 }

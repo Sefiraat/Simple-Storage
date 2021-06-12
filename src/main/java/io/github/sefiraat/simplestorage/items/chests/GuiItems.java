@@ -1,8 +1,8 @@
 package io.github.sefiraat.simplestorage.items.chests;
 
 import io.github.sefiraat.simplestorage.items.Skulls;
-import io.github.sefiraat.simplestorage.items.chests.network.NetworkElement.NetworkElementType;
 import io.github.sefiraat.simplestorage.items.chests.network.NetworkElement;
+import io.github.sefiraat.simplestorage.items.chests.network.NetworkElement.NetworkElementType;
 import io.github.sefiraat.simplestorage.utils.Theme;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
@@ -106,7 +106,10 @@ public final class GuiItems {
 
         if (networkElement.getType() == NetworkElement.NetworkElementType.INVENTORY_CELL) {
             return menuCellNormal(i, name);
-        } else if (networkElement.getType() == NetworkElementType.INFINITY_BARREL) {
+        } else if (
+                networkElement.getType() == NetworkElementType.INFINITY_BARREL ||
+                networkElement.getType() == NetworkElementType.FLUFFY_BARREL
+        ) {
             return menuCellBarrel(i, name, networkElement);
         } else {
             return menuCellError();
@@ -120,8 +123,8 @@ public final class GuiItems {
                 "",
                 Theme.ITEM_TYPEDESC + "Inventory Type: " + NetworkElement.networkElementTypeName(NetworkElement.NetworkElementType.INVENTORY_CELL),
                 "",
-                Theme.CLICK_INFO + "Left click to open inventory",
-                Theme.CLICK_INFO + "Right click to highlight inventory"
+                Theme.CLICK_INFO + "Left click: " + ChatColor.WHITE + "Open inventory",
+                Theme.CLICK_INFO + "Right click: " + ChatColor.WHITE + "Highlight inventory"
         );
     }
 
@@ -135,8 +138,8 @@ public final class GuiItems {
                 "",
                 barrelAmount,
                 "",
-                Theme.CLICK_INFO + "Left click to open inventory",
-                Theme.CLICK_INFO + "Right click to highlight inventory"
+                Theme.CLICK_INFO + "Left click: " + ChatColor.WHITE + "Open inventory",
+                Theme.CLICK_INFO + "Right click: " + ChatColor.WHITE + "Highlight inventory"
         );
     }
 
@@ -147,8 +150,8 @@ public final class GuiItems {
                 "",
                 Theme.ITEM_TYPEDESC + "Inventory Type: Unknown/Error",
                 "",
-                Theme.CLICK_INFO + "Left click to open inventory",
-                Theme.CLICK_INFO + "Right click to highlight inventory"
+                Theme.CLICK_INFO + "Left click: " + ChatColor.WHITE + "Open inventory",
+                Theme.CLICK_INFO + "Right click: " + ChatColor.WHITE + "Highlight inventory"
         );
     }
 

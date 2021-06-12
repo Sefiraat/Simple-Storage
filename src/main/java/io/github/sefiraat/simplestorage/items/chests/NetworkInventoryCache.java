@@ -21,15 +21,20 @@ import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public final class NetworkInventoryCache extends AbstractCache {
 
     private int tick;
-    private Map<Integer, NetworkElement> inventories = new HashMap<>();
+    private final Map<Integer, NetworkElement> inventories = new HashMap<>();
 
     public NetworkInventoryCache(BlockMenu blockMenu) {
         super(blockMenu);
+        process();
     }
 
     public void updateInventories() {
@@ -43,8 +48,7 @@ public final class NetworkInventoryCache extends AbstractCache {
         for(int x = block.getLocation().getBlockX() - size; x <= block.getLocation().getBlockX() + size; x++) {
             for(int y = block.getLocation().getBlockY() - size; y <= block.getLocation().getBlockY() + size; y++) {
                 for (int z = block.getLocation().getBlockZ() - size; z <= block.getLocation().getBlockZ() + size; z++) {
-                    Block block2 = block.getLocation().getWorld().getBlockAt(x, y, z);
-                    NetworkElement networkElement = getNetworkElement(block2);
+                    NetworkElement networkElement = getNetworkElement(block.getLocation().getWorld().getBlockAt(x, y, z));
                     if (networkElement != null) {
                         inventories.put(i, networkElement);
                         i++;
@@ -81,7 +85,8 @@ public final class NetworkInventoryCache extends AbstractCache {
 
     @Nonnull
     private NetworkElement getNetworkCell(Block block) {
-        NetworkElement networkElement = new NetworkElement(block, 8, 7, 6);
+        Location l = block.getLocation();
+        NetworkElement networkElement = new NetworkElement(block, 8, 7, 6, getCellDisplayName(l), getCellDisplayMaterial(l));
         networkElement.setSkullTexture(Skulls.BLOCK_CELL_BASIC);
         networkElement.setType(NetworkElementType.INVENTORY_CELL);
         return networkElement;
@@ -89,7 +94,8 @@ public final class NetworkInventoryCache extends AbstractCache {
 
     @Nonnull
     private NetworkElement getNetworkBarrel(Block block, int[] slots, NetworkElementType type) {
-        NetworkElement networkElement = new NetworkElement(block, slots[0], slots[1], slots[2]);
+        Location l = block.getLocation();
+        NetworkElement networkElement = new NetworkElement(block, slots[0], slots[1], slots[2], getCellDisplayName(l), getCellDisplayMaterial(l));
         networkElement.setMaterial(block.getType());
         networkElement.setType(type);
         String storedAmount = BlockStorage.getLocationInfo(block.getLocation(), "stored");
@@ -114,6 +120,19 @@ public final class NetworkInventoryCache extends AbstractCache {
         return false;
     }
 
+    @Nullable
+    private String getCellDisplayName(Location location) {
+        return BlockStorage.getLocationInfo(location, "cellname");
+    }
+
+    @Nullable
+    private Material getCellDisplayMaterial(Location location) {
+        if (BlockStorage.getLocationInfo(location, "cellmaterial") != null) {
+            return Material.valueOf(BlockStorage.getLocationInfo(location, "cellmaterial"));
+        }
+        return null;
+    }
+
     private boolean validTick() {
         if (tick >= SimpleStorage.inst().getManagerConfiguration().getVals().getNetworkTickRate()) {
             tick = 1;
@@ -126,8 +145,11 @@ public final class NetworkInventoryCache extends AbstractCache {
 
     public void process() {
         if (blockMenu.hasViewer()) {
-            updateInventories();
-            updateView();
+            if (page != prevPage || validTick()) {
+                updateInventories();
+                updateView();
+                prevPage = page;
+            }
         }
     }
 
@@ -143,7 +165,7 @@ public final class NetworkInventoryCache extends AbstractCache {
             NetworkElement networkElement = inventories.get(listSlotNo);
 
             if (networkElement != null) {
-                processCell(networkElement, slotNo, listSlotNo);
+                processCell(networkElement, slotNo);
             } else {
                 blockMenu.replaceExistingItem(slotNo, GuiItems.menuMasterDummy());
                 blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> false);
@@ -151,23 +173,10 @@ public final class NetworkInventoryCache extends AbstractCache {
         }
     }
 
-    private void processCell(@Nonnull NetworkElement networkElement, int slotNo, int listSlotNo) {
-
-        Location location = networkElement.getBlock().getLocation();
-
-        // Get cell name if stored
-        String name = BlockStorage.getLocationInfo(location, "cellname");
-        // Get cell material if stored
-        Material material = null;
-        if (BlockStorage.getLocationInfo(location, "cellmaterial") != null) {
-            material = Material.valueOf(BlockStorage.getLocationInfo(location, "cellmaterial"));
-        } else if (networkElement.getMaterial() != null) {
-            material = networkElement.getMaterial();
-        }
+    private void processCell(@Nonnull NetworkElement networkElement, int slotNo) {
         // Set item and add handler
-        blockMenu.replaceExistingItem(slotNo, GuiItems.menuCell(listSlotNo, name, material, networkElement));
+        blockMenu.replaceExistingItem(slotNo, GuiItems.menuCell(networkElement));
         blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> guiItemClick(networkElement, player, clickAction));
-
     }
 
     private boolean guiItemClick(@Nonnull NetworkElement networkElement, Player player, @Nonnull ClickAction clickAction) {
@@ -195,18 +204,15 @@ public final class NetworkInventoryCache extends AbstractCache {
                 blockMenu.getMenuClickHandler(networkElement.getSlotRename())
         );
 
-        // Add Close item to drilled down inventory - set block storage to show items added (for removing later)
-        BlockStorage.addBlockInfo(block, "simpleclose", "y");
+        // Add Close item to drilled down inventory
         blockMenu.replaceExistingItem(networkElement.getSlotClose(), GuiItems.menuClose());
         blockMenu.addMenuClickHandler(networkElement.getSlotClose(), (player2, i2, itemStack2, clickAction2) -> guiClose(player2, blockMenu, networkElement, removalSet, true));
 
-        // Add Rename item to drilled down inventory - set block storage to show items added (for removing later)
-        BlockStorage.addBlockInfo(block, "simplerename", "y");
+        // Add Rename item to drilled down inventory
         blockMenu.replaceExistingItem(networkElement.getSlotRename(), GuiItems.menuRenameCell());
         blockMenu.addMenuClickHandler(networkElement.getSlotRename(), (player2, i2, itemStack2, clickAction2) -> guiRename(block, player2));
 
-        // Add SetMaterial item to drilled down inventory - set block storage to show items added (for removing later)
-        BlockStorage.addBlockInfo(block, "simplesetblock", "y");
+        // Add SetMaterial item to drilled down inventory
         blockMenu.replaceExistingItem(networkElement.getSlotSetBlock(), GuiItems.menuSetMaterial());
         blockMenu.addMenuClickHandler(networkElement.getSlotSetBlock(), (player2, i2, itemStack2, clickAction2) -> guiSetMaterial(block, player2));
 
@@ -218,7 +224,6 @@ public final class NetworkInventoryCache extends AbstractCache {
     }
 
     private boolean guiClose(Player player, @Nonnull BlockMenu invMenu, @Nonnull NetworkElement networkElement, @Nonnull RemovalSet removalSet, boolean back) {
-        // Go back to main menu, set flags to N for removal
         invMenu.replaceExistingItem(networkElement.getSlotClose(), removalSet.getOriginalGuiClose());
         invMenu.addMenuClickHandler(networkElement.getSlotClose(), removalSet.getCloseMenuClickHandler());
         invMenu.replaceExistingItem(networkElement.getSlotRename(), removalSet.getOriginalGuiRename());
@@ -238,7 +243,6 @@ public final class NetworkInventoryCache extends AbstractCache {
         player.sendMessage(Theme.WARNING + "Enter a new name for this inventory cell, supports colour codes");
         ChatUtils.awaitInput(player, message -> {
             BlockStorage.addBlockInfo(block, "cellname", message);
-            BlockStorage.addBlockInfo(block, "simplerename", "n");
             player.sendMessage(Theme.SUCCESS + "Cell name updated");
         });
         return false;

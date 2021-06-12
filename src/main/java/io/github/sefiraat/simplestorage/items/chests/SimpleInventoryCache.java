@@ -2,15 +2,18 @@ package io.github.sefiraat.simplestorage.items.chests;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.configuration.ManagerConfiguration;
-import io.github.sefiraat.simplestorage.utils.Utils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -107,27 +110,6 @@ public final class SimpleInventoryCache extends AbstractCache {
 
     public void updateView() {
         if (blockMenu.hasViewer()) {
-
-            // Check for removing GUI icons from Master
-            String close = BlockStorage.getLocationInfo(blockMenu.getBlock().getLocation(),"simpleclose");
-            if (close != null && close.equals("n")) {
-                blockMenu.replaceExistingItem(8, GuiItems.menuBackground());
-                blockMenu.addMenuCloseHandler(player -> {
-                });
-            }
-            String rename = BlockStorage.getLocationInfo(blockMenu.getBlock().getLocation(),"simplerename");
-            if (rename != null && rename.equals("n")) {
-                blockMenu.replaceExistingItem(7, GuiItems.menuBackground());
-                blockMenu.addMenuCloseHandler(player -> {
-                });
-            }
-            String setblock = BlockStorage.getLocationInfo(blockMenu.getBlock().getLocation(),"simplesetblock");
-            if (setblock != null && setblock.equals("n")) {
-                blockMenu.replaceExistingItem(6, GuiItems.menuBackground());
-                blockMenu.addMenuCloseHandler(player -> {
-                });
-            }
-
             for (int i = 0; i < 45 ; i++) {
                 int slotNo = i + 9;
                 int listSlotNo = ((page - 1) * 45) + (i + 1);
@@ -136,7 +118,7 @@ public final class SimpleInventoryCache extends AbstractCache {
                     blockMenu.replaceExistingItem(slotNo, GuiItems.menuChestDummy());
                     blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> false);
                 } else {
-                    ItemStack guiVersion = Utils.setGuiItem(itemStack.clone());
+                    ItemStack guiVersion = setGuiItem(itemStack.clone());
                     blockMenu.replaceExistingItem(slotNo, guiVersion);
                     blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> guiClickItem(player, slotNo, listSlotNo, itemStack, clickAction));
                 }
@@ -163,7 +145,7 @@ public final class SimpleInventoryCache extends AbstractCache {
         itemStack.setAmount(itemStack.getAmount() - cursorStack.getAmount());
         player.setItemOnCursor(cursorStack);
         if (itemStack.getAmount() > 0) {
-            blockMenu.replaceExistingItem(slotNo, Utils.setGuiItem(itemStack.clone()));
+            blockMenu.replaceExistingItem(slotNo, setGuiItem(itemStack.clone()));
             ManagerConfiguration.setChestSlotItem(chestID, listSlotNo, itemStack);
         } else {
             blockMenu.replaceExistingItem(slotNo, GuiItems.menuChestDummy());
@@ -186,6 +168,14 @@ public final class SimpleInventoryCache extends AbstractCache {
         blockMenu.replaceExistingItem(slotNo, GuiItems.menuChestDummy());
         blockMenu.addMenuClickHandler(slotNo, (player2, i2, itemStack2, clickAction2) -> false);
         ManagerConfiguration.setChestSlotItem(chestID, listSlotNo, null);
+    }
+
+    public static ItemStack setGuiItem(ItemStack itemStack) {
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        PersistentDataContainer c = itemMeta.getPersistentDataContainer();
+        c.set(new NamespacedKey(SimpleStorage.inst(), "gui"), PersistentDataType.INTEGER, 1);
+        itemStack.setItemMeta(itemMeta);
+        return itemStack;
     }
 
 }

@@ -1,13 +1,18 @@
 package io.github.sefiraat.simplestorage.items.chests.network;
 
+import io.github.sefiraat.simplestorage.items.Skulls;
 import io.github.sefiraat.simplestorage.utils.Theme;
+import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.inventory.ItemStack;
+
+import javax.annotation.Nullable;
 
 public class NetworkElement {
 
-    private final Block block;
+    private Block block;
     private NetworkElementType type;
     private Material material;
     private String skullTexture;
@@ -15,6 +20,8 @@ public class NetworkElement {
     private int slotRename;
     private int slotSetBlock;
     private int barrelAmount;
+    private String displayName;
+    private Material displayMaterial;
 
     public Block getBlock() {
         return block;
@@ -75,11 +82,29 @@ public class NetworkElement {
         this.barrelAmount = barrelAmount;
     }
 
-    public NetworkElement(Block block, int slotClose, int slotRename, int slotSetBlock) {
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public Material getDisplayMaterial() {
+        return displayMaterial;
+    }
+
+    public void setDisplayMaterial(Material displayMaterial) {
+        this.displayMaterial = displayMaterial;
+    }
+
+    public NetworkElement(Block block, int slotClose, int slotRename, int slotSetBlock, @Nullable String displayName, @Nullable Material displayMaterial) {
         this.block = block;
         this.slotClose = slotClose;
         this.slotRename = slotRename;
         this.slotSetBlock = slotSetBlock;
+        this.displayName = displayName;
+        this.displayMaterial = displayMaterial;
     }
 
     public enum NetworkElementType {
@@ -96,5 +121,15 @@ public class NetworkElement {
             case FLUFFY_BARREL: return ChatColor.GOLD + "Fluffy Barrel";
         }
         return "Uh oh, something went a bit wrong...";
+    }
+
+    public static ItemStack getItemStack(NetworkElement ne) {
+        if (ne.getDisplayMaterial() != null) {
+            return new ItemStack(ne.displayMaterial);
+        } else if (ne.getType() == NetworkElementType.INVENTORY_CELL) {
+            return SkullItem.fromBase64(Skulls.BLOCK_CELL_BASIC);
+        } else {
+            return new ItemStack(ne.block.getType());
+        }
     }
 }

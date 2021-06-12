@@ -10,8 +10,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import javax.annotation.Nullable;
-
 public final class GuiItems {
 
     private GuiItems() {
@@ -91,26 +89,21 @@ public final class GuiItems {
         );
     }
 
-    public static CustomItem menuCell(int number, @Nullable String name, @Nullable Material material, NetworkElement networkElement) {
+    public static CustomItem menuCell(NetworkElement ne) {
 
-        if (name == null) {
-            name = ChatColor.WHITE + "Scanned Inventory";
+        ItemStack i = NetworkElement.getItemStack(ne);
+
+        if (ne.getDisplayName() == null) {
+            ne.setDisplayName(ChatColor.WHITE + "Scanned Inventory");
         }
 
-        ItemStack i;
-        if (material == null) {
-            i = SkullItem.fromBase64(Skulls.BLOCK_CELL_BASIC);
-        } else {
-            i = new ItemStack(material);
-        }
-
-        if (networkElement.getType() == NetworkElement.NetworkElementType.INVENTORY_CELL) {
-            return menuCellNormal(i, name);
+        if (ne.getType() == NetworkElement.NetworkElementType.INVENTORY_CELL) {
+            return menuCellNormal(i, ne.getDisplayName());
         } else if (
-                networkElement.getType() == NetworkElementType.INFINITY_BARREL ||
-                networkElement.getType() == NetworkElementType.FLUFFY_BARREL
+                ne.getType() == NetworkElementType.INFINITY_BARREL ||
+                ne.getType() == NetworkElementType.FLUFFY_BARREL
         ) {
-            return menuCellBarrel(i, name, networkElement);
+            return menuCellBarrel(i, ne.getDisplayName(), ne);
         } else {
             return menuCellError();
         }

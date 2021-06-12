@@ -570,4 +570,15 @@ public final class SimpleStorageItemStacks {
             "",
             Theme.LORE_TYPE_CHEST
     );
+    public static final SlimefunItemStack UPGRADE_BARREL = new SlimefunItemStack(
+            "UPGRADE_BARREL",
+            Skulls.ITEM_UPGRADE_BARREL,
+            Theme.ITEM_AUGMENT + "Augment: Barrels",
+            "",
+            Theme.PASSIVE + "Augment your Network Chest with the",
+            Theme.PASSIVE + "ability to scan nearby, compatible,",
+            Theme.PASSIVE + "barrels.",
+            "",
+            Theme.LORE_TYPE_AUGMENT
+    );
 }

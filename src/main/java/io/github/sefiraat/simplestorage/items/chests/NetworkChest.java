@@ -26,7 +26,8 @@ public final class NetworkChest extends AbstractContainer {
     static final int SLOT_INFO = 0;
     static final int SLOT_BACK = 1;
     static final int SLOT_FORWARD = 2;
-    static final int[] BACKGROUND_SLOTS = {3, 4, 5, 6, 7, 8};
+    static final int[] BACKGROUND_SLOTS = {3, 4, 5};
+    static final int[] AUGMENT_SLOTS = {6, 7, 8};
 
     private final Map<Location, NetworkInventoryCache> inventoryCaches = new HashMap<>();
 
@@ -66,6 +67,7 @@ public final class NetworkChest extends AbstractContainer {
         if (networkInventoryCache != null) {
             networkInventoryCache.kill(location);
         }
+        blockMenu.dropItems(location, AUGMENT_SLOTS);
     }
 
     @Override

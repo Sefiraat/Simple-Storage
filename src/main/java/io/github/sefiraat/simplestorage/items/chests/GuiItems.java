@@ -1,6 +1,8 @@
 package io.github.sefiraat.simplestorage.items.chests;
 
 import io.github.sefiraat.simplestorage.items.Skulls;
+import io.github.sefiraat.simplestorage.items.chests.network.NetworkElement;
+import io.github.sefiraat.simplestorage.items.chests.network.NetworkElement.NetworkElementType;
 import io.github.sefiraat.simplestorage.utils.Theme;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
@@ -89,24 +91,67 @@ public final class GuiItems {
         );
     }
 
-    public static CustomItem menuCell(int number, @Nullable String name, @Nullable Material material) {
+    public static CustomItem menuCell(int number, @Nullable String name, @Nullable Material material, NetworkElement networkElement) {
+
         if (name == null) {
             name = ChatColor.WHITE + "Scanned Inventory";
         }
+
         ItemStack i;
         if (material == null) {
             i = SkullItem.fromBase64(Skulls.BLOCK_CELL_BASIC);
         } else {
             i = new ItemStack(material);
         }
+
+        if (networkElement.getType() == NetworkElement.NetworkElementType.INVENTORY_CELL) {
+            return menuCellNormal(i, name);
+        } else if (
+                networkElement.getType() == NetworkElementType.INFINITY_BARREL ||
+                networkElement.getType() == NetworkElementType.FLUFFY_BARREL
+        ) {
+            return menuCellBarrel(i, name, networkElement);
+        } else {
+            return menuCellError();
+        }
+    }
+
+    public static CustomItem menuCellNormal(ItemStack i, String name) {
         return new CustomItem(
                 i,
                 Theme.GUI_HEAD + name,
                 "",
-                Theme.ITEM_TYPEDESC + "Cell number: " + number,
+                Theme.ITEM_TYPEDESC + "Inventory Type: " + NetworkElement.networkElementTypeName(NetworkElement.NetworkElementType.INVENTORY_CELL),
                 "",
-                Theme.CLICK_INFO + "Left click to open inventory",
-                Theme.CLICK_INFO + "Right click to highlight inventory"
+                Theme.CLICK_INFO + "Left click: " + ChatColor.WHITE + "Open inventory",
+                Theme.CLICK_INFO + "Right click: " + ChatColor.WHITE + "Highlight inventory"
+        );
+    }
+
+    public static CustomItem menuCellBarrel(ItemStack i, String name, NetworkElement networkElement) {
+        String barrelAmount = Theme.ITEM_TYPEDESC + "Content: " + ChatColor.WHITE + networkElement.getBarrelAmount();
+        return new CustomItem(
+                i,
+                Theme.GUI_HEAD + name,
+                "",
+                Theme.ITEM_TYPEDESC + "Inventory Type: " + NetworkElement.networkElementTypeName(networkElement.getType()),
+                "",
+                barrelAmount,
+                "",
+                Theme.CLICK_INFO + "Left click: " + ChatColor.WHITE + "Open inventory",
+                Theme.CLICK_INFO + "Right click: " + ChatColor.WHITE + "Highlight inventory"
+        );
+    }
+
+    public static CustomItem menuCellError() {
+        return new CustomItem(
+                Material.BARRIER,
+                Theme.GUI_HEAD + "Scanned Inventory (Error)",
+                "",
+                Theme.ITEM_TYPEDESC + "Inventory Type: Unknown/Error",
+                "",
+                Theme.CLICK_INFO + "Left click: " + ChatColor.WHITE + "Open inventory",
+                Theme.CLICK_INFO + "Right click: " + ChatColor.WHITE + "Highlight inventory"
         );
     }
 

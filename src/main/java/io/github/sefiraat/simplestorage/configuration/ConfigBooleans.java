@@ -8,7 +8,7 @@ public final class ConfigBooleans {
     FileConfiguration configuration;
 
     public boolean getAutoUpdate() {
-        return configuration.getBoolean("options.auto-update");
+        return configuration.getBoolean("auto-update");
     }
 
     public ConfigBooleans(SimpleStorage plugin) {

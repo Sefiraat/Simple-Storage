@@ -77,8 +77,6 @@ public final class Materials {
         new UnplaceableBlock(Categories.MAT, SimpleStorageItemStacks.COMMUNICATION_BLOCK, RecipeType.ENHANCED_CRAFTING_TABLE, SimpleStorageRecipes.COMMUNICATION_BLOCK).register(p);
         new UnplaceableBlock(Categories.MAT, SimpleStorageItemStacks.DISPLAY_PANEL, RecipeType.ENHANCED_CRAFTING_TABLE, SimpleStorageRecipes.DISPLAY_PANEL).register(p);
 
-        new UnplaceableBlock(Categories.CHT, SimpleStorageItemStacks.UPGRADE_BARREL, RecipeType.ENHANCED_CRAFTING_TABLE, SimpleStorageRecipes.AUGMENT_BARREL).register(p);
-
         AContainer heatedPressureChamber = (AContainer) SlimefunItems.HEATED_PRESSURE_CHAMBER.getItem();
         heatedPressureChamber.registerRecipe(60, new ItemStack[]{SimpleStorageItemStacks.CUPRONICKEL_INGOT, SimpleStorageItemStacks.BASTNAESITE_INGOT}, new ItemStack[]{SimpleStorageItemStacks.CUPRONICKEL_REINFORCED});
         heatedPressureChamber.registerRecipe(100, new ItemStack[]{SimpleStorageItemStacks.PEWTER_INGOT, SimpleStorageItemStacks.ANTIMONY_INGOT}, new ItemStack[]{SimpleStorageItemStacks.PEWTER_REINFORCED});

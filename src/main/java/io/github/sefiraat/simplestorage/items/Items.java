@@ -1,0 +1,20 @@
+package io.github.sefiraat.simplestorage.items;
+
+import io.github.sefiraat.simplestorage.SimpleStorage;
+import io.github.sefiraat.simplestorage.categories.Categories;
+import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
+import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+
+public class Items {
+
+    private Items() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static void set(SimpleStorage p) {
+
+        new UnplaceableBlock(Categories.ITM, SimpleStorageItemStacks.UPGRADE_BARREL, RecipeType.ENHANCED_CRAFTING_TABLE, SimpleStorageRecipes.AUGMENT_BARREL).register(p);
+
+    }
+
+}

@@ -5,6 +5,7 @@ import io.github.mooy1.infinitylib.bstats.bukkit.Metrics;
 import io.github.sefiraat.simplestorage.categories.Categories;
 import io.github.sefiraat.simplestorage.configuration.ManagerConfiguration;
 import io.github.sefiraat.simplestorage.items.Blocks;
+import io.github.sefiraat.simplestorage.items.Items;
 import io.github.sefiraat.simplestorage.items.Machines;
 import io.github.sefiraat.simplestorage.items.Materials;
 import io.github.sefiraat.simplestorage.listeners.ManagerListeners;
@@ -41,15 +42,13 @@ public class SimpleStorage extends AbstractAddon {
     }
 
     @Override
-    protected void enable() {
+    protected void onAddonEnable() {
 
         instance = this;
 
         getLogger().info("########################################");
-        getLogger().info("");
         getLogger().info("              SimpleStorage             ");
         getLogger().info("           Created by Sefiraat          ");
-        getLogger().info("");
         getLogger().info("########################################");
 
         managerConfiguration = new ManagerConfiguration(this);
@@ -57,11 +56,10 @@ public class SimpleStorage extends AbstractAddon {
         managerListeners = new ManagerListeners();
 
         setupSlimefun();
-
     }
 
     @Override
-    protected void disable() {
+    protected void onAddonDisable() {
         saveConfig();
         managerConfiguration.saveAdditionalConfigs();
         instance = null;
@@ -78,17 +76,12 @@ public class SimpleStorage extends AbstractAddon {
         return "Sefiraat/Simple-Storage/master";
     }
 
-    @Override
-    public String getAutoUpdatePath() {
-        return null;
-    }
-
-
     private void setupSlimefun() {
         Categories.set(this);
         Materials.set(this);
         Machines.set();
         Blocks.set(this);
+        Items.set(this);
     }
 
 

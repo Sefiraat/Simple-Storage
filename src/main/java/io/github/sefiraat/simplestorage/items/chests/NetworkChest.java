@@ -53,6 +53,7 @@ public final class NetworkChest extends AbstractContainer {
     @Override
     protected void setupMenu(@Nonnull BlockMenuPreset blockMenuPreset) {
         Utils.setUpChestMenu(blockMenuPreset, BACKGROUND_SLOTS, SLOT_BACK, SLOT_FORWARD, SLOT_INFO);
+
     }
 
     @Override
@@ -73,7 +74,8 @@ public final class NetworkChest extends AbstractContainer {
     @Override
     protected void onNewInstance(@Nonnull BlockMenu menu, @Nonnull Block b) {
         super.onNewInstance(menu, b);
-        inventoryCaches.put(b.getLocation(), new NetworkInventoryCache(menu));
+        NetworkInventoryCache cache = new NetworkInventoryCache(menu);
+        inventoryCaches.put(b.getLocation(), cache);
     }
 
 }

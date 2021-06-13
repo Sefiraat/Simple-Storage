@@ -5,4 +5,4 @@
 auto-update: true
 options:
   network-range: 5
-  ticks-between-checks: 2
+  ticks-between-checks: 4

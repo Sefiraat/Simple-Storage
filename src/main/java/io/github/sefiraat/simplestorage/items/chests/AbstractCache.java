@@ -13,6 +13,7 @@ public abstract class AbstractCache {
     protected final BlockMenu blockMenu;
     protected int pages;
     protected int page = 1;
+    protected int prevPage = 0;
     protected final Map<Integer, String> guiNumbers;
 
     protected AbstractCache(BlockMenu blockMenu) {

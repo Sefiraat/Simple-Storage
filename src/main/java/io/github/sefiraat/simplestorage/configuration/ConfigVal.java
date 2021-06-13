@@ -7,13 +7,18 @@ public final class ConfigVal {
 
     FileConfiguration configuration;
 
+    private final int networkRange;
+    private final int networkTickRate;
+
     public int getNetworkRange() {
-        return configuration.getInt("options.network-range");
+        return networkRange;
     }
-    public int getNetworkTickRate() { return configuration.getInt("options.ticks-between-checks"); }
+    public int getNetworkTickRate() { return networkTickRate; }
 
     public ConfigVal(SimpleStorage plugin) {
         configuration = plugin.getConfig();
+        networkRange = configuration.getInt("options.network-range");
+        networkTickRate = configuration.getInt("options.ticks-between-checks");
     }
 
 }

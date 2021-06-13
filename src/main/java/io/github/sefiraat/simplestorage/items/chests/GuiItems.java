@@ -92,18 +92,21 @@ public final class GuiItems {
     public static CustomItem menuCell(NetworkElement ne) {
 
         ItemStack i = NetworkElement.getItemStack(ne);
-
-        if (ne.getDisplayName() == null) {
-            ne.setDisplayName(ChatColor.WHITE + "Scanned Inventory");
+        String name;
+        String storedName = ne.getDisplayName();
+        if (storedName == null) {
+            name = ChatColor.WHITE + "Scanned Inventory";
+        } else {
+            name = storedName;
         }
 
         if (ne.getType() == NetworkElement.NetworkElementType.INVENTORY_CELL) {
-            return menuCellNormal(i, ne.getDisplayName());
+            return menuCellNormal(i, name);
         } else if (
                 ne.getType() == NetworkElementType.INFINITY_BARREL ||
                 ne.getType() == NetworkElementType.FLUFFY_BARREL
         ) {
-            return menuCellBarrel(i, ne.getDisplayName(), ne);
+            return menuCellBarrel(i, name, ne);
         } else {
             return menuCellError();
         }

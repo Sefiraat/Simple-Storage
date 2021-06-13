@@ -85,8 +85,7 @@ public final class NetworkInventoryCache extends AbstractCache {
 
     @Nonnull
     private NetworkElement getNetworkCell(Block block) {
-        Location l = block.getLocation();
-        NetworkElement networkElement = new NetworkElement(block, 8, 7, 6, getCellDisplayName(l), getCellDisplayMaterial(l));
+        NetworkElement networkElement = new NetworkElement(block, 8, 7, 6);
         networkElement.setSkullTexture(Skulls.BLOCK_CELL_BASIC);
         networkElement.setType(NetworkElementType.INVENTORY_CELL);
         return networkElement;
@@ -94,16 +93,9 @@ public final class NetworkInventoryCache extends AbstractCache {
 
     @Nonnull
     private NetworkElement getNetworkBarrel(Block block, int[] slots, NetworkElementType type) {
-        Location l = block.getLocation();
-        NetworkElement networkElement = new NetworkElement(block, slots[0], slots[1], slots[2], getCellDisplayName(l), getCellDisplayMaterial(l));
+        NetworkElement networkElement = new NetworkElement(block, slots[0], slots[1], slots[2]);
         networkElement.setMaterial(block.getType());
         networkElement.setType(type);
-        String storedAmount = BlockStorage.getLocationInfo(block.getLocation(), "stored");
-        if (storedAmount != null) {
-            networkElement.setBarrelAmount(Integer.parseInt(storedAmount));
-        } else {
-            networkElement.setBarrelAmount(0);
-        }
         return networkElement;
     }
 
@@ -120,19 +112,6 @@ public final class NetworkInventoryCache extends AbstractCache {
         return false;
     }
 
-    @Nullable
-    private String getCellDisplayName(Location location) {
-        return BlockStorage.getLocationInfo(location, "cellname");
-    }
-
-    @Nullable
-    private Material getCellDisplayMaterial(Location location) {
-        if (BlockStorage.getLocationInfo(location, "cellmaterial") != null) {
-            return Material.valueOf(BlockStorage.getLocationInfo(location, "cellmaterial"));
-        }
-        return null;
-    }
-
     private boolean validTick() {
         if (tick >= SimpleStorage.inst().getManagerConfiguration().getVals().getNetworkTickRate()) {
             tick = 1;
@@ -144,12 +123,11 @@ public final class NetworkInventoryCache extends AbstractCache {
     }
 
     public void process() {
-        if (blockMenu.hasViewer()) {
-            if (page != prevPage || validTick()) {
-                updateInventories();
-                updateView();
-                prevPage = page;
-            }
+        // Only update when viewed then only update when the page has been changed OR when a refresh is required.
+        if (blockMenu.hasViewer() && (page != prevPage || validTick())) {
+            updateInventories();
+            updateView();
+            prevPage = page;
         }
     }
 
@@ -165,7 +143,8 @@ public final class NetworkInventoryCache extends AbstractCache {
             NetworkElement networkElement = inventories.get(listSlotNo);
 
             if (networkElement != null) {
-                processCell(networkElement, slotNo);
+                blockMenu.replaceExistingItem(slotNo, GuiItems.menuCell(networkElement));
+                blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> guiItemClick(networkElement, player, clickAction));
             } else {
                 blockMenu.replaceExistingItem(slotNo, GuiItems.menuMasterDummy());
                 blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> false);
@@ -173,28 +152,23 @@ public final class NetworkInventoryCache extends AbstractCache {
         }
     }
 
-    private void processCell(@Nonnull NetworkElement networkElement, int slotNo) {
-        // Set item and add handler
-        blockMenu.replaceExistingItem(slotNo, GuiItems.menuCell(networkElement));
-        blockMenu.addMenuClickHandler(slotNo, (player, i1, itemStack1, clickAction) -> guiItemClick(networkElement, player, clickAction));
-    }
-
     private boolean guiItemClick(@Nonnull NetworkElement networkElement, Player player, @Nonnull ClickAction clickAction) {
         Block block = networkElement.getBlock();
         if (clickAction.isRightClicked()) {
-            new RunnableHighlight(block.getLocation().clone().add(0.5, 0.5, 0.5)).runTaskTimer(SimpleStorage.inst(), 0, 40L);
+            new RunnableHighlight(this.blockMenu.getLocation().clone().add(0.5, 0.5, 0.5), block.getLocation().clone().add(0.5, 0.5, 0.5)).runTaskTimer(SimpleStorage.inst(), 0, 20L);
             player.closeInventory();
-            return false;
         } else {
-            return guiItemLeftClick(networkElement, player);
+            guiItemLeftClick(networkElement, player);
         }
+        return false;
     }
 
-    private boolean guiItemLeftClick(@Nonnull NetworkElement networkElement, Player player) {
+    private void guiItemLeftClick(@Nonnull NetworkElement networkElement, Player player) {
 
         Block block = networkElement.getBlock();
-
         BlockMenu blockMenu = BlockStorage.getInventory(block);
+
+        // Store the ItemStacks and Handlers being overridden
         RemovalSet removalSet = new RemovalSet(
                 blockMenu.getItemInSlot(networkElement.getSlotClose()),
                 blockMenu.getMenuClickHandler(networkElement.getSlotClose()),
@@ -219,7 +193,6 @@ public final class NetworkInventoryCache extends AbstractCache {
         blockMenu.addMenuCloseHandler(player1 -> guiClose(player1, blockMenu, networkElement, removalSet,false));
 
         blockMenu.open(player);
-        return false;
 
     }
 
@@ -259,7 +232,7 @@ public final class NetworkInventoryCache extends AbstractCache {
         return false;
     }
 
-    public static final List<String> ACCEPTED_BASIC_INFINITY = new ArrayList<>(Arrays.asList(
+    protected static final List<String> ACCEPTED_BASIC_INFINITY = new ArrayList<>(Arrays.asList(
             "BASIC_STORAGE",
             "ADVANCED_STORAGE",
             "REINFORCED_STORAGE",
@@ -267,7 +240,7 @@ public final class NetworkInventoryCache extends AbstractCache {
             "INFINITY_STORAGE"
     ));
 
-    public static final List<String> ACCEPTED_BASIC_FLUFFY = new ArrayList<>(Arrays.asList(
+    protected static final List<String> ACCEPTED_BASIC_FLUFFY = new ArrayList<>(Arrays.asList(
             "SMALL_FLUFFY_BARREL",
             "MEDIUM_FLUFFY_BARREL",
             "BIG_FLUFFY_BARREL",

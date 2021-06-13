@@ -2,26 +2,22 @@ package io.github.sefiraat.simplestorage.items.chests.network;
 
 import io.github.sefiraat.simplestorage.items.Skulls;
 import io.github.sefiraat.simplestorage.utils.Theme;
+import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
-import javax.annotation.Nullable;
-
 public class NetworkElement {
 
-    private Block block;
+    private final Block block;
     private NetworkElementType type;
     private Material material;
     private String skullTexture;
     private int slotClose;
     private int slotRename;
     private int slotSetBlock;
-    private int barrelAmount;
-    private String displayName;
-    private Material displayMaterial;
 
     public Block getBlock() {
         return block;
@@ -75,36 +71,30 @@ public class NetworkElement {
     }
 
     public int getBarrelAmount() {
-        return barrelAmount;
-    }
-
-    public void setBarrelAmount(int barrelAmount) {
-        this.barrelAmount = barrelAmount;
+        String amount = BlockStorage.getLocationInfo(block.getLocation(), "stored");
+        if (amount != null) {
+            return Integer.parseInt(amount);
+        }
+        return 0;
     }
 
     public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+        return BlockStorage.getLocationInfo(block.getLocation(), "cellname");
     }
 
     public Material getDisplayMaterial() {
-        return displayMaterial;
+        String mat = BlockStorage.getLocationInfo(block.getLocation(), "cellmaterial");
+        if (mat != null) {
+            return Material.valueOf(mat);
+        }
+        return null;
     }
 
-    public void setDisplayMaterial(Material displayMaterial) {
-        this.displayMaterial = displayMaterial;
-    }
-
-    public NetworkElement(Block block, int slotClose, int slotRename, int slotSetBlock, @Nullable String displayName, @Nullable Material displayMaterial) {
+    public NetworkElement(Block block, int slotClose, int slotRename, int slotSetBlock) {
         this.block = block;
         this.slotClose = slotClose;
         this.slotRename = slotRename;
         this.slotSetBlock = slotSetBlock;
-        this.displayName = displayName;
-        this.displayMaterial = displayMaterial;
     }
 
     public enum NetworkElementType {
@@ -119,13 +109,13 @@ public class NetworkElement {
             case INVENTORY_CELL: return Theme.MAIN + "Simple Storage Cell";
             case INFINITY_BARREL: return ChatColor.AQUA + "Infinity Storage Unit";
             case FLUFFY_BARREL: return ChatColor.GOLD + "Fluffy Barrel";
+            default: return "Uh oh, something went a bit wrong...";
         }
-        return "Uh oh, something went a bit wrong...";
     }
 
     public static ItemStack getItemStack(NetworkElement ne) {
         if (ne.getDisplayMaterial() != null) {
-            return new ItemStack(ne.displayMaterial);
+            return new ItemStack(ne.getDisplayMaterial());
         } else if (ne.getType() == NetworkElementType.INVENTORY_CELL) {
             return SkullItem.fromBase64(Skulls.BLOCK_CELL_BASIC);
         } else {

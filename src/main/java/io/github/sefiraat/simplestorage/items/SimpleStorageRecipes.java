@@ -57,7 +57,7 @@ public final class SimpleStorageRecipes {
                 null,                   null,                       null
     };
     protected static final ItemStack[] CUPRONICKEL_INGOT = new ItemStack[] {
-                SlimefunItems.COPPER_INGOT, SlimefunItems.COPPER_INGOT, SlimefunItems.NICKEL_INGOT,
+                SlimefunItems.COPPER_INGOT, SlimefunItems.COPPER_DUST, SlimefunItems.NICKEL_INGOT,
                 null,                       null,                       null,
                 null,                       null,                       null
     };
@@ -67,9 +67,9 @@ public final class SimpleStorageRecipes {
             null,                       null,                   null
     };
     protected static final ItemStack[] NICKEL_SUPERALLOY_INGOT = new ItemStack[] {
-            SlimefunItems.NICKEL_INGOT, SlimefunItems.NICKEL_INGOT, SlimefunItems.NICKEL_INGOT,
-            SlimefunItems.NICKEL_INGOT, SimpleStorageItemStacks.RHENIUM_INGOT,         null,
-            null,                       null,                       null
+            SimpleStorageItemStacks.RHENIUM_INGOT,  SlimefunItems.NICKEL_INGOT, SlimefunItems.COBALT_INGOT,
+            SlimefunItems.COPPER_INGOT,             SlimefunItems.IRON_DUST,    null,
+            null,                                   null,                       null
     };
     protected static final ItemStack[] ZAMAK_1 = new ItemStack[] {
                 SlimefunItems.ZINC_INGOT,   SlimefunItems.ALUMINUM_DUST,    SlimefunItems.COPPER_DUST,

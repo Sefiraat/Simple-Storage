@@ -43,7 +43,7 @@ public class BlockBreakListener implements Listener {
 
     private void coal(BlockBreakEvent event) {
         int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
-        if (randomInt > 70) {
+        if (randomInt > 90) {
             int dropAmt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 3);
             ItemStack dropStack = SimpleStorageItemStacks.CHUNK_CHROMITE.clone();
             dropStack.setAmount(dropAmt);
@@ -53,7 +53,7 @@ public class BlockBreakListener implements Listener {
 
     private void quartz(BlockBreakEvent event) {
         int randomInt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 100);
-        if (randomInt > 70) {
+        if (randomInt > 80) {
             int dropAmt = Utils.randInt(SimpleStorage.inst().getRandom(), 1, 3);
             ItemStack dropStack = SimpleStorageItemStacks.CHUNK_BASTNAESITE.clone();
             dropStack.setAmount(dropAmt);

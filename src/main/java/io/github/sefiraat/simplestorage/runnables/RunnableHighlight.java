@@ -40,12 +40,11 @@ public class RunnableHighlight extends BukkitRunnable {
             Vector v = direction.multiply(i * d);
             l.add(v.getX(), v.getY(), v.getZ());
             start.getWorld().spawnParticle(particle, l, particleCount, offsetX, offsetY, offsetZ, extra, options, forceDisplay);
-            Particle.DustOptions nextDustOptions = new Particle.DustOptions(Color.fromRGB(
+            options = new Particle.DustOptions(Color.fromRGB(
                     options.getColor().getRed() - 10,
                     options.getColor().getGreen() - 5,
                     options.getColor().getBlue() + 10
             ), 1);
-            options = nextDustOptions;
         }
     }
 

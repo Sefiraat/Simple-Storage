@@ -5,7 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 public final class ConfigVal {
 
-    FileConfiguration configuration;
+    final FileConfiguration configuration;
 
     private final int networkRange;
     private final int networkTickRate;

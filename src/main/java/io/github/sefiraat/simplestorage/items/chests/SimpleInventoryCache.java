@@ -23,7 +23,7 @@ import static io.github.sefiraat.simplestorage.items.chests.SimpleChest.SLOT_INP
 public final class SimpleInventoryCache extends AbstractCache {
 
     private final int chestID;
-    private Map<Integer, ItemStack> items = new HashMap<>();
+    private final Map<Integer, ItemStack> items = new HashMap<>();
 
     public SimpleInventoryCache(BlockMenu blockMenu, int pages, int chestID) {
         super(blockMenu);

@@ -5,7 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 public final class ConfigBooleans {
 
-    FileConfiguration configuration;
+    final FileConfiguration configuration;
 
     public boolean getAutoUpdate() {
         return configuration.getBoolean("auto-update");

@@ -2,8 +2,8 @@ package io.github.sefiraat.simplestorage.items;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.categories.Categories;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 
 public class Items {
 

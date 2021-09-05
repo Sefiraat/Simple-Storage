@@ -1,9 +1,9 @@
 package io.github.sefiraat.simplestorage.items.materials;
 
 import io.github.sefiraat.simplestorage.SimpleStorage;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
@@ -15,7 +15,7 @@ public final class GemProustite extends AbstractGem {
 
     private final NamespacedKey key;
 
-    public GemProustite(SimpleStorage plugin, Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public GemProustite(SimpleStorage plugin, ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super("Proustite Crystal", category, item, recipeType, recipe, 2);
         this.key = new NamespacedKey(SimpleStorage.inst(), "proustite_crystal");
         register();

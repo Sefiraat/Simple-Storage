@@ -1,17 +1,15 @@
 package io.github.sefiraat.simplestorage.items.chests;
 
-import io.github.mooy1.infinitylib.slimefun.AbstractContainer;
+import io.github.mooy1.infinitylib.machines.MenuBlock;
 import io.github.sefiraat.simplestorage.utils.Utils;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import me.mrCookieSlime.Slimefun.api.inventory.DirtyChestMenu;
-import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -21,7 +19,7 @@ import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class NetworkChest extends AbstractContainer {
+public final class NetworkChest extends MenuBlock {
 
     static final int SLOT_INFO = 0;
     static final int SLOT_BACK = 1;
@@ -31,7 +29,7 @@ public final class NetworkChest extends AbstractContainer {
 
     private final Map<Location, NetworkInventoryCache> inventoryCaches = new HashMap<>();
 
-    public NetworkChest(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public NetworkChest(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
 
         addItemHandler(new BlockTicker() {
@@ -51,19 +49,25 @@ public final class NetworkChest extends AbstractContainer {
     }
 
     @Override
-    protected void setupMenu(@Nonnull BlockMenuPreset blockMenuPreset) {
+    protected void setup(@Nonnull BlockMenuPreset blockMenuPreset) {
         Utils.setUpChestMenu(blockMenuPreset, BACKGROUND_SLOTS, SLOT_BACK, SLOT_FORWARD, SLOT_INFO);
 
     }
 
     @Override
-    protected int[] getTransportSlots(@Nonnull DirtyChestMenu dirtyChestMenu, @Nonnull ItemTransportFlow itemTransportFlow, ItemStack itemStack) {
+    protected int[] getInputSlots() {
         return new int[0];
     }
 
     @Override
-    protected void onBreak(@Nonnull BlockBreakEvent event, @Nonnull BlockMenu blockMenu, @Nonnull Location location) {
-        super.onBreak(event, blockMenu, location);
+    protected int[] getOutputSlots() {
+        return new int[0];
+    }
+
+    @Override
+    protected void onBreak(@Nonnull BlockBreakEvent event, @Nonnull BlockMenu blockMenu) {
+        super.onBreak(event, blockMenu);
+        Location location = blockMenu.getLocation();
         NetworkInventoryCache networkInventoryCache = inventoryCaches.remove(location);
         if (networkInventoryCache != null) {
             networkInventoryCache.kill(location);

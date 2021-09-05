@@ -1,7 +1,6 @@
 package io.github.sefiraat.simplestorage;
 
-import io.github.mooy1.infinitylib.AbstractAddon;
-import io.github.mooy1.infinitylib.bstats.bukkit.Metrics;
+import io.github.mooy1.infinitylib.core.AbstractAddon;
 import io.github.sefiraat.simplestorage.categories.Categories;
 import io.github.sefiraat.simplestorage.configuration.ManagerConfiguration;
 import io.github.sefiraat.simplestorage.items.Blocks;
@@ -10,13 +9,18 @@ import io.github.sefiraat.simplestorage.items.Machines;
 import io.github.sefiraat.simplestorage.items.Materials;
 import io.github.sefiraat.simplestorage.listeners.ManagerListeners;
 import io.github.sefiraat.simplestorage.runnables.ManagerRunnables;
+import org.bstats.bukkit.Metrics;
 
-import javax.annotation.Nonnull;
 import java.util.Random;
 
 public class SimpleStorage extends AbstractAddon {
 
     private static SimpleStorage instance;
+
+    public SimpleStorage() {
+        super("Sefiraat", "SimpleStorage", "master", "auto-update");
+    }
+
     public static SimpleStorage inst() {
         return instance;
     }
@@ -42,13 +46,14 @@ public class SimpleStorage extends AbstractAddon {
     }
 
     @Override
-    protected void onAddonEnable() {
+    protected void enable() {
+
+        new Metrics(this,11622);
 
         instance = this;
 
         getLogger().info("########################################");
-        getLogger().info("              SimpleStorage             ");
-        getLogger().info("           Created by Sefiraat          ");
+        getLogger().info("  SimpleStorage - Created by Sefiraat   ");
         getLogger().info("########################################");
 
         managerConfiguration = new ManagerConfiguration(this);
@@ -59,21 +64,10 @@ public class SimpleStorage extends AbstractAddon {
     }
 
     @Override
-    protected void onAddonDisable() {
+    protected void disable() {
         saveConfig();
         managerConfiguration.saveAdditionalConfigs();
         instance = null;
-    }
-
-    @Override
-    protected Metrics setupMetrics() {
-        return new Metrics(this,11622);
-    }
-
-    @Override
-    protected @Nonnull
-    String getGithubPath() {
-        return "Sefiraat/Simple-Storage/master";
     }
 
     private void setupSlimefun() {

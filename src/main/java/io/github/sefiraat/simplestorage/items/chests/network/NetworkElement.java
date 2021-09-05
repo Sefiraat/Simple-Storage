@@ -2,8 +2,9 @@ package io.github.sefiraat.simplestorage.items.chests.network;
 
 import io.github.sefiraat.simplestorage.items.Skulls;
 import io.github.sefiraat.simplestorage.utils.Theme;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -117,7 +118,7 @@ public class NetworkElement {
         if (ne.getDisplayMaterial() != null) {
             return new ItemStack(ne.getDisplayMaterial());
         } else if (ne.getType() == NetworkElementType.INVENTORY_CELL) {
-            return SkullItem.fromBase64(Skulls.BLOCK_CELL_BASIC);
+            return PlayerHead.getItemStack(PlayerSkin.fromBase64(Skulls.BLOCK_CELL_BASIC));
         } else {
             return new ItemStack(ne.block.getType());
         }

@@ -1,12 +1,12 @@
 package io.github.sefiraat.simplestorage.items;
 
-import io.github.mooy1.infinitylib.presets.LorePreset;
+import io.github.mooy1.infinitylib.machines.MachineLore;
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.items.machines.DiePress;
 import io.github.sefiraat.simplestorage.items.machines.Enderator;
 import io.github.sefiraat.simplestorage.items.machines.MetalPressBasic;
 import io.github.sefiraat.simplestorage.utils.Theme;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import org.bukkit.Material;
 
 public final class SimpleStorageItemStacks {
@@ -490,7 +490,7 @@ public final class SimpleStorageItemStacks {
             Theme.PASSIVE + "create dies from certain metals.",
             Theme.PASSIVE + "dies are used to shape other materials.",
             "",
-            LorePreset.energyPerSecond(DiePress.CONSUMPTION),
+            MachineLore.energyPerSecond(DiePress.CONSUMPTION),
             "",
             Theme.LORE_TYPE_MACHINE
     );
@@ -503,7 +503,7 @@ public final class SimpleStorageItemStacks {
             Theme.PASSIVE + "create shaped metal plates from",
             Theme.PASSIVE + "basic dies and soft alloys.",
             "",
-            LorePreset.energyPerSecond(MetalPressBasic.CONSUMPTION),
+            MachineLore.energyPerSecond(MetalPressBasic.CONSUMPTION),
             "",
             Theme.LORE_TYPE_MACHINE
     );
@@ -517,7 +517,7 @@ public final class SimpleStorageItemStacks {
             Theme.PASSIVE + "very fabric of an object into something",
             Theme.PASSIVE + "different...",
             "",
-            LorePreset.energyPerSecond(Enderator.CONSUMPTION),
+            MachineLore.energyPerSecond(Enderator.CONSUMPTION),
             "",
             Theme.LORE_TYPE_MACHINE
     );

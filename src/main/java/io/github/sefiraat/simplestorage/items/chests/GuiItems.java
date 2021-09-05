@@ -4,8 +4,9 @@ import io.github.sefiraat.simplestorage.items.Skulls;
 import io.github.sefiraat.simplestorage.items.chests.network.NetworkElement;
 import io.github.sefiraat.simplestorage.items.chests.network.NetworkElement.NetworkElementType;
 import io.github.sefiraat.simplestorage.utils.Theme;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -16,72 +17,72 @@ public final class GuiItems {
         throw new IllegalStateException("Utility class");
     }
 
-    public static CustomItem menuBackground() {
-        return new CustomItem(
+    public static CustomItemStack menuBackground() {
+        return new CustomItemStack(
                 Material.GRAY_STAINED_GLASS_PANE,
                 Theme.PASSIVE + "Simple!",
                 ""
         );
     }
 
-    public static CustomItem menuInfo() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.GUI_NO1),
+    public static CustomItemStack menuInfo() {
+        return new CustomItemStack(
+                PlayerHead.getItemStack(PlayerSkin.fromBase64(Skulls.GUI_NO1)),
                 Theme.GUI_HEAD + "Info",
                 "",
                 "Page number : 1"
         );
     }
 
-    public static CustomItem menuChestPageBack() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.GUI_BACK),
+    public static CustomItemStack menuChestPageBack() {
+        return new CustomItemStack(
+                PlayerHead.getItemStack(PlayerSkin.fromBase64(Skulls.GUI_BACK)),
                 Theme.GUI_HEAD + "Back",
                 "",
                 Theme.CLICK_INFO + "Click to navigate back a page."
         );
     }
 
-    public static CustomItem menuChestPageForward() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.GUI_FORWARD),
+    public static CustomItemStack menuChestPageForward() {
+        return new CustomItemStack(
+                PlayerHead.getItemStack(PlayerSkin.fromBase64(Skulls.GUI_FORWARD)),
                 Theme.GUI_HEAD + "Forward",
                 "",
                 Theme.CLICK_INFO + "Click to navigate forward a page."
         );
     }
 
-    public static CustomItem menuChestDummy() {
-        return new CustomItem(
+    public static CustomItemStack menuChestDummy() {
+        return new CustomItemStack(
                 Material.LIGHT_GRAY_STAINED_GLASS_PANE,
                 Theme.PASSIVE + "No item here"
         );
     }
 
-    public static CustomItem menuMasterDummy() {
-        return new CustomItem(
+    public static CustomItemStack menuMasterDummy() {
+        return new CustomItemStack(
                 Material.LIGHT_GRAY_STAINED_GLASS_PANE,
                 Theme.PASSIVE + "No inventory here"
         );
     }
 
-    public static CustomItem menuClose() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.GUI_CLOSE),
+    public static CustomItemStack menuClose() {
+        return new CustomItemStack(
+                PlayerHead.getItemStack(PlayerSkin.fromBase64(Skulls.GUI_CLOSE)),
                 Theme.GUI_HEAD + "Close"
         );
     }
 
-    public static CustomItem menuRenameCell() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.GUI_RENAME_CELL),
+    public static CustomItemStack menuRenameCell() {
+        return new CustomItemStack(
+                PlayerHead.getItemStack(PlayerSkin.fromBase64(Skulls.GUI_RENAME_CELL)),
                 Theme.GUI_HEAD + "Rename Cell"
         );
     }
 
-    public static CustomItem menuSetMaterial() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.GUI_SET_ICON),
+    public static CustomItemStack menuSetMaterial() {
+        return new CustomItemStack(
+                PlayerHead.getItemStack(PlayerSkin.fromBase64(Skulls.GUI_SET_ICON)),
                 Theme.GUI_HEAD + "Set Icon",
                 "",
                 Theme.ITEM_TYPEDESC + "Click this with an item on your",
@@ -89,7 +90,7 @@ public final class GuiItems {
         );
     }
 
-    public static CustomItem menuCell(NetworkElement ne) {
+    public static CustomItemStack menuCell(NetworkElement ne) {
 
         ItemStack i = NetworkElement.getItemStack(ne);
         String name;
@@ -112,8 +113,8 @@ public final class GuiItems {
         }
     }
 
-    public static CustomItem menuCellNormal(ItemStack i, String name) {
-        return new CustomItem(
+    public static CustomItemStack menuCellNormal(ItemStack i, String name) {
+        return new CustomItemStack(
                 i,
                 Theme.GUI_HEAD + name,
                 "",
@@ -124,9 +125,9 @@ public final class GuiItems {
         );
     }
 
-    public static CustomItem menuCellBarrel(ItemStack i, String name, NetworkElement networkElement) {
+    public static CustomItemStack menuCellBarrel(ItemStack i, String name, NetworkElement networkElement) {
         String barrelAmount = Theme.ITEM_TYPEDESC + "Content: " + ChatColor.WHITE + networkElement.getBarrelAmount();
-        return new CustomItem(
+        return new CustomItemStack(
                 i,
                 Theme.GUI_HEAD + name,
                 "",
@@ -139,8 +140,8 @@ public final class GuiItems {
         );
     }
 
-    public static CustomItem menuCellError() {
-        return new CustomItem(
+    public static CustomItemStack menuCellError() {
+        return new CustomItemStack(
                 Material.BARRIER,
                 Theme.GUI_HEAD + "Scanned Inventory (Error)",
                 "",

@@ -3,10 +3,11 @@ package io.github.sefiraat.simplestorage.categories;
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.items.Skulls;
 import io.github.sefiraat.simplestorage.utils.Theme;
-import io.github.thebusybiscuit.slimefun4.core.categories.MultiCategory;
-import io.github.thebusybiscuit.slimefun4.core.categories.SubCategory;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
+import io.github.thebusybiscuit.slimefun4.api.items.groups.NestedItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.groups.SubItemGroup;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerHead;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.skins.PlayerSkin;
 import org.bukkit.NamespacedKey;
 
 public final class Categories {
@@ -15,43 +16,43 @@ public final class Categories {
         throw new IllegalStateException("Utility class");
     }
 
-    public static CustomItem catSimpleStorageMain() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.CAT_CORE),
+    public static CustomItemStack catSimpleStorageMain() {
+        return new CustomItemStack(
+                PlayerHead.getItemStack(PlayerSkin.fromBase64(Skulls.CAT_CORE)),
                 Theme.MAIN + "Simple Storage"
         );
     }
-    public static CustomItem catSimpleStorageMaterials() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.CAT_MATERIALS),
+    public static CustomItemStack catSimpleStorageMaterials() {
+        return new CustomItemStack(
+                PlayerHead.getItemStack(PlayerSkin.fromBase64(Skulls.CAT_MATERIALS)),
                 Theme.MAIN + "Simple Storage Materials"
         );
     }
-    public static CustomItem catSimpleStorageItems() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.CAT_ITEMS),
+    public static CustomItemStack catSimpleStorageItems() {
+        return new CustomItemStack(
+                PlayerHead.getItemStack(PlayerSkin.fromBase64(Skulls.CAT_ITEMS)),
                 Theme.MAIN + "Simple Storage Items"
         );
     }
-    public static CustomItem catSimpleStorageMachines() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.CAT_MACHINES),
+    public static CustomItemStack catSimpleStorageMachines() {
+        return new CustomItemStack(
+                PlayerHead.getItemStack(PlayerSkin.fromBase64(Skulls.CAT_MACHINES)),
                 Theme.MAIN + "Simple Storage Machines"
         );
     }
-    public static CustomItem catSimpleStorageChests() {
-        return new CustomItem(
-                SkullItem.fromBase64(Skulls.CAT_CHESTS),
+    public static CustomItemStack catSimpleStorageChests() {
+        return new CustomItemStack(
+                PlayerHead.getItemStack(PlayerSkin.fromBase64(Skulls.CAT_CHESTS)),
                 Theme.MAIN + "Simple Storage Chests/Cells"
         );
     }
 
 
-    public static final MultiCategory CORE = new MultiCategory(new NamespacedKey(SimpleStorage.inst(), "simple-storage"), catSimpleStorageMain());
-    public static final SubCategory MAT = new SubCategory(new NamespacedKey(SimpleStorage.inst(), "simple-storage-materials"), CORE, catSimpleStorageMaterials());
-    public static final SubCategory ITM = new SubCategory(new NamespacedKey(SimpleStorage.inst(), "simple-storage-items"), CORE, catSimpleStorageItems());
-    public static final SubCategory MCN = new SubCategory(new NamespacedKey(SimpleStorage.inst(), "simple-storage-machines"), CORE, catSimpleStorageMachines());
-    public static final SubCategory CHT = new SubCategory(new NamespacedKey(SimpleStorage.inst(), "simple-storage-chests"), CORE, catSimpleStorageChests());
+    public static final NestedItemGroup CORE = new NestedItemGroup(new NamespacedKey(SimpleStorage.inst(), "simple-storage"), catSimpleStorageMain());
+    public static final SubItemGroup MAT = new SubItemGroup(new NamespacedKey(SimpleStorage.inst(), "simple-storage-materials"), CORE, catSimpleStorageMaterials());
+    public static final SubItemGroup ITM = new SubItemGroup(new NamespacedKey(SimpleStorage.inst(), "simple-storage-items"), CORE, catSimpleStorageItems());
+    public static final SubItemGroup MCN = new SubItemGroup(new NamespacedKey(SimpleStorage.inst(), "simple-storage-machines"), CORE, catSimpleStorageMachines());
+    public static final SubItemGroup CHT = new SubItemGroup(new NamespacedKey(SimpleStorage.inst(), "simple-storage-chests"), CORE, catSimpleStorageChests());
 
     public static void set(SimpleStorage p) {
         CORE.register(p);

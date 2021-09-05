@@ -12,10 +12,10 @@ import io.github.sefiraat.simplestorage.items.other.RareDropCoal;
 import io.github.sefiraat.simplestorage.items.other.RareDropLapis;
 import io.github.sefiraat.simplestorage.items.other.RareDropQuartz;
 import io.github.sefiraat.simplestorage.items.other.RareDropRedstone;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import org.bukkit.inventory.ItemStack;
 

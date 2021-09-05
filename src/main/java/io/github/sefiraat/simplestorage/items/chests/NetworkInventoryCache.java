@@ -1,6 +1,6 @@
 package io.github.sefiraat.simplestorage.items.chests;
 
-import io.github.mooy1.infinitylib.items.StackUtils;
+import io.github.mooy1.infinitylib.common.StackUtils;
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.items.SimpleStorageItemStacks;
 import io.github.sefiraat.simplestorage.items.Skulls;
@@ -103,7 +103,7 @@ public final class NetworkInventoryCache extends AbstractCache {
         for (int i : NetworkChest.AUGMENT_SLOTS) {
             ItemStack itemStack = blockMenu.getItemInSlot(i);
             if (itemStack != null) {
-                String id = StackUtils.getID(itemStack);
+                String id = StackUtils.getId(itemStack);
                 if (id != null && id.equals(SimpleStorageItemStacks.UPGRADE_BARREL.getItemId())) {
                     return true;
                 }

@@ -1,14 +1,12 @@
 package io.github.sefiraat.simplestorage.items.machines;
 
-import io.github.mooy1.infinitylib.recipes.RecipeMap;
-import io.github.mooy1.infinitylib.recipes.ShapedRecipe;
 import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.items.SimpleStorageItemStacks;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -17,13 +15,12 @@ import javax.annotation.Nonnull;
 
 public final class Enderator extends AContainer implements RecipeDisplayItem {
 
-    private static final RecipeMap<ItemStack> RECIPE_MAP = new RecipeMap<>(ShapedRecipe::new);
-    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "enderator"), SimpleStorageItemStacks.ENDERATOR, RECIPE_MAP::put);
+    public static final RecipeType TYPE = new RecipeType(new NamespacedKey(SimpleStorage.inst(), "enderator"), SimpleStorageItemStacks.ENDERATOR, "");
     public static final int SPEED = 1;
     public static final int CAPACITY = 131072;
     public static final int CONSUMPTION = 32768;
 
-    public Enderator(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public Enderator(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
         setCapacity(CAPACITY);
         setEnergyConsumption(CONSUMPTION);

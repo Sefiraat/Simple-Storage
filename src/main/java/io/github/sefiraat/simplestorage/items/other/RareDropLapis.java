@@ -19,8 +19,8 @@ public final class RareDropLapis {
             Theme.ITEM_RARE_DROP + "Rare Drop: Lapis",
             "",
             Theme.PASSIVE + "This item is a rare drop from",
-            Theme.PASSIVE + "Lapis Ore. The block actually needs",
-            Theme.PASSIVE + "to break, no Silk Touch.",
+            Theme.PASSIVE + "Lapis Ore. The block needs",
+            Theme.PASSIVE + "to be broken without Silk Touch.",
             "",
             Theme.LORE_TYPE_DROP
     );

@@ -112,7 +112,7 @@ public final class SimpleStorageItemStacks {
             Material.GUNPOWDER,
             Theme.ITEM_CRAFTING + "Chromium Dust",
             "",
-            Theme.PASSIVE + "A very rare metal. Needs to be worked.",
+            Theme.PASSIVE + "A very rare metal. Needs to be worked",
             Theme.PASSIVE + "into ingots.",
             "",
             Theme.LORE_TYPE_CRAFT
@@ -123,7 +123,7 @@ public final class SimpleStorageItemStacks {
             Material.GUNPOWDER,
             Theme.ITEM_CRAFTING + "Bastnaesite Dust",
             "",
-            Theme.PASSIVE + "A very rare ore. Needs to be worked.",
+            Theme.PASSIVE + "A very rare ore. Needs to be worked",
             Theme.PASSIVE + "into ingots.",
             "",
             Theme.LORE_TYPE_CRAFT
@@ -134,7 +134,7 @@ public final class SimpleStorageItemStacks {
             Material.GUNPOWDER,
             Theme.ITEM_CRAFTING + "Antimony Dust",
             "",
-            Theme.PASSIVE + "A very rare metal. Needs to be worked.",
+            Theme.PASSIVE + "A very rare metal. Needs to be worked",
             Theme.PASSIVE + "into ingots.",
             "",
             Theme.LORE_TYPE_CRAFT
@@ -145,7 +145,7 @@ public final class SimpleStorageItemStacks {
             Material.GUNPOWDER,
             Theme.ITEM_CRAFTING + "Rhenium Dust",
             "",
-            Theme.PASSIVE + "A very rare metal. Needs to be worked.",
+            Theme.PASSIVE + "A very rare metal. Needs to be worked",
             Theme.PASSIVE + "into ingots.",
             "",
             Theme.LORE_TYPE_CRAFT
@@ -213,7 +213,7 @@ public final class SimpleStorageItemStacks {
             Theme.ITEM_CRAFTING + "Cupronickel Alloy Ingot",
             "",
             Theme.PASSIVE + "An alloy of Copper and Nickel that is",
-            Theme.PASSIVE + "used for it's strength and ability to",
+            Theme.PASSIVE + "used for its strength and ability to",
             Theme.PASSIVE + "withstand high pressures.",
             "",
             Theme.LORE_TYPE_CRAFT
@@ -225,7 +225,7 @@ public final class SimpleStorageItemStacks {
             Theme.ITEM_CRAFTING + "Pewter Alloy Ingot",
             "",
             Theme.PASSIVE + "An alloy of Tin and Silver that is",
-            Theme.PASSIVE + "used for it's durability.",
+            Theme.PASSIVE + "used for its durability.",
             "",
             Theme.LORE_TYPE_CRAFT
     );
@@ -236,7 +236,7 @@ public final class SimpleStorageItemStacks {
             Theme.ITEM_CRAFTING + "Nickel-Superalloy Ingot",
             "",
             Theme.PASSIVE + "An alloy of Nickel and Rhenium that",
-            Theme.PASSIVE + "used for it's extreme temperature",
+            Theme.PASSIVE + "used for its extreme temperature",
             Theme.PASSIVE + "resistance.",
             "",
             Theme.LORE_TYPE_CRAFT
@@ -248,7 +248,7 @@ public final class SimpleStorageItemStacks {
             Theme.ITEM_CRAFTING + "Zamak-1",
             "",
             Theme.PASSIVE + "An alloy of Zinc, Aluminium and",
-            Theme.PASSIVE + "Copper. While this allow is not",
+            Theme.PASSIVE + "Copper. While this alloy is not",
             Theme.PASSIVE + "the strongest, it is useful for",
             Theme.PASSIVE + "machine dies.",
             "",
@@ -264,7 +264,7 @@ public final class SimpleStorageItemStacks {
             Theme.PASSIVE + "Copper. Zamak-2 is reinforced with",
             Theme.PASSIVE + "additional Copper for further",
             Theme.PASSIVE + "strength making it capable of acting",
-            Theme.PASSIVE + "as a die for more metals",
+            Theme.PASSIVE + "as a die for more metals.",
             "",
             Theme.LORE_TYPE_CRAFT
     );
@@ -276,7 +276,7 @@ public final class SimpleStorageItemStacks {
             "",
             Theme.PASSIVE + "An alloy of Zinc, Aluminium and",
             Theme.PASSIVE + "Copper. Zamak-3 is infused with",
-            Theme.PASSIVE + "Magnesium for stability",
+            Theme.PASSIVE + "Magnesium for stability.",
             "",
             Theme.LORE_TYPE_CRAFT
     );
@@ -309,7 +309,7 @@ public final class SimpleStorageItemStacks {
             Theme.ITEM_CRAFTING + "Reinforced Cupronickel Alloy Ingot",
             "",
             Theme.PASSIVE + "An alloy of Copper and Nickel that is",
-            Theme.PASSIVE + "used for it's strength and ability to",
+            Theme.PASSIVE + "used for its strength and ability to",
             Theme.PASSIVE + "withstand high pressures. This variant",
             Theme.PASSIVE + "has been reinforced with Carium.",
             "",
@@ -322,7 +322,7 @@ public final class SimpleStorageItemStacks {
             Theme.ITEM_CRAFTING + "Hardened Pewter Alloy Ingot",
             "",
             Theme.PASSIVE + "An alloy of Tin and Silver that is",
-            Theme.PASSIVE + "used for it's durability. This variant",
+            Theme.PASSIVE + "used for its durability. This variant",
             Theme.PASSIVE + "has been hardened with Antimony.",
             "",
             Theme.LORE_TYPE_CRAFT
@@ -366,8 +366,8 @@ public final class SimpleStorageItemStacks {
             Material.BROWN_CARPET,
             Theme.ITEM_CRAFTING + "Nickel-Superalloy Plate",
             "",
-            Theme.PASSIVE + "A plate made out of Nickel and Rhenium",
-            Theme.PASSIVE + "a shell for advanced storage components.",
+            Theme.PASSIVE + "A plate made out of Nickel and Rhenium used",
+            Theme.PASSIVE + "as a shell for advanced storage components.",
             "",
             Theme.LORE_TYPE_CRAFT
     );
@@ -444,7 +444,7 @@ public final class SimpleStorageItemStacks {
             Material.HEART_OF_THE_SEA,
             Theme.ITEM_CRAFTING + "Reinforced Chest Core",
             "",
-            Theme.PASSIVE + "Used as the core for an gold chest.",
+            Theme.PASSIVE + "Used as the core for a gold chest.",
             "",
             Theme.LORE_TYPE_CRAFT
     );
@@ -454,7 +454,7 @@ public final class SimpleStorageItemStacks {
             Material.HEART_OF_THE_SEA,
             Theme.ITEM_CRAFTING + "Advanced Chest Core",
             "",
-            Theme.PASSIVE + "Used as the core for an diamond chest.",
+            Theme.PASSIVE + "Used as the core for a diamond chest.",
             "",
             Theme.LORE_TYPE_CRAFT
     );
@@ -476,7 +476,7 @@ public final class SimpleStorageItemStacks {
             Theme.ITEM_CRAFTING + "Display Panel",
             "",
             Theme.PASSIVE + "A display panel. Used to craft the",
-            Theme.PASSIVE + "Chest Master.",
+            Theme.PASSIVE + "the Chest Master.",
             "",
             Theme.LORE_TYPE_CRAFT
     );
@@ -553,7 +553,7 @@ public final class SimpleStorageItemStacks {
             Skulls.BLOCK_CELL_BASIC,
             Theme.ITEM_MACHINE + "Inventory Cell",
             "",
-            Theme.PASSIVE + "A inventory cell with 270 item slots.",
+            Theme.PASSIVE + "An inventory cell with 270 item slots.",
             "",
             Theme.LORE_TYPE_CHEST
     );

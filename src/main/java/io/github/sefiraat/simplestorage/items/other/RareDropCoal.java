@@ -19,8 +19,8 @@ public final class RareDropCoal {
             Theme.ITEM_RARE_DROP + "Rare Drop: Coal",
             "",
             Theme.PASSIVE + "This item is a rare drop from",
-            Theme.PASSIVE + "coal ore. The block actually needs",
-            Theme.PASSIVE + "to break, no Silk Touch.",
+            Theme.PASSIVE + "coal ore. The block needs",
+            Theme.PASSIVE + "to be broken without Silk Touch.",
             "",
             Theme.LORE_TYPE_DROP
     );

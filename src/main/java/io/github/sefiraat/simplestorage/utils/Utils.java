@@ -1,15 +1,10 @@
 package io.github.sefiraat.simplestorage.utils;
 
-import io.github.sefiraat.simplestorage.SimpleStorage;
 import io.github.sefiraat.simplestorage.items.chests.GuiItems;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.NamespacedKey;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,14 +18,6 @@ public final class Utils {
 
     public static int randInt(Random r, int min, int max) {
         return r.nextInt((max - min) + 1) + min;
-    }
-
-    public static ItemStack setGuiItem(ItemStack itemStack) {
-        ItemMeta itemMeta = itemStack.getItemMeta();
-        PersistentDataContainer c = itemMeta.getPersistentDataContainer();
-        c.set(new NamespacedKey(SimpleStorage.inst(), "gui"), PersistentDataType.INTEGER, 1);
-        itemStack.setItemMeta(itemMeta);
-        return itemStack;
     }
 
     public static void setUpChestMenu(BlockMenuPreset blockMenuPreset, int[] background, int slotBack, int slotForward, int slotInfo) {

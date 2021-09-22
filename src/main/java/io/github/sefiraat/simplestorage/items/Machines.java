@@ -4,7 +4,7 @@ import io.github.sefiraat.simplestorage.categories.Categories;
 import io.github.sefiraat.simplestorage.items.machines.DiePress;
 import io.github.sefiraat.simplestorage.items.machines.Enderator;
 import io.github.sefiraat.simplestorage.items.machines.MetalPressBasic;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 
 public final class Machines {
 

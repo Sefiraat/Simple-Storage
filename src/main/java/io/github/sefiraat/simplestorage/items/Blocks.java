@@ -5,7 +5,7 @@ import io.github.sefiraat.simplestorage.categories.Categories;
 import io.github.sefiraat.simplestorage.items.chests.NetworkChest;
 import io.github.sefiraat.simplestorage.items.chests.SimpleChest;
 import io.github.sefiraat.simplestorage.items.machines.Enderator;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 
 public final class Blocks {
 

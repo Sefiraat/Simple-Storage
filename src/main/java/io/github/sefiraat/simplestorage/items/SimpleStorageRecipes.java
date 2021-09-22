@@ -1,7 +1,7 @@
 package io.github.sefiraat.simplestorage.items;
 
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -57,7 +57,7 @@ public final class SimpleStorageRecipes {
                 null,                   null,                       null
     };
     protected static final ItemStack[] CUPRONICKEL_INGOT = new ItemStack[] {
-                SlimefunItems.COPPER_INGOT, SlimefunItems.COPPER_INGOT, SlimefunItems.NICKEL_INGOT,
+                SlimefunItems.COPPER_INGOT, SlimefunItems.COPPER_DUST, SlimefunItems.NICKEL_INGOT,
                 null,                       null,                       null,
                 null,                       null,                       null
     };
@@ -67,9 +67,9 @@ public final class SimpleStorageRecipes {
             null,                       null,                   null
     };
     protected static final ItemStack[] NICKEL_SUPERALLOY_INGOT = new ItemStack[] {
-            SlimefunItems.NICKEL_INGOT, SlimefunItems.NICKEL_INGOT, SlimefunItems.NICKEL_INGOT,
-            SlimefunItems.NICKEL_INGOT, SimpleStorageItemStacks.RHENIUM_INGOT,         null,
-            null,                       null,                       null
+            SimpleStorageItemStacks.RHENIUM_INGOT,  SlimefunItems.NICKEL_INGOT, SlimefunItems.COBALT_INGOT,
+            SlimefunItems.COPPER_INGOT,             SlimefunItems.IRON_DUST,    null,
+            null,                                   null,                       null
     };
     protected static final ItemStack[] ZAMAK_1 = new ItemStack[] {
                 SlimefunItems.ZINC_INGOT,   SlimefunItems.ALUMINUM_DUST,    SlimefunItems.COPPER_DUST,
@@ -215,5 +215,10 @@ public final class SimpleStorageRecipes {
             SimpleStorageItemStacks.COMBINED_PLATE, SimpleStorageItemStacks.DISPLAY_PANEL,        SimpleStorageItemStacks.COMBINED_PLATE,
             SimpleStorageItemStacks.COMBINED_PLATE, SimpleStorageItemStacks.CHEST_DIAMOND,        SimpleStorageItemStacks.COMBINED_PLATE,
             SimpleStorageItemStacks.COMBINED_PLATE, SimpleStorageItemStacks.COMMUNICATION_BLOCK,  SimpleStorageItemStacks.COMBINED_PLATE
+    };
+    protected static final ItemStack[] AUGMENT_BARREL = new ItemStack[] {
+            new ItemStack(Material.OAK_PLANKS), SimpleStorageItemStacks.COMBINED_PLATE,         new ItemStack(Material.OAK_PLANKS),
+            new ItemStack(Material.OAK_PLANKS), SimpleStorageItemStacks.PROUSTITE,              new ItemStack(Material.OAK_PLANKS),
+            new ItemStack(Material.OAK_PLANKS), SimpleStorageItemStacks.COMMUNICATION_BLOCK,    new ItemStack(Material.OAK_PLANKS)
     };
 }

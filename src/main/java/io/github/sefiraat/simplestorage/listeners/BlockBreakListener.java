@@ -16,7 +16,7 @@ public class BlockBreakListener implements Listener {
         SimpleStorage.inst().getServer().getPluginManager().registerEvents(this, SimpleStorage.inst());
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
         if (!event.isCancelled()) {
             ItemStack itemStack = event.getPlayer().getInventory().getItemInMainHand();

@@ -1,6 +1,12 @@
 ![](https://github.com/Sefiraat/Simple-Storage/blob/master/Images/logo/logo_large.png?raw=true)
 
-Simple Storage is a Slimefun4 addon that adds new mass storage blocks;
+Simple Storage is a Slimefun4 addon that adds new mass storage blocks.
+
+## Download Simple Storage
+
+[![Build Status](https://thebusybiscuit.github.io/builds/Sefiraat/Simple-Storage/master/badge.svg)](https://thebusybiscuit.github.io/builds/Sefiraat/Simple-Storage/master)
+
+## About Simple Storage
 
 |Image |Block |Description |
 |:---|:---|:---|
